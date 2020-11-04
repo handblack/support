@@ -4,17 +4,19 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\WhReason;
 
 class ReasonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    private $items = 40;
+    public function index(Request $request){
+        $result = WhReason::where('reasonname','LIKE',"%{$request->q}%")
+            ->paginate($this->items);
+        $result->appends(['q' => $request->q]);
+        return view('master.reason',[
+            'result' => $result,
+            'q' => $request->q,
+        ]);
     }
 
     /**
@@ -24,7 +26,10 @@ class ReasonController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.reason_form',[
+            'mode' => 'new',
+            'row' => new WhReason(),
+        ]);
     }
 
     /**
@@ -35,7 +40,13 @@ class ReasonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'reasonname' => 'required',
+            'movetype' => 'required'
+        ]);
+        $row = new WhReason();
+        $row->create($request->all());
+        return redirect(route('reason.index'))->with('message','Se creo el registro!');
     }
 
     /**
@@ -57,7 +68,11 @@ class ReasonController extends Controller
      */
     public function edit($id)
     {
-        //
+        $row = WhReason::find($id);
+        return view('master.reason_form',[
+            'mode' => 'edit',
+            'row' => $row,
+        ]);
     }
 
     /**
@@ -69,7 +84,14 @@ class ReasonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'reasonname' => 'required',
+            'movetype' => 'required'
+        ]);
+        $row = WhReason::find($id);
+        $row->fill($request->all());
+        $row->save();
+        return redirect(route('reason.index'))->with('message','Se actualizo correctamente');
     }
 
     /**
@@ -80,6 +102,8 @@ class ReasonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = WhReason::find($id);
+        $row->delete();
+        return back()->with('message','Se elimino correctamente');
     }
 }

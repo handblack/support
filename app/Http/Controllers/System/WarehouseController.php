@@ -4,17 +4,19 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\WhWarehouse;
 
 class WarehouseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    private $items = 40;
+    public function index(Request $request){
+        $result = WhWarehouse::where('warehousename','LIKE',"%{$request->q}%")
+            ->paginate($this->items);
+        $result->appends(['q' => $request->q]);
+        return view('master.warehouse',[
+            'result' => $result,
+            'q' => $request->q,
+        ]);
     }
 
     /**
@@ -24,7 +26,10 @@ class WarehouseController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.warehouse_form',[
+            'mode' => 'new',
+            'row' => new WhWarehouse(),
+        ]);
     }
 
     /**
@@ -35,7 +40,14 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'warehousename' => 'required',
+            'warehousecode' => 'required',
+            'ubigeo' => 'required',
+        ]);
+        $row = new WhWarehouse();
+        $row->create($request->all());
+        return redirect(route('warehouse.index'))->with('message','Se creo el registro!');
     }
 
     /**
@@ -57,7 +69,11 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $row = WhWarehouse::find($id);
+        return view('master.warehouse_form',[
+            'mode' => 'edit',
+            'row' => $row,
+        ]);
     }
 
     /**
@@ -69,7 +85,15 @@ class WarehouseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'warehousename' => 'required',
+            'warehousecode' => 'required',
+            'ubigeo' => 'required',
+        ]);
+        $row = WhWarehouse::find($id);
+        $row->fill($request->all());
+        $row->save();
+        return redirect(route('warehouse.index'))->with('message','Se actualizo correctamente');
     }
 
     /**
@@ -80,6 +104,8 @@ class WarehouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = WhWarehouse::find($id);
+        $row->delete();
+        return back()->with('message','Se elimino correctamente');
     }
 }

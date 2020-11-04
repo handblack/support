@@ -9,7 +9,8 @@ use App\Models\WhLine;
 class LineController extends Controller{
     private $items = 40;
     public function index(Request $request){   
-        $result = WhLine::paginate($this->items);
+        $result = WhLine::where('linename','LIKE',"%{$request->q}%")
+            ->paginate($this->items);
         $result->appends(['q' => $request->q]);
         return view('master.line',[
             'result' => $result,

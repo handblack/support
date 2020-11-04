@@ -4,6 +4,7 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\WhFamily;
 
 class FamilyController extends Controller
 {
@@ -12,9 +13,16 @@ class FamilyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    private $items = 40;
+    public function index(Request $request)
     {
-        //
+        $result = WhFamily::where('familyname','LIKE',"%{$request->q}%")
+            ->paginate($this->items);
+        $result->appends(['q' => $request->q]);
+        return view('master.family',[
+            'result' => $result,
+            'q' => $request->q,
+        ]);
     }
 
     /**
@@ -24,7 +32,10 @@ class FamilyController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.family_form',[
+            'mode' => 'new',
+            'row' => new WhFamily(),
+        ]);
     }
 
     /**
@@ -35,7 +46,12 @@ class FamilyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'familyname' => 'required'
+        ]);
+        $row = new WhFamily();
+        $row->create($request->all());
+        return redirect(route('family.index'))->with('message','Se creo el registro!');
     }
 
     /**
@@ -57,7 +73,11 @@ class FamilyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $row = WhFamily::find($id);
+        return view('master.family_form',[
+            'mode' => 'edit',
+            'row' => $row,
+        ]);
     }
 
     /**
@@ -69,7 +89,13 @@ class FamilyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'familyname' => 'required'
+        ]);
+        $row = WhFamily::find($id);
+        $row->fill($request->all());
+        $row->save();
+        return redirect(route('family.index'))->with('message','Se actualizo correctamente');
     }
 
     /**
@@ -80,6 +106,8 @@ class FamilyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = WhFamily::find($id);
+        $row->delete();
+        return back()->with('message','Se elimino correctamente');
     }
 }

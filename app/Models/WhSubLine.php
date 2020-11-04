@@ -9,4 +9,8 @@ class WhSubLine extends Model
 {
     use HasFactory;
     protected $table = 'wh_sublines';
+    protected $fillable = [
+        'sublinename',
+        'isactive'
+    ];
 }

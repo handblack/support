@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WhUm extends Model
+class WhWarehouse extends Model
 {
     use HasFactory;
-    protected $table = 'wh_ums';
+    protected $table = 'wh_warehouses';
     protected $fillable = [
-        'umname',
-        'isoname',
+        'warehousename',
+        'warehousecode',
+        'ubigeo',
         'isactive'
     ];
 }

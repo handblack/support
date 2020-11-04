@@ -17,7 +17,7 @@ class WhUm extends Migration
             $table->id();
             $table->string('umname',30);
             $table->string('isoname',10);
-            $table->enum('isactive',['Y','N']);
+            $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });
     }

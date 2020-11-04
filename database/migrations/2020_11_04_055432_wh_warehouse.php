@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class WhReason extends Migration
+class WhWarehouse extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class WhReason extends Migration
      */
     public function up()
     {
-        Schema::create('wh_reasons', function (Blueprint $table) {
+        Schema::create('wh_warehouses', function (Blueprint $table) {
             $table->id();
-            $table->string('reasonname',100);
-            $table->enum('movetype',['IN','SA','TR','PR','ME']);
+            $table->string('warehousename',100);
+            $table->string('warehousecode',50)->nullable();
+            $table->string('ubigeo',10)->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ class WhReason extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wh_reasons');
+        Schema::dropIfExists('wh_warehouses');
     }
 }

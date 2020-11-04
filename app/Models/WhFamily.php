@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class WhFamily extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'familyname',
+        'isactive'
+    ];
 }

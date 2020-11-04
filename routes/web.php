@@ -8,6 +8,7 @@ use App\Http\Controllers\System\UnitController;
 use App\Http\Controllers\System\ReasonController;
 use App\Http\Controllers\System\BPartnerController;
 use App\Http\Controllers\System\BarCodeController;
+use App\Http\Controllers\System\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +40,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/master/line',LineController::class);
     Route::resource('/master/subline',SubLineController::class);
     Route::resource('/master/family',FamilyController::class);
-    Route::resource('/master/unit',UnitController::class);
+    Route::resource('/master/um',UnitController::class);
     Route::resource('/master/reason',ReasonController::class);
     Route::resource('/master/bpartner',BPartnerController::class);
     Route::resource('/master/warehouse',WarehouseController::class);

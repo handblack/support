@@ -15,7 +15,7 @@ class WhFamily extends Migration
     {
         Schema::create('wh_families', function (Blueprint $table) {
             $table->id();
-            $table->string('familyname',200);
+            $table->string('familyname',100);
             $table->enum('isactive',['Y','N']);
             $table->timestamps();
         });

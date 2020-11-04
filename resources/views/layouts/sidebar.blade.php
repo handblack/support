@@ -76,7 +76,7 @@
                         </a>
                     </li> 
                     <li class="nav-item">
-                        <a href="{{ route('unit.index') }}" class="nav-link {{ request()->is('master/unit*') ? 'active' : '' }}">
+                        <a href="{{ route('um.index') }}" class="nav-link {{ request()->is('master/um*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i><p>Unidad de Medida</p>
                         </a>
                     </li> 

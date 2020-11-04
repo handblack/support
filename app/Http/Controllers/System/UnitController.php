@@ -4,17 +4,19 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\WhUm;
 
 class UnitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    private $items = 40;
+    public function index(Request $request){
+        $result = WhUm::where('umname','LIKE',"%{$request->q}%")
+            ->paginate($this->items);
+        $result->appends(['q' => $request->q]);
+        return view('master.um',[
+            'result' => $result,
+            'q' => $request->q,
+        ]);
     }
 
     /**
@@ -24,7 +26,10 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.um_form',[
+            'mode' => 'new',
+            'row' => new WhUm(),
+        ]);
     }
 
     /**
@@ -35,7 +40,13 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'umname' => 'required',
+            'isoname' => 'required'
+        ]);
+        $row = new WhUm();
+        $row->create($request->all());
+        return redirect(route('um.index'))->with('message','Se creo el registro!');
     }
 
     /**
@@ -57,7 +68,11 @@ class UnitController extends Controller
      */
     public function edit($id)
     {
-        //
+        $row = WhUm::find($id);
+        return view('master.um_form',[
+            'mode' => 'edit',
+            'row' => $row,
+        ]);
     }
 
     /**
@@ -69,7 +84,14 @@ class UnitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'umname' => 'required',
+            'isoname' => 'required'
+        ]);
+        $row = WhUm::find($id);
+        $row->fill($request->all());
+        $row->save();
+        return redirect(route('um.index'))->with('message','Se actualizo correctamente');
     }
 
     /**
@@ -80,6 +102,8 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = WhUm::find($id);
+        $row->delete();
+        return back()->with('message','Se elimino correctamente');
     }
 }
