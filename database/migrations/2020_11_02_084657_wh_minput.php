@@ -13,7 +13,14 @@ class WhMinput extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('wh_minputs', function (Blueprint $table) {
+            $table->id();
+            $table->date('datetrx');
+            $table->foreignId('reason_id')->nullable();
+            $table->foreignId('bpartner_id')->nullable();
+            $table->enum('isactive',['Y','N'])->default('Y');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class WhMinput extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('wh_minputs');
     }
 }

@@ -9,6 +9,13 @@ use App\Http\Controllers\System\ReasonController;
 use App\Http\Controllers\System\BPartnerController;
 use App\Http\Controllers\System\BarCodeController;
 use App\Http\Controllers\System\WarehouseController;
+
+use App\Http\Controllers\Move\InputController;
+use App\Http\Controllers\Move\OutputController;
+use App\Http\Controllers\Move\TransferController;
+use App\Http\Controllers\Move\ProductionController;
+use App\Http\Controllers\Move\WastageController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,5 +51,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/master/reason',ReasonController::class);
     Route::resource('/master/bpartner',BPartnerController::class);
     Route::resource('/master/warehouse',WarehouseController::class);
+
+    /* Aqui se acepta las operacoines de movimiento */
+    Route::resource('/move/input',InputController::class);
+    Route::resource('/move/output',OutputController::class);
+    Route::resource('/move/transfer',TransferController::class);
+    Route::resource('/move/production',ProductionController::class);
+    Route::resource('/move/wastage',WastageController::class);
     
 });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class WhTransfer extends Migration
+class WhBpartner extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class WhTransfer extends Migration
      */
     public function up()
     {
-        Schema::create('wh_transfers', function (Blueprint $table) {
+        Schema::create('wh_bpartners', function (Blueprint $table) {
             $table->id();
-            $table->date('datetrx');
+            $table->string('bpartnername',200);
+            $table->string('bpartnercode',20);
+            $table->string('documentno',15);
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });
@@ -28,6 +30,6 @@ class WhTransfer extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wh_transfers');
+        Schema::dropIfExists('wh_bpartners');
     }
 }

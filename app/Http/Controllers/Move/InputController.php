@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace App\Http\Controllers\Move;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\WhBpartner;
+use App\Models\WhMinput;
+use App\Models\WhWarehouse;
 
-class BPartnerController extends Controller
+class InputController extends Controller
 {
     private $items = 40;
     public function index(Request $request){
-        $result = WhBpartner::where('bpartnername','LIKE',"%{$request->q}%")
+        $result = WhMinput::where('datetrx','LIKE',"%{$request->q}%")
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
-        return view('master.bpartner',[
+        return view('move.input',[
             'result' => $result,
             'q' => $request->q,
         ]);
@@ -24,11 +25,12 @@ class BPartnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('master.bpartner_form',[
+    public function create(){
+        
+        return view('move.input_create',[
             'mode' => 'new',
-            'row' => new WhBpartner(),
+            'row' => new WhMinput(),
+            'warehouse' => WhWarehouse::all()
         ]);
     }
 
@@ -38,16 +40,14 @@ class BPartnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $request->validate([
-            'bpartnername' => 'required'
+            'datetrx' => 'required'
         ]);
-        $row = new WhBpartner();
-        $row->create($request->all());
-        return redirect(route('bpartner.index'))->with('message','Se creo el registro!');
-    }
+        $request->create($request->all());
+        
 
+    }
 
     /**
      * Display the specified resource.
@@ -68,11 +68,7 @@ class BPartnerController extends Controller
      */
     public function edit($id)
     {
-        $row = WhBpartner::find($id);
-        return view('master.bpartner_form',[
-            'mode' => 'edit',
-            'row' => $row,
-        ]);
+        //
     }
 
     /**
@@ -84,13 +80,7 @@ class BPartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'bpartnername' => 'required'
-        ]);
-        $row = WhBpartner::find($id);
-        $row->fill($request->all());
-        $row->save();
-        return redirect(route('bpartner.index'))->with('message','Se actualizo correctamente');
+        //
     }
 
     /**
@@ -101,8 +91,6 @@ class BPartnerController extends Controller
      */
     public function destroy($id)
     {
-        $row = WhBpartner::find($id);
-        $row->delete();
-        return back()->with('message','Se elimino correctamente');
+        //
     }
 }

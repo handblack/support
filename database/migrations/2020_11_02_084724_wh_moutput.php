@@ -13,7 +13,12 @@ class WhMoutput extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('wh_moutputs', function (Blueprint $table) {
+            $table->id();
+            $table->date('datetrx');
+            $table->enum('isactive',['Y','N'])->default('Y');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class WhMoutput extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('wh_moutputs');
     }
 }

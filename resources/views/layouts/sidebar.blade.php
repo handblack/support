@@ -90,31 +90,37 @@
                             <i class="far fa-circle nav-icon"></i><p>Almacenes</p>
                         </a>
                     </li> 
+                    <li class="nav-item">
+                        <a href="{{ route('bpartner.index') }}" class="nav-link {{ request()->is('master/bpartner*') ? 'active' : '' }}">
+                            <i class="fas fa-users nav-icon"></i><p>Socio de Negocio</p>
+                        </a>
+                    </li> 
                    
                 </ul>
             </li>
 
             <li class="nav-header">OPERACIONES</li>
+
             <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="{{ route('input.index') }}" class="nav-link {{ request()->is('move/input*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-boxes"></i>
                     <p>Ingreso</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="{{ route('transfer.index') }}" class="nav-link {{ request()->is('move/transfer*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-truck"></i>
                     <p>Traslado</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="{{ route('output.index') }}" class="nav-link {{ request()->is('move/output*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-dolly"></i>
                     <p>Salida</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="{{ route('production.index') }}" class="nav-link {{ request()->is('move/production*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-industry"></i>
                     <p>Produccion</p>
                 </a>
