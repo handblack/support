@@ -13,7 +13,12 @@ class WhFamily extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('wh_families', function (Blueprint $table) {
+            $table->id();
+            $table->string('familyname',200);
+            $table->enum('isactive',['Y','N']);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class WhFamily extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('wh_families');
     }
 }

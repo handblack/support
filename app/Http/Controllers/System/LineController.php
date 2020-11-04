@@ -4,38 +4,33 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\WhLine;
 
-class LineController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+class LineController extends Controller{
+    private $items = 40;
+    public function index(Request $request){   
+        $result = WhLine::paginate($this->items);
+        $result->appends(['q' => $request->q]);
+        return view('master.line',[
+            'result' => $result,
+            'q' => $request->q,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create(){
+        return view('master.line_form',[
+            'mode' => 'new',
+            'row' => new WhLine(),
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $request->validate([
+            'linename' => 'required'
+        ]);
+        $row = new WhLine();
+        $row->create($request->all());
+        return redirect(route('line.index'))->with('message','Se creo el registro!');
     }
 
     /**
@@ -55,9 +50,12 @@ class LineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $row = WhLine::find($id);
+        return view('master.line_form',[
+            'mode' => 'edit',
+            'row' => $row,
+        ]);
     }
 
     /**
@@ -69,7 +67,13 @@ class LineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'linename' => 'required'
+        ]);
+        $row = WhLine::find($id);
+        $row->fill($request->all());
+        $row->save();
+        return redirect(route('line.index'))->with('message','Se actualizo correctamente');
     }
 
     /**
@@ -80,6 +84,8 @@ class LineController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = WhLine::find($id);
+        $row->delete();
+        return back()->with('message','Se elimino correctamente');
     }
 }
