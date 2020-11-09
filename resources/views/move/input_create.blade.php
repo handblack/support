@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('style')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section('container')
 
 
@@ -23,23 +27,28 @@
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Fecha Emision</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="sublinename" name="sublinename" placeholder="Nombre del producto" value="{{ old('sublinename',$row->sublinename) }}">
+                            <input type="text" class="form-control" id="datetrx" name="datetrx" placeholder="DD/MM/YYYY" value="{{ old('datetrx',date("Y-m-d")) }}">
                         </div>
                     </div>  
 
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Almacen</label>
                         <div class="col-sm-10">
-                            <select name="" id="" class="form-control">
-                                <option value=""></option>
-                            </select>
+                            <select name="warehouse_id" id="warehouse_id" class="form-control select2-warehouse"></select>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Socio de Negocio</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="sublinename" name="sublinename" placeholder="Nombre del producto" value="{{ old('sublinename',$row->sublinename) }}">
+                            <select name="bpartner_id" id="bpartner_id" class="form-control select2-bpartner"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Motivo</label>
+                        <div class="col-sm-10">
+                            <select name="reason_id" id="reason_id" class="form-control select2-reason"></select>
                         </div>
                     </div>
 
@@ -72,6 +81,66 @@
 
 @section('script')
 <script>
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('.select2-warehouse').select2({
+        ajax: {
+            url: "{{ route('ajax.search.warehouse') }}",
+            type:'post',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                    page: params.page
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0
+    });
+
+    $('.select2-bpartner').select2({
+        ajax: {
+            url: "{{ route('ajax.search.bpartner') }}",
+            type:'post',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                    page: params.page
+                };
+            },
+            cache: false
+        },
+        minimumInputLength: 0
+    });
+
+    $('.select2-reason').select2({
+        ajax: {
+            url: "{{ route('ajax.search.reason.input') }}",
+            type:'post',
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                    page: params.page
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0
+    });
+});
+
+
 @if ($errors->any())
     @foreach ($errors->all() as $error)
     $(document).Toasts('create', {

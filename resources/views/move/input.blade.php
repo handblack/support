@@ -24,11 +24,14 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap table-sm" data-toggle="dataTable" data-form="deleteForm">
+                <table class="table table-hover text-nowrap table-sm table-borderless" data-toggle="dataTable" data-form="deleteForm">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Descripcion</th>
+                        <th>Fecha</th>
+                        <th>Socio de Negocio</th>
+                        <th>Almacen</th>
+                        <th>Motivo</th>
                         <th>Estado</th>
                         <th>Accion</th>
                     </tr>
@@ -37,13 +40,20 @@
                         @foreach($result as $item)
                             <form action="{{ route('input.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr>
-                                    <td width="150">{{ $item->id }}</td>
-                                    <td>{{ $item->sublinename }}</td>
+                                    <td width="60">{{ $item->id }}</td>
+                                    <td width="100">{{ $item->datetrx }}</td>
+                                    <td>{{ $item->bpartnername }}</td>
+                                    <td>{{ $item->warehousename }}</td>
+                                    <td>{{ $item->reasonname }}</td>
                                     <td>{{ $item->isactive }}</td>
                                     <td width="80">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{ route('subline.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
+                                        <a href="{{ route('subline.edit',$item->id) }}" 
+                                            class="ajax-view" 
+                                            data-id="{{ $item->id }}"
+                                            data-toggle="modal" 
+                                            data-target="#ajax-doc-view"><i class="fas fa-print"></i> Ver </a> | 
                                         <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
                                     </td>
                                 </tr>
@@ -93,6 +103,16 @@
 </div>
 <!-- /.Modal -->
 
+<!-- Modal -->
+<div class="modal fade" id="ajax-doc-view" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content ajax-doc-details">
+             
+        </div>
+    </div>
+</div>
+<!-- /.Modal -->
+
  
 @endsection
 
@@ -107,6 +127,27 @@ $(document).ready(function () {
                     $form.submit();
                 });
     });
+    $('.ajax-view').click(function(){
+                
+                var id = $(this).data('id');
+
+                // AJAX request
+                $.ajax({
+                    url: '{{ route('input.index') }}/' + id,
+                    type: 'get',
+                    data: {
+                        id: id,
+                        _token:'Ylosz0WZxhhJKVORJQqoAH05RV91INlRz2jZkZbZ'
+                    },
+                    success: function(response){ 
+                        // Add response in Modal body
+                        $('.ajax-doc-details').html(response); 
+                        // Display Modal
+                        //$('.ajax-guia').modal('show'); 
+                    }
+                });
+            });
+
 });
 </script>
 @endsection

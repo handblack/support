@@ -16,7 +16,8 @@ class WhUm extends Migration
         Schema::create('wh_ums', function (Blueprint $table) {
             $table->id();
             $table->string('umname',30);
-            $table->string('isoname',10);
+            $table->string('shortname',10);
+            $table->string('isoname',10)->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });

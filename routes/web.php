@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\System\ProductController;
 use App\Http\Controllers\System\LineController;
 use App\Http\Controllers\System\SubLineController;
@@ -10,11 +11,17 @@ use App\Http\Controllers\System\BPartnerController;
 use App\Http\Controllers\System\BarCodeController;
 use App\Http\Controllers\System\WarehouseController;
 
+use App\Http\Controllers\System\AjaxController;
+
 use App\Http\Controllers\Move\InputController;
+use App\Http\Controllers\Move\InputLineController;
 use App\Http\Controllers\Move\OutputController;
 use App\Http\Controllers\Move\TransferController;
 use App\Http\Controllers\Move\ProductionController;
 use App\Http\Controllers\Move\WastageController;
+use App\Http\Controllers\Move\TempController;
+use App\Http\Controllers\Move\QueryController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -54,9 +61,30 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     /* Aqui se acepta las operacoines de movimiento */
     Route::resource('/move/input',InputController::class);
+    Route::resource('/move/inputline',InputLineController::class);
     Route::resource('/move/output',OutputController::class);
     Route::resource('/move/transfer',TransferController::class);
     Route::resource('/move/production',ProductionController::class);
     Route::resource('/move/wastage',WastageController::class);
     
+    Route::resource('/move/temp',WastageController::class);
+    
+
+    /* Habilitamos el servicio de AJAX */
+    Route::post('/ajax/search/productcode',[AjaxController::class,'search_productcode'])->name('ajax.search.productcode');
+    Route::post('/ajax/search/product',[AjaxController::class,'search_product'])->name('ajax.search.product');
+    Route::post('/ajax/search/warehouse',[AjaxController::class,'search_warehouse'])->name('ajax.search.warehouse');
+    Route::post('/ajax/search/bpartner',[AjaxController::class,'search_bpartner'])->name('ajax.search.bpartner');
+    Route::post('/ajax/search/reason/input',[AjaxController::class,'search_reason'])->name('ajax.search.reason.input');
+    Route::post('/ajax/search/reason/output',[AjaxController::class,'search_reason'])->name('ajax.search.reason.output');
+    Route::post('/ajax/search/reason/transfer',[AjaxController::class,'search_reason'])->name('ajax.search.reason.transfer');
+    Route::post('/ajax/search/reason/production',[AjaxController::class,'search_reason'])->name('ajax.search.reason.production');
+    Route::post('/ajax/search/reason/decrease',[AjaxController::class,'search_reason'])->name('ajax.search.reason.decrease');
+
+    // Consulta de STOCK
+    Route::get('/query/stock',[QueryController::class,'query_stock'])->name('query.stock');
+    Route::post('/query/stock',[QueryController::class,'query_stock_result'])->name('query.stock.result');
+    Route::get('/query/kardex',[QueryController::class,'query_kardex'])->name('query.kardex');
+
+
 });

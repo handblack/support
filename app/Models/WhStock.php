@@ -5,12 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WhMinputLine extends Model
+class WhStock extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'minput_id',
-        'product_id', 
-        'qty'
-    ];
+    protected $table = 'wh_stock';
 }

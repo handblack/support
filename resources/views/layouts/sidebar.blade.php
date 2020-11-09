@@ -125,15 +125,22 @@
                     <p>Produccion</p>
                 </a>
             </li>
+            <li class="nav-header">CONSULTAS</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link query-product" data-toggle="modal" data-target="#ajax-query-product-by-code">
+                    <i class="nav-icon far fa-list-alt"></i>
+                    <p>Consulta Producto</p>
+                </a>
+            </li>
             <li class="nav-header">ANALISIS</li>
             <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="{{ route('query.stock') }}" class="nav-link {{ request()->is('query/stock*') ? 'active' : '' }}">
                     <i class="nav-icon far fa-list-alt"></i>
-                    <p>Stock</p>
+                    <p>Stock in Live</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="{{ route('query.kardex') }}" class="nav-link {{ request()->is('query/kardex*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-chart-line"></i>
                     <p>Kardex</p>
                 </a>
@@ -154,3 +161,42 @@
     </div></div></div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="width: 100%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hidden"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="height: 94.522%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div></div>
     <!-- /.sidebar -->
   </aside>
+  
+  
+<!-- Modal -->
+<div class="modal fade" id="ajax-query-product-by-code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: rgba(0,0,0,.03);">
+            <!-- form id="form-query-product" -->
+                <div class="form-group row" style="margin-bottom: 0px;">
+                    <label for="inputPassword" class="col-sm-4 col-form-label">Consultar STOCK</label>
+                    <div class="col-sm-7">
+                        <div class="input-group">
+                            <input type="text" id="query-product-code" name="query_product_code" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                  <button class="btn btn-primary query-product-engine-bnt" type="button"><i class="fab fa-searchengin"></i> Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- /form -->
+
+        
+
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12 query-result-product-engine">
+                    <h3>Ingresa el codigo del producto SKU o EAN</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"> Cancelar</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.Modal -->
+

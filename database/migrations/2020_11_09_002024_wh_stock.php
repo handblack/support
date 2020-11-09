@@ -4,28 +4,27 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class WhMinputLine extends Migration
+class WhStock extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('wh_minput_lines', function (Blueprint $table) {
+    public function up(){
+        Schema::create('wh_stock', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('minput_id')
-                ->nullable()
-                ->references('id')
-                ->on('wh_minputs')
-                ->constrained()
-                ->onDelete('SET NULL');
+            $table->float('stock',60);
             $table->foreignId('product_id')
                 ->nullable()
                 ->references('id')
                 ->on('wh_products');
-            $table->float('qty')->nullable();
+
+            $table->foreignId('warehouse_id')
+                ->nullable()
+                ->references('id')
+                ->on('wh_warehouses');
+            $table->unique('product_id', 'warehouse_id');
             $table->timestamps();
         });
     }
@@ -37,6 +36,6 @@ class WhMinputLine extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wh_minput_lines');
+        Schema::dropIfExists('wh_stock');
     }
 }

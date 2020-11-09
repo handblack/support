@@ -14,7 +14,7 @@ class CreateTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('teams', function (Blueprint $table) {
+        Schema::create('wh_teams', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->index();
             $table->string('name');
@@ -35,6 +35,6 @@ class CreateTeamsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('teams');
+        Schema::drop('wh_teams');
     }
 }

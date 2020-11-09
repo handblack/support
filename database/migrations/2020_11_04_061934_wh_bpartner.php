@@ -17,7 +17,7 @@ class WhBpartner extends Migration
             $table->id();
             $table->string('bpartnername',200);
             $table->string('bpartnercode',20);
-            $table->string('documentno',15);
+            $table->string('documentno',15)->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });

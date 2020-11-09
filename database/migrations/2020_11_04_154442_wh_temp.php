@@ -16,6 +16,10 @@ class WhTemp extends Migration
         Schema::create('wh_temp', function (Blueprint $table) {
             $table->id();
             $table->string('token',60);
+            $table->string('productname',100);
+            $table->string('productcode',20);
+            $table->string('umname',20)->nullable();
+            $table->string('sku',20)->nullable();
             $table->date('datetrx')->nullable();
             $table->bigInteger('warehouse_id')->nullable();
             $table->bigInteger('reason_id')->nullable();

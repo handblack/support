@@ -16,8 +16,10 @@ class WhMinput extends Migration
         Schema::create('wh_minputs', function (Blueprint $table) {
             $table->id();
             $table->date('datetrx');
+            $table->string('token',50);
             $table->foreignId('reason_id')->nullable();
             $table->foreignId('bpartner_id')->nullable();
+            $table->foreignId('warehouse_id')->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });

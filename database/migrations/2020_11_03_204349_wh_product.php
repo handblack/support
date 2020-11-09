@@ -13,10 +13,12 @@ class WhProduct extends Migration
      */
     public function up()
     {
+        /*
         Schema::create('wh_products', function (Blueprint $table) {
             $table->id();
             $table->string('productname',200);
-            $table->string('shorname',80)->nullable();
+            $table->string('productcode',20);
+            $table->string('shortname',80)->nullable();
             $table->string('sku',20)->nullable();
             $table->string('ean',20)->nullable();
             $table->enum('isactive',['Y','N']);
@@ -27,6 +29,7 @@ class WhProduct extends Migration
             //$table->foreignId('current_team_id')->nullable();
             $table->timestamps();
         });
+        */
     }
 
     /**
@@ -35,6 +38,6 @@ class WhProduct extends Migration
      * @return void
      */
     public function down(){
-        Schema::dropIfExists('wh_products');
+        //Schema::dropIfExists('wh_products');
     }
 }

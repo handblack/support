@@ -24,11 +24,11 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap table-sm" data-toggle="dataTable" data-form="deleteForm">
+                <table class="table table-hover text-nowrap table-sm table-borderless" data-toggle="dataTable" data-form="deleteForm">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>DocumentoNro</th>
+                        <th>Codigo</th>
                         <th>Razon Social</th>
                         <th>Estado</th>
                         <th>Accion</th>
@@ -39,7 +39,7 @@
                             <form action="{{ route('bpartner.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr>
                                     <td width="150">{{ $item->id }}</td>
-                                    <td>{{ $item->documentno }}</td>
+                                    <td>{{ $item->bpartnercode }}</td>
                                     <td>{{ $item->bpartnername }}</td>
                                     <td>{{ $item->isactive }}</td>
                                     <td width="80">
