@@ -2,25 +2,27 @@
 
 
 @section('container')
+
 <div class="row">
     <div class="col-12">
         <div class="card">
+ 
             <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-boxes"></i> Transferencia entre almacenes</h3>
+                <h3 class="card-title"><i class="fas fa-coins"></i> Pagos Recibidos</h3>
 
-            <div class="card-tools">
-                <form action="{{ route('transfer.index') }}" method="GET" style="margin:0px;padding:0px;">
-                    @csrf
-                    <div class="input-group input-group-sm" style="width: 280px;">
-                        <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            <a href="{{ route('transfer.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
-                            <a href="{{ route('transfer.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
+                <div class="card-tools">
+                    <form action="{{ route('delivered.index') }}" method="GET" style="margin:0px;padding:0px;">
+                        @csrf
+                        <div class="input-group input-group-sm" style="width: 250px;">
+                            <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                <a href="{{ route('delivered.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
+                                <a href="{{ route('delivered.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
@@ -30,33 +32,40 @@
                         <th>ID</th>
                         <th>Fecha</th>
                         <th>Socio de Negocio</th>
-                        <th>Almacen</th>
-                        <th>Motivo</th>
-                        <th>Estado</th>
+                        <th>Cuenta</th>
+                        <th class="text-right">Importe</th>
+                        <th>Divisa</th>
+                        <th class="text-right" width="200">T.Cambio</th>
                         <th>Accion</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($result as $item)
-                            <form action="{{ route('transfer.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
-                                <tr>
-                                    <td width="60">{{ $item->id }}</td>
-                                    <td width="100">{{ $item->datetrx }}</td>
-                                    <td>{{ $item->bpartnername }}</td>
-                                    <td>{{ $item->warehousename }}</td>
-                                    <td>{{ $item->reasonname }}</td>
-                                    <td>{{ $item->isactive }}</td>
-                                    <td width="80">
-                                        @method('delete')
-                                        @csrf
-                                        <a href="{{ route('transfer.edit',$item->id) }}" 
-                                            class="ajax-view" 
-                                            data-id="{{ $item->id }}"
-                                            data-toggle="modal" 
-                                            data-target="#ajax-doc-view"><i class="fas fa-print"></i> Ver </a> | 
-                                        <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
-                                    </td>
-                                </tr>
+                            <form action="{{ route('delivered.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
+                            <tr>
+                                <td width="60">
+                                    <a href="#" 
+                                        class="ajax-view" 
+                                        data-id="{{ $item->id }}"
+                                        data-toggle="modal" 
+                                        data-target="#ajax-doc-view">
+                                    {{ str_pad($item->id, 4, "0", STR_PAD_LEFT) }}
+                                    </a>
+                                </td>
+                                <td width="100">{{ $item->datetrx }}</td>
+                                <td>{{ $item->bpartnername }}</td>
+                                <td>{{ $item->bankname }}</td>
+                                <td class="text-right">{{ number_format($item->amount,2) }}</td>
+                                <td>{{ $item->isoname }}</td>
+                                <td class="text-right">{{ number_format($item->exchange,3) }}</td>
+                        
+                                <td width="80">
+                                    @method('delete')
+                                    @csrf
+                                    <a href="{{ route('delivered.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
+                                    <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
+                                </td>
+                            </tr>
                             </form>
                         @endforeach
                     </tbody>
@@ -133,17 +142,14 @@ $(document).ready(function () {
 
                 // AJAX request
                 $.ajax({
-                    url: '{{ route('input.index') }}/' + id,
+                    url: '{{ route('output.index') }}/' + id,
                     type: 'get',
                     data: {
                         id: id,
                         _token:'Ylosz0WZxhhJKVORJQqoAH05RV91INlRz2jZkZbZ'
                     },
                     success: function(response){ 
-                        // Add response in Modal body
                         $('.ajax-doc-details').html(response); 
-                        // Display Modal
-                        //$('.ajax-guia').modal('show'); 
                     }
                 });
             });

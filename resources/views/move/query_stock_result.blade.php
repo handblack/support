@@ -8,7 +8,7 @@
 <div class="col-12">
   <div class="card">
       <div class="card-header">
-      <h3 class="card-title"><i class="fas fa-boxes"></i> Ingreso de Productos/Mercaderia</h3>
+      <h3 class="card-title"><i class="fas fa-boxes"></i> Stock LIVE - <strong>{{ date("d/m/Y") }}</strong></h3>
 
       <div class="card-tools">
           <form action="http://almacen.localhost/move/input" method="GET" style="margin:0px;padding:0px;">
@@ -28,30 +28,31 @@
           <table class="table table-hover text-nowrap table-sm table-borderless" data-toggle="dataTable" data-form="deleteForm">
               <thead>
               <tr>
-                  <th>ID</th>
-                  <th>Fecha</th>
-                  <th>Socio de Negocio</th>
                   <th>Almacen</th>
-                  <th>Motivo</th>
-                  <th>Estado</th>
-                  <th>Accion</th>
+                  <th>Codigo</th>
+                  <th>Producto</th>
+                  <th>Stock</th>
+                  <th>UM</th>
+                  <th>Linea</th>
+                  <th>SubLinea</th>
+                  <th>Familia</th>
               </tr>
               </thead>
               <tbody>
-                                              <form action="http://almacen.localhost/move/input/1" method="POST" class="forn-inline form-delete"></form>
-                          <tr>
-                              <td width="60">1</td>
-                              <td width="100">2020-11-09</td>
-                              <td>COMERCIAL PICHARA PERU SAC</td>
-                              <td>ALMACEN PRINCIPAL</td>
-                              <td>COMPRA</td>
-                              <td>Y</td>
-                              <td width="80">
-                                  <input type="hidden" name="_method" value="delete">                                        <input type="hidden" name="_token" value="8f9mY2ZGk0AeGmFG1twD3q6SHEIDW8KOGXK5sbVY">                                        <a href="http://almacen.localhost/master/subline/1/edit" class="ajax-view" data-id="1" data-toggle="modal" data-target="#ajax-doc-view"><i class="fas fa-print"></i> Ver </a> | 
-                                  <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
-                              </td>
-                          </tr>
-                      
+                    @foreach ($result as $item)
+                        <tr>
+                            <td>{{ $item->warehousecode }}</td>
+                            <td>{{ $item->productcode }}</td>
+                            <td>{{ $item->productname }}</td>
+                            <td>{{ $item->stock }}</td>
+                            <td>{{ $item->umname }}</td>
+                            <td>{{ $item->linename }}</td>
+                            <td>{{ $item->sublinename }}</td>
+                            <td>{{ $item->familyname }}</td>
+                        </tr>
+                    @endforeach
+                                               
+                         
                                                
                                               
                         

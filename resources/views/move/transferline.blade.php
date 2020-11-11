@@ -7,7 +7,7 @@
 
 @section('container')
 <!-- Informacion de la cabecera -->
-<form action="{{ route('outputline.store') }}" method="POST" id="form-add-product">
+<form action="{{ route('transferline.store') }}" method="POST" id="form-add-product">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="token" value="{{ $token }}">
 <div class="row">
@@ -16,44 +16,36 @@
             <div class="card-header" style="background-color: #007bff;color:#fff;">
                 <h3 class="card-title">
                     <i class="fas fa-text-width"></i>
-                    Nota de Ingreso [NUEVO]
+                    Transferencia [NUEVO]
                 </h3>
-                <div class="card-tools">
-                    <form action="{{ route('line.index') }}" method="GET" style="margin:0px;padding:0px;">
-                        @csrf
-                        <div class="input-group input-group-sm" >
-                            <div class="input-group-append">
-                                <input type="text" value="{{ date("Y-m-d") }}">
-                                <a href="{{ route('line.index') }}" class="btn btn-default"><i class="fas fa-edit"></i> Modificar</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                
+                
             </div>
             <!-- /.card-header -->
             <!-- card-body -->
             <div class="card-body" style="background-color: rgba(0,0,0,.03);">
                 <div class="row">
-                    <div class="col-5">
+                    
+                    <div class="col-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Socio de Negocio</label>
-                            <select name="bpartner_id" id="bpartner_id" class="form-control select2-bpartner" required>
-                                @if($bpartner['id'])
-                                    <option value="{{ $bpartner['id'] }}" selected="selected">{{ $bpartner['text'] }}</option>
-                                @endif
-                            </select>                            
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Almacen</label>
+                            <label for="exampleInputEmail1">Almacen Origen</label>
                             <select name="warehouse_id" id="warehouse_id" class="form-control select2-warehouse" required>
                                 @if($warehouse['id'])
                                     <option value="{{ $warehouse['id'] }}" selected="selected">{{ $warehouse['text'] }}</option>
                                 @endif
                             </select>
                             <small id="emailHelp" class="form-text text-muted">Seleccione el Socio de Negocio.</small>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Almacen Destino</label>
+                            <select name="warehouse_to" id="warehouse_to" class="form-control select2-warehouseto" required>
+                                @if($warehouseto['id'])
+                                    <option value="{{ $warehouseto['id'] }}" selected="selected">{{ $warehouseto['text'] }}</option>
+                                @endif
+                            </select>
+                            <small id="emailHelp" class="form-text text-muted">Seleccione un elemento</small>
                         </div>
                     </div>
                     <div class="col-3">
@@ -252,23 +244,8 @@ $(document).ready(function () {
         },
         minimumInputLength: 1
     });
+ 
 
-    $('.select2-bpartner').select2({
-        ajax: {
-            url: "{{ route('ajax.search.bpartner') }}",
-            type:'post',
-            dataType: 'json',
-            delay: 150,
-            data: function (params) {
-                return {
-                    q: params.term, // search term
-                    page: params.page
-                };
-            },
-            cache: true
-        },
-        minimumInputLength: 1
-    });
     $('.select2-warehouse').select2({
         ajax: {
             url: "{{ route('ajax.search.warehouse') }}",
@@ -285,9 +262,27 @@ $(document).ready(function () {
         },
         minimumInputLength: 0
     });
+
+    $('.select2-warehouseto').select2({
+        ajax: {
+            url: "{{ route('ajax.search.warehouse') }}",
+            type:'post',
+            dataType: 'json',
+            delay: 150,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                    page: params.page
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0
+    });
+
     $('.select2-reason').select2({
         ajax: {
-            url: "{{ route('ajax.search.reason.output') }}",
+            url: "{{ route('ajax.search.reason.transfer') }}",
             type:'post',
             dataType: 'json',
             delay: 150,

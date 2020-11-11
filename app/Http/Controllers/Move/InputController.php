@@ -9,9 +9,8 @@ use App\Models\WhMinput;
 use App\Models\WhMinputLine;
 use App\Models\WhWarehouse;
 use App\Models\WhTemp;
-
-class InputController extends Controller
-{
+ 
+class InputController extends Controller{
     private $items = 40;
     public function index(Request $request){
         $q = str_replace(' ','%',$request->q).'%';
@@ -37,14 +36,8 @@ class InputController extends Controller
     public function create(){
         $token = md5(Str::random(9));
         session(['input_token' => $token]);
-        #return redirect(route('inputline.index'));      
-            
-        return view('move.input_create',[
-            'mode' => 'new',
-            'row' => new WhMinput(),
-            'warehouse' => WhWarehouse::all()
-        ]);
-         
+        session(['input_datetrx' => date("Y-m-d")]);     
+        return redirect(route('inputline.index'));
     }
 
     /**

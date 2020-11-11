@@ -1,31 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Move;
+namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Models\WhTransfer;
 
-class TransferController extends Controller
+class CurrencyController extends Controller
 {
-    private $items = 40;
-    public function index(Request $request){
-        $result = WhTransfer::where('datetrx','LIKE',"%{$request->q}%")
-            ->paginate($this->items);
-        $result->appends(['q' => $request->q]);
-        return view('move.transfer',[
-            'result' => $result,
-            'q' => $request->q,
-        ]);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
-    public function create(){
-        $token = md5(Str::random(9));
-        session(['output_token'   => $token]);
-        session(['output_datetrx' => date("Y-m-d")]);
-        return redirect(route('transferline.index'));
-        
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**

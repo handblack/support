@@ -6,17 +6,17 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-boxes"></i> Transferencia entre almacenes</h3>
+            <h3 class="card-title"><i class="fas fa-list"></i> Gestor de Lineas</h3>
 
             <div class="card-tools">
-                <form action="{{ route('transfer.index') }}" method="GET" style="margin:0px;padding:0px;">
+                <form action="{{ route('bank.index') }}" method="GET" style="margin:0px;padding:0px;">
                     @csrf
-                    <div class="input-group input-group-sm" style="width: 280px;">
+                    <div class="input-group input-group-sm" style="width: 350px;">
                         <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            <a href="{{ route('transfer.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
-                            <a href="{{ route('transfer.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
+                            <a href="{{ route('bank.index') }}" class="btn btn-default"><i class="fas fa-sync"></i> Actualizar </a>
+                            <a href="{{ route('bank.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
                         </div>
                     </div>
                 </form>
@@ -28,32 +28,25 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Fecha</th>
-                        <th>Socio de Negocio</th>
-                        <th>Almacen</th>
-                        <th>Motivo</th>
-                        <th>Estado</th>
+                        <th>Entidad Bancaria</th>
+                        <th>Cuenta</th>
+                        <th>Divisa</th>
                         <th>Accion</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($result as $item)
-                            <form action="{{ route('transfer.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
+                            <form action="{{ route('bank.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr>
-                                    <td width="60">{{ $item->id }}</td>
-                                    <td width="100">{{ $item->datetrx }}</td>
-                                    <td>{{ $item->bpartnername }}</td>
-                                    <td>{{ $item->warehousename }}</td>
-                                    <td>{{ $item->reasonname }}</td>
+                                    <td width="150">{{ $item->id }}</td>
+                                    <td>{{ $item->bankname }}</td>
+                                    <td>{{ $item->currency_id }}</td>
                                     <td>{{ $item->isactive }}</td>
                                     <td width="80">
+                                    
                                         @method('delete')
                                         @csrf
-                                        <a href="{{ route('transfer.edit',$item->id) }}" 
-                                            class="ajax-view" 
-                                            data-id="{{ $item->id }}"
-                                            data-toggle="modal" 
-                                            data-target="#ajax-doc-view"><i class="fas fa-print"></i> Ver </a> | 
+                                        <a href="{{ route('bank.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
                                         <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
                                     </td>
                                 </tr>
@@ -103,16 +96,6 @@
 </div>
 <!-- /.Modal -->
 
-<!-- Modal -->
-<div class="modal fade" id="ajax-doc-view" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content ajax-doc-details">
-             
-        </div>
-    </div>
-</div>
-<!-- /.Modal -->
-
  
 @endsection
 
@@ -127,27 +110,6 @@ $(document).ready(function () {
                     $form.submit();
                 });
     });
-    $('.ajax-view').click(function(){
-                
-                var id = $(this).data('id');
-
-                // AJAX request
-                $.ajax({
-                    url: '{{ route('input.index') }}/' + id,
-                    type: 'get',
-                    data: {
-                        id: id,
-                        _token:'Ylosz0WZxhhJKVORJQqoAH05RV91INlRz2jZkZbZ'
-                    },
-                    success: function(response){ 
-                        // Add response in Modal body
-                        $('.ajax-doc-details').html(response); 
-                        // Display Modal
-                        //$('.ajax-guia').modal('show'); 
-                    }
-                });
-            });
-
 });
 </script>
 @endsection

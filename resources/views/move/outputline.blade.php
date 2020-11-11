@@ -16,7 +16,7 @@
             <div class="card-header" style="background-color: #007bff;color:#fff;">
                 <h3 class="card-title">
                     <i class="fas fa-text-width"></i>
-                    Nota de Ingreso [NUEVO]
+                    Nota de Salida [NUEVO]
                 </h3>
                 <div class="card-tools">
                     <form action="{{ route('line.index') }}" method="GET" style="margin:0px;padding:0px;">

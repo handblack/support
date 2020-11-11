@@ -13,7 +13,21 @@ class WhMoutputLine extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('wh_moutput_lines', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('moutput_id')
+                ->nullable()
+                ->references('id')
+                ->on('wh_moutputs')
+                ->constrained()
+                ->onDelete('SET NULL');
+            $table->foreignId('product_id')
+                ->nullable()
+                ->references('id')
+                ->on('wh_products');
+            $table->float('qty')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +37,6 @@ class WhMoutputLine extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('wh_moutput_lines');
     }
 }

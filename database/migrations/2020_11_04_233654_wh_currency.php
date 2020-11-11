@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class WhBpartner extends Migration
+class WhCurrency extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class WhBpartner extends Migration
      */
     public function up()
     {
-        Schema::create('wh_bpartners', function (Blueprint $table) {
+        
+        Schema::create('wh_currency', function (Blueprint $table) {
             $table->id();
-            $table->string('bpartnername',200);
-            $table->string('bpartnercode',20);
-            $table->string('documentno',15)->nullable();
-            $table->enum('bpartnertype',['C','P'])->default('C');
+            $table->string('currencyname',05);
+            $table->string('isoname',5);
+            $table->string('symbol',5);
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });
@@ -32,7 +32,7 @@ class WhBpartner extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('wh_bpartners');
+        Schema::dropIfExists('wh_currency');
         Schema::enableForeignKeyConstraints();
     }
 }

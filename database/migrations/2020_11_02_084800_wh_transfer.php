@@ -16,6 +16,18 @@ class WhTransfer extends Migration
         Schema::create('wh_transfers', function (Blueprint $table) {
             $table->id();
             $table->date('datetrx');
+            $table->foreignId('warehouse_id')
+                ->nullable()
+                ->references('id')
+                ->on('wh_warehouses');
+                /*
+            $table->foreignId('warehouse_to')
+                ->nullable()
+                ->references('id')
+                ->on('wh_warehouses');
+                */
+            $table->foreignId('reason_id');
+                
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });

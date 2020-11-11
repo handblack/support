@@ -49,94 +49,158 @@
                         
                     </ul>
                 </li>
-            <li class="nav-item has-treeview {{ request()->is('master*') ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ request()->is('master/product') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-toolbox"></i>
-                    <p>Maestros<i class="right fas fa-angle-left"></i></p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('product.index') }}" class="nav-link {{ request()->is('master/product*') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i><p>Productos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('line.index') }}" class="nav-link {{ request()->is('master/line*') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i><p>Linea</p>
-                        </a>
-                    </li> 
-                    <li class="nav-item">
-                        <a href="{{ route('subline.index') }}" class="nav-link {{ request()->is('master/subline*') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i><p>SubLinea</p>
-                        </a>
-                    </li> 
-                    <li class="nav-item">
-                        <a href="{{ route('family.index') }}" class="nav-link {{ request()->is('master/family*') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i><p>Familia</p>
-                        </a>
-                    </li> 
-                    <li class="nav-item">
-                        <a href="{{ route('um.index') }}" class="nav-link {{ request()->is('master/um*') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i><p>Unidad de Medida</p>
-                        </a>
-                    </li> 
-                    <li class="nav-item">
-                        <a href="{{ route('reason.index') }}" class="nav-link {{ request()->is('master/reason*') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i><p>Motivos</p>
-                        </a>
-                    </li> 
-                    <li class="nav-item">
-                        <a href="{{ route('warehouse.index') }}" class="nav-link {{ request()->is('master/warehouse*') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i><p>Almacenes</p>
-                        </a>
-                    </li> 
-                    <li class="nav-item">
-                        <a href="{{ route('bpartner.index') }}" class="nav-link {{ request()->is('master/bpartner*') ? 'active' : '' }}">
-                            <i class="fas fa-users nav-icon"></i><p>Socio de Negocio</p>
-                        </a>
-                    </li> 
-                   
-                </ul>
-            </li>
+                
 
-            <li class="nav-header">OPERACIONES</li>
+                <li class="nav-item has-treeview {{ request()->is('master*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('master/product') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-toolbox"></i>
+                        <p>Maestros<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('product.index') }}" class="nav-link {{ request()->is('master/product*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>Productos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('line.index') }}" class="nav-link {{ request()->is('master/line*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>Linea</p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ route('subline.index') }}" class="nav-link {{ request()->is('master/subline*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>SubLinea</p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ route('family.index') }}" class="nav-link {{ request()->is('master/family*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>Familia</p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ route('um.index') }}" class="nav-link {{ request()->is('master/um*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>Unidad de Medida</p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ route('reason.index') }}" class="nav-link {{ request()->is('master/reason*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>Motivos</p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ route('warehouse.index') }}" class="nav-link {{ request()->is('master/warehouse*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>Almacenes</p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ route('currency.index') }}" class="nav-link {{ request()->is('master/currency*') ? 'active' : '' }}">
+                                <i class="fas fa-coins nav-icon"></i><p>Divisa</p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ route('bank.index') }}" class="nav-link {{ request()->is('master/bank*') ? 'active' : '' }}">
+                                <i class="fas fa-coins nav-icon"></i><p>Cuenta Bancos</p>
+                            </a>
+                        </li> 
+                    </ul>
+                </li>
 
-            <li class="nav-item">
-                <a href="{{ route('input.index') }}" class="nav-link {{ request()->is('move/input*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-boxes"></i>
-                    <p>Ingreso</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('transfer.index') }}" class="nav-link {{ request()->is('move/transfer*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-truck"></i>
-                    <p>Traslado</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('output.index') }}" class="nav-link {{ request()->is('move/output*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-dolly"></i>
-                    <p>Salida</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('production.index') }}" class="nav-link {{ request()->is('move/production*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-industry"></i>
-                    <p>Produccion</p>
-                </a>
-            </li>
-            <li class="nav-header">CONSULTAS</li>
+                <li class="nav-item has-treeview {{ request()->is('partner*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('partner*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Socio de Negocio<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('bpartner.index') }}" class="nav-link {{ request()->is('partner/bpartner*') ? 'active' : '' }}">
+                                <i class="fas fa-users nav-icon"></i><p>Maestro SN</p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ route('transfer.index') }}" class="nav-link {{ request()->is('partner/report*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-truck"></i>
+                                <p>Estado de Cuenta</p>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview {{ request()->is('move*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('move*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-toolbox"></i>
+                        <p>Almacen<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('input.index') }}" class="nav-link {{ request()->is('move/input*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-boxes"></i>
+                                <p>Ingreso</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('transfer.index') }}" class="nav-link {{ request()->is('move/transfer*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-truck"></i>
+                                <p>Traslado</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('output.index') }}" class="nav-link {{ request()->is('move/output*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-dolly"></i>
+                                <p>Salida</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('production.index') }}" class="nav-link {{ request()->is('move/production*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-industry"></i>
+                                <p>Produccion</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+                <li class="nav-item has-treeview {{ request()->is('bank*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('bank*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>Caja/Bancos<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('received.index') }}" class="nav-link {{ request()->is('bank/received*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-coins"></i>
+                                <p>Pagos Recibidos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('delivered.index') }}" class="nav-link {{ request()->is('bank/delivered*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-coins"></i>
+                                <p>Pagos Emitidos</p>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li> 
+              
+
+
+            <li class="nav-header">CONSULTAS RAPIDAS</li>
             <li class="nav-item">
                 <a href="#" class="nav-link query-product" data-toggle="modal" data-target="#ajax-query-product-by-code">
                     <i class="nav-icon far fa-list-alt"></i>
-                    <p>Consulta Producto</p>
+                    <p>Producto</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link query-product" data-toggle="modal" data-target="#ajax-query-product-by-code">
+                    <i class="nav-icon far fa-list-alt"></i>
+                    <p>Socio de Negocio</p>
+                </a>
+            </li>
+
             <li class="nav-header">ANALISIS</li>
             <li class="nav-item">
                 <a href="{{ route('query.stock') }}" class="nav-link {{ request()->is('query/stock*') ? 'active' : '' }}">
                     <i class="nav-icon far fa-list-alt"></i>
-                    <p>Stock in Live</p>
+                    <p>Stock Live</p>
                 </a>
             </li>
             <li class="nav-item">

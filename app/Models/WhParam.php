@@ -5,12 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WhMoutputLine extends Model
+class WhParam extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'moutput_id',
-        'product_id', 
-        'qty'
-    ];
+    protected $table = 'wh_param';
 }
