@@ -19,22 +19,21 @@
                     Nota de Salida [NUEVO]
                 </h3>
                 <div class="card-tools">
-                    <form action="{{ route('line.index') }}" method="GET" style="margin:0px;padding:0px;">
-                        @csrf
-                        <div class="input-group input-group-sm" >
-                            <div class="input-group-append">
-                                <input type="text" value="{{ date("Y-m-d") }}">
-                                <a href="{{ route('line.index') }}" class="btn btn-default"><i class="fas fa-edit"></i> Modificar</a>
-                            </div>
+                    <div class="input-group input-group-sm date" id="reservationdate" data-target-input="nearest">
+                        <input type="text" name="datetrx" id="datetrx"  class="form-control datetimepicker-input" data-target="#reservationdate"  value="{{ old('datetrx', $datetrx) }}">
+                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
                         </div>
-                    </form>
+                    </div>
+               
+                   
                 </div>
             </div>
             <!-- /.card-header -->
             <!-- card-body -->
             <div class="card-body" style="background-color: rgba(0,0,0,.03);">
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Socio de Negocio</label>
                             <select name="bpartner_id" id="bpartner_id" class="form-control select2-bpartner" required>
@@ -42,7 +41,6 @@
                                     <option value="{{ $bpartner['id'] }}" selected="selected">{{ $bpartner['text'] }}</option>
                                 @endif
                             </select>                            
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                     </div>
                     <div class="col-3">
@@ -53,7 +51,6 @@
                                     <option value="{{ $warehouse['id'] }}" selected="selected">{{ $warehouse['text'] }}</option>
                                 @endif
                             </select>
-                            <small id="emailHelp" class="form-text text-muted">Seleccione el Socio de Negocio.</small>
                         </div>
                     </div>
                     <div class="col-3">
@@ -64,17 +61,9 @@
                                     <option value="{{ $reason['id'] }}" selected="selected">{{ $reason['text'] }}</option>
                                 @endif
                             </select>
-                            <small id="emailHelp" class="form-text text-muted">Seleccione un elemento</small>
                         </div>
                     </div>
-                    <div class="col-1">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Fecha</label>
-                            <input type="text" name="datetrx" id="datetrx" class="form-control" value="{{ $datetrx }}">
-                            <small id="emailHelp" class="form-text text-muted">Emision.</small>
-                        </div>
-                    </div>
-
+                   
                 </div>
                 
             </div>
@@ -138,13 +127,13 @@
                 <h3 class="card-title"><i class="fas fa-list"></i> Detalle(s)</h3>
 
                 <div class="card-tools">
-                    <form action="{{ route('line.index') }}" method="GET" style="margin:0px;padding:0px;">
+                    <form action="{{ route('outputline.index') }}" method="GET" style="margin:0px;padding:0px;">
                         @csrf
                         <div class="input-group input-group-sm" style="width: 250px;">
                             <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                <a href="{{ route('line.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
+                                <a href="{{ route('outputline.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
                             </div>
                         </div>
                     </form>
@@ -152,44 +141,46 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap table-sm table-borderless" data-toggle="dataTable" data-form="deleteForm">
+                <table class="table table-hover text-nowrap table-sm  " data-toggle="dataTable" data-form="deleteForm">
                     <thead>
                     <tr>
-                        <th><i class="fas fa-list"></i> Codigo</th>
-                        <th><i class="far fa-list-alt"></i> Descripcion</th>
-                        <th><i class="far fa-list-alt"></i> Cantidad</th>
-                        <th><i class="far fa-list-alt"></i> UM</th>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                        <th class="text-right">Cantidad</th>
+                        <th>UM</th>
+                        <th class="text-right">PRECIO</th>
+                        <th class="text-right">TOTAL</th>
                         <th><i class="far fa-play-circle"></i> Accion</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($result as $item)
-                            <form action="{{ route('line.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
-                                <tr>
-                                    <td width="100">{{ $item->productcode }}</td>
-                                    <td>{{ $item->productname }}</td>
-                                    <td width="80">{{ $item->qty }}</td>
-                                    <td width="80">{{ $item->umname }}</td>
-                                    <td width="80">
-                                    
-                                        @method('delete')
-                                        @csrf
-                                        <a href="{{ route('line.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
-                                        <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
-                                    </td>
-                                </tr>
-                            </form>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
                         <tr>
-                            <td>  
-                                <div class="card-title">
-                                
-                                </div>
+                            <td>{{ $item->productcode }}</td>
+                            <td>{{ $item->productname }}</td>
+                            <td class="text-right">{{ number_format($item->qty, env('ROUND_DECIMAL_QTY', 4),) }}</td>
+                            <td style="width:80px;">{{ $item->umshort }}</td>
+                            <td style="width:80px;" class="text-right">{{ number_format($item->price, env('ROUND_DECIMAL_PRICE', 2),) }}</td>
+                            <td class="text-right">{{ number_format($item->grandline, env('ROUND_DECIMAL_GRANDLINE', 2),) }}</td>
+                            <td style="width:80px;">
+                                <a href="{{ route('outputline.destroy',$item->id) }}" onclick="event.preventDefault(); document.getElementById('form-delete').submit();"><i class="far fa-trash-alt"></i> Eliminar</a>
+                                <form action="{{ route('outputline.destroy',$item->id) }}" method="POST" id='form-delete' style="display:none;">
+                                    @method('delete')
+                                    {{ csrf_field() }}
+                                </form>
                             </td>
                         </tr>
-                    </tfoot>
+                             
+                        @endforeach
+                        <tr style="border-top:1px solid #dcdcdc;">
+                            <td colspan="2"><strong>{{ $result->count('id') }} - items </strong></td>
+                            <td class="text-right"><strong>{{ number_format($result->sum('qty'), env('ROUND_DECIMAL_QTY', 1),) }}</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right"><strong>{{ number_format($result->sum('grandline'), env('ROUND_DECIMAL_AMOUNT', 1),) }}</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
@@ -198,7 +189,7 @@
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
                 <div class="card-footer">
-                    <a href="{{ route('input.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
+                    <a href="{{ route('output.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
                     <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save"></i> Crear Documento</button>
                 </div>
             </form>
@@ -235,14 +226,18 @@
 
 @section('script')
 <script>
-$(document).ready(function () {
-    $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
-        e.preventDefault();
-        var $form=$(this);
-        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
-                .on('click', '#delete-btn', function(){
-                    $form.submit();
-                });
+$(function(){
+    $('input[name="datetrx"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 2020,
+        maxYear: parseInt(moment().format('YYYY'),10),
+        locale: {
+            format: 'YYYY-MM-DD'
+        }
+    }, function(start, end, label) {
+        //var years = moment().diff(start, 'years');
+        //alert("You are " + years + " years old!");
     });
 
     $.ajaxSetup({

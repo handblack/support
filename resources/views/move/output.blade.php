@@ -2,27 +2,25 @@
 
 
 @section('container')
-
 <div class="row">
     <div class="col-12">
         <div class="card">
- 
             <div class="card-header">
-                <h3 class="card-title"><i class="fas fa-boxes"></i> Salida de Productos/Mercaderia</h3>
+            <h3 class="card-title"><i class="fas fa-boxes"></i> Nota de SALIDA</h3>
 
-                <div class="card-tools">
-                    <form action="{{ route('output.index') }}" method="GET" style="margin:0px;padding:0px;">
-                        @csrf
-                        <div class="input-group input-group-sm" style="width: 250px;">
-                            <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                <a href="{{ route('output.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
-                                <a href="{{ route('output.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
-                            </div>
+            <div class="card-tools">
+                <form action="{{ route('output.index') }}" method="GET" style="margin:0px;padding:0px;">
+                    @csrf
+                    <div class="input-group input-group-sm" style="width: 250px;">
+                        <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                            <a href="{{ route('output.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
+                            <a href="{{ route('output.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
+            </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
@@ -31,43 +29,35 @@
                     <tr>
                         <th>ID</th>
                         <th>Fecha</th>
+                        <th>CodigoSN</th>
                         <th>Socio de Negocio</th>
                         <th>Almacen</th>
                         <th>Motivo</th>
-                        <th>Estado</th>
+                        <th>Usuario</th>
                         <th>Accion</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($result as $item)
-                            <form action="{{ route('output.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
-                                <tr>
-                                    <td width="60">
-                                        <a href="{{ route('subline.edit',$item->id) }}" 
-                                            class="ajax-view" 
-                                            data-id="{{ $item->id }}"
-                                            data-toggle="modal" 
-                                            data-target="#ajax-doc-view">
-                                        {{ str_pad($item->id, 4, "0", STR_PAD_LEFT) }}
-                                        </a>
-                                    </td>
-                                    <td width="100">{{ $item->datetrx }}</td>
-                                    <td>{{ $item->bpartnername }}</td>
-                                    <td>{{ $item->warehousename }}</td>
-                                    <td>{{ $item->reasonname }}</td>
-                                    <td>{{ $item->isactive }}</td>
-                                    <td width="80">
-                                        @method('delete')
-                                        @csrf
-                                        <a href="{{ route('subline.edit',$item->id) }}" 
-                                            class="ajax-view" 
-                                            data-id="{{ $item->id }}"
-                                            data-toggle="modal" 
-                                            data-target="#ajax-doc-view"><i class="fas fa-print"></i> Ver </a> | 
-                                        <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
-                                    </td>
-                                </tr>
-                            </form>
+                            <tr>
+                                <td style="width:60px;">{{ str_pad($item->id, 4, "0", STR_PAD_LEFT) }}</td>
+                                <td style="width:90px;">{{ $item->datetrx }}</td>
+                                <td style="width:100px;">{{ $item->bpartnercode }}</td>
+                                <td>{{ $item->bpartnername }}</td>
+                                <td>{{ $item->warehousename }}</td>
+                                <td>{{ $item->reasonname }}</td>
+                                <td>{{ $item->username }}</td>
+                                <td width="80">
+                                    @method('delete')
+                                    @csrf
+                                    <a href="#" 
+                                        class="ajax-view" 
+                                        data-id="{{ $item->id }}"
+                                        data-toggle="modal" 
+                                        data-target="#ajax-doc-view"><i class="fas fa-print"></i> Ver </a> | 
+                                    <a href="{{ route('output.show',$item->id) }}?pdf"><i class="far fa-file-pdf"></i> PDF</a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
@@ -93,7 +83,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Confirmacion de eliminar</h5>
@@ -115,7 +105,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="ajax-doc-view" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content ajax-doc-details">
              
         </div>
@@ -129,31 +119,22 @@
 @section('script')
 <script>
 $(document).ready(function () {
-    $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
-        e.preventDefault();
-        var $form=$(this);
-        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
-                .on('click', '#delete-btn', function(){
-                    $form.submit();
-                });
-    });
     $('.ajax-view').click(function(){
-                
-                var id = $(this).data('id');
-
-                // AJAX request
-                $.ajax({
-                    url: '{{ route('output.index') }}/' + id,
-                    type: 'get',
-                    data: {
-                        id: id,
-                        _token:'Ylosz0WZxhhJKVORJQqoAH05RV91INlRz2jZkZbZ'
-                    },
-                    success: function(response){ 
-                        $('.ajax-doc-details').html(response); 
-                    }
-                });
-            });
+        var id = $(this).data('id');
+        $.ajax({
+            url: '{{ route('output.index') }}/' + id,
+            type: 'get',
+            data: {
+                id: id,
+            },
+            success: function(response){ 
+                // Add response in Modal body
+                $('.ajax-doc-details').html(response); 
+                // Display Modal
+                //$('.ajax-guia').modal('show'); 
+            }
+        });
+    });
 
 });
 </script>

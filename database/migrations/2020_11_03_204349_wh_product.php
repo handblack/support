@@ -26,6 +26,7 @@ class WhProduct extends Migration
             $table->foreignId('subline_id')->nullable();
             $table->foreignId('family_id')->nullable();
             $table->foreignId('um_id')->nullable();
+            $table->unique('productcode');
             //$table->foreignId('current_team_id')->nullable();
             $table->timestamps();
         });

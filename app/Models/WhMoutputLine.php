@@ -13,6 +13,7 @@ class WhMoutputLine extends Model
         'product_id', 
         'qty',
         'price',
-        'pack'
+        'pack',
+        'grandline'
     ];
 }

@@ -93,7 +93,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/ajax/search/product',[AjaxController::class,'search_product'])->name('ajax.search.product');
     Route::post('/ajax/search/warehouse',[AjaxController::class,'search_warehouse'])->name('ajax.search.warehouse');
     Route::post('/ajax/search/bpartner',[AjaxController::class,'search_bpartner'])->name('ajax.search.bpartner');
-    Route::post('/ajax/search/bpartnerp',[AjaxController::class,'search_bpartner'])->name('ajax.search.bpartnerp');
+    Route::post('/ajax/search/bpartnerp',[AjaxController::class,'search_bpartnerp'])->name('ajax.search.bpartnerp');
     Route::post('/ajax/search/currency',[AjaxController::class,'search_currency'])->name('ajax.search.currency');
     Route::post('/ajax/search/bank',[AjaxController::class,'search_bank'])->name('ajax.search.bank');
     Route::post('/ajax/search/reason/input',[AjaxController::class,'search_reason'])->name('ajax.search.reason.input');

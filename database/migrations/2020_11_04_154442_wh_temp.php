@@ -26,10 +26,10 @@ class WhTemp extends Migration
             $table->bigInteger('reason_id')->nullable();
             $table->bigInteger('bpartner_id')->nullable();
             $table->bigInteger('product_id')->nullable();
-            $table->float('qty')->nullable();
-            $table->float('price')->nullable();
-            $table->float('pack')->nullable();
-            $table->double('grandline')->nullable();
+            $table->double('qty',15,6)->nullable();
+            $table->double('price',15,6)->nullable();
+            $table->double('pack',15,6)->nullable();
+            $table->double('grandline',15,6)->nullable();
             $table->bigInteger('um_id')->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();

@@ -32,13 +32,13 @@ class WhStock extends Migration
         DB::unprepared("
         CREATE TRIGGER tr_add_stock_in_live AFTER INSERT ON `wh_minput_lines` FOR EACH ROW
             BEGIN 
-                CALL sp_stock_live_proccess('I',new.id);
+                CALL sp_stock_live_proccess('I',NEW.id);
             END
         ");
         DB::unprepared("
         CREATE TRIGGER tr_rest_stock_in_live AFTER INSERT ON `wh_moutput_lines` FOR EACH ROW
             BEGIN 
-                CALL sp_stock_live_proccess('O',new.id);
+                CALL sp_stock_live_proccess('O',NEW.id);
             END
         ");
     }

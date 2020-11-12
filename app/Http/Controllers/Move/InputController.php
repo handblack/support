@@ -17,16 +17,17 @@ class InputController extends Controller{
         $q = str_replace(' ','%',$request->q).'%';
         $result = WhMinput::select('wh_minputs.*',
                 'wh_bpartners.bpartnername',
+                'wh_bpartners.bpartnercode',
                 'wh_reasons.reasonname',
                 'wh_warehouses.warehousecode',
                 'wh_warehouses.warehousename',
                 'wh_users.name AS username')
-            ->where('datetrx','LIKE',"%{$request->q}%")
+            ->where('wh_bpartners.bpartnercode','LIKE',"{$request->q}%")
+            ->orWhere('wh_minputs.id','LIKE',"{$q}")
             ->leftJoin('wh_bpartners','wh_bpartners.id','=','wh_minputs.bpartner_id')
             ->leftJoin('wh_warehouses','wh_warehouses.id','=','wh_minputs.warehouse_id')
             ->leftJoin('wh_reasons','wh_reasons.id','=','wh_minputs.reason_id')
             ->leftJoin('wh_users','wh_users.id','=','wh_minputs.created_by')
-            ->where('wh_bpartners.bpartnername','LIKE',$q)
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
         return view('move.input',[
@@ -82,6 +83,7 @@ class InputController extends Controller{
             'lines' => $lines
         ]);
     }
+
     public function edit($id){}
 
     public function update(Request $request, $id){
@@ -113,6 +115,7 @@ class InputController extends Controller{
         $header->grandqty = $temp->sum('qty');
         $header->grandamount = $temp->sum('grandline');
         $header->save();
+        $temp = WhTemp::where('token',$token)->delete();
         return redirect(route('input.index'))->with('message','Se creo el documento');
     }
 

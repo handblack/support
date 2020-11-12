@@ -14,8 +14,10 @@ use App\Models\WhUm;
 class OutputLineController extends Controller{
     private $items = 40;
     public function index(Request $request){
-        $token = session('output_token');
-
+        if(!session()->has('output_token')){
+            return redirect(route('output.create'));
+        }
+        $token              = session('output_token');
         $bpartner['id']     = session('output_bpartner_id');
         $bpartner['text']   = session('output_bpartner_name');
         
@@ -87,53 +89,19 @@ class OutputLineController extends Controller{
         $row->productname = $product->productname;
         $row->productcode = $product->productcode;
         $row->umname      = $um->umname;
-        $row->grandline   = round($request->qty * $request->price,2);  
+        $row->umshort     = $um->shortname;
+        $row->grandline   = round($request->qty * $request->price, env('ROUND_DECIMAL_GRANDLINE', 2));  
         $row->save();
         return back()->with('message','Se creo correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function show($id){}
+    public function edit($id){}
+    public function update(Request $request, $id){}
+    
+    public function destroy($id){
+        $row = WhTemp::find($id);
+        $row->delete();
+        return back()->with('message','Se elimino item');
     }
 }

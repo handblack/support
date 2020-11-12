@@ -12,6 +12,7 @@ use App\Models\WhWarehouse;
 use App\Models\WhBpartner;
 use App\Models\WhCurrency;
 use App\Models\WhReason;
+use App\Models\WhStock;
 
 class AjaxController extends Controller
 {
@@ -96,7 +97,33 @@ class AjaxController extends Controller
     }
 
     public function search_productcode(Request $request){
-        echo 'aqui detallamos los stock '.$request->productcode;
+        $product = WhProduct::select('wh_products.*',
+                'wh_ums.umname')
+            ->leftJoin('wh_ums','wh_ums.id','=','wh_products.um_id')
+            ->where('productcode','=',$request->productcode)
+            ->first();
+
+        if($product){
+            $stock = WhStock::select('wh_stock.*',
+                    'wh_warehouses.warehousename',
+                    'wh_warehouses.warehousecode',)
+                ->where('product_id','=',$product->id)
+                ->leftJoin('wh_warehouses','wh_warehouses.id','=','wh_stock.warehouse_id')
+                ->get();
+            return view('dashboard.search_productcode',[
+                'product' => $product,
+                'stock' => $stock
+            ]);
+        }else{
+            return view('dashboard.search_productcode_nofound',[
+                'productcode' => $request->productcode
+            ]);
+        }
+    }
+
+    public function search_bpartnercode(Request $request){
+        //echo 'Aqui se detalla la informacoin de socio de negocio '.$request->productcode;
+        return view('dashboard.search_bpartnercode');
     }
 
 

@@ -22,7 +22,8 @@ class WhTemp extends Model
         'umname',
         'qty',
         'price',
-        'pack'
+        'pack',
+        'grandline'
     ];
     
 }

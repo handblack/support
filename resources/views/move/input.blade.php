@@ -11,11 +11,11 @@
             <div class="card-tools">
                 <form action="{{ route('input.index') }}" method="GET" style="margin:0px;padding:0px;">
                     @csrf
-                    <div class="input-group input-group-sm" style="width: 350px;">
+                    <div class="input-group input-group-sm" style="width: 250px;">
                         <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            <a href="{{ route('input.index') }}" class="btn btn-default"><i class="fas fa-sync"></i> Actualizar </a>
+                            <a href="{{ route('input.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
                             <a href="{{ route('input.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
                         </div>
                     </div>
@@ -29,10 +29,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Fecha</th>
+                        <th>CodigoSN</th>
                         <th>Socio de Negocio</th>
                         <th>Almacen</th>
                         <th>Motivo</th>
-                        <th>Estado</th>
                         <th>Usuario</th>
                         <th>Accion</th>
                     </tr>
@@ -40,12 +40,12 @@
                     <tbody>
                         @foreach($result as $item)
                             <tr>
-                                <td width="60">{{ str_pad($item->id, 4, "0", STR_PAD_LEFT) }}</td>
-                                <td width="100">{{ $item->datetrx }}</td>
+                                <td style="width:60px;">{{ str_pad($item->id, 4, "0", STR_PAD_LEFT) }}</td>
+                                <td style="width:90px;">{{ $item->datetrx }}</td>
+                                <td style="width:100px;">{{ $item->bpartnercode }}</td>
                                 <td>{{ $item->bpartnername }}</td>
                                 <td>{{ $item->warehousename }}</td>
                                 <td>{{ $item->reasonname }}</td>
-                                <td>{{ $item->isactive }}</td>
                                 <td>{{ $item->username }}</td>
                                 <td width="80">
                                     @method('delete')

@@ -39,7 +39,7 @@
                         @foreach($result as $item)
                             <form action="{{ route('product.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr>
-                                    <td width="150">{{ $item->sku }}</td>
+                                    <td width="100">{{ $item->productcode }}</td>
                                     <td>{{ $item->productname }}</td>
                                     <td>{{ $item->um_id }}</td>
                                     <td>{{ $item->line_id }}</td>

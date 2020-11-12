@@ -265,7 +265,7 @@ $(function(){
 
     $('.select2-bpartner').select2({
         ajax: {
-            url: "{{ route('ajax.search.bpartner') }}",
+            url: "{{ route('ajax.search.bpartnerp') }}",
             type:'post',
             dataType: 'json',
             delay: 150,
