@@ -84,7 +84,7 @@
                     <div class="col-12">
 
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Producto</label>
                                     <select name="product_id" id="add-product-name" class="form-control select2" required>
@@ -92,13 +92,28 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Cantidad</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="qty" id="qty" class="form-control" placeholder="0.00" aria-label="" aria-describedby="button-addon2" required>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="submit" id="button-addon2">Agregar</button>
+                                    <label for="exampleInputEmail1">Cantidad / Precio Unitario</label>
+                                    <div class="input-group">
+                                        <div class="input-group telephone-input">
+                                            <!-- Cantidad -->
+                                            <div class="input-group-prepend preselection-prepend">
+                                                <div class="input-group-text"><i class="fas fa-calculator"></i></div>
+                                            </div>
+                                            <input class="form-control text-right" id="qty" name="qty" type="text"   placeholder="Cantidad" autocomplete="off" required>
+                                            <!-- Precio Unitario -->
+                                            <input class="form-control text-right" id="price" name="price" placeholder="Precio Unit" type="text"  autocomplete="off" required>
+                                            <!-- Pack -->
+                                            <div class="input-group-prepend preselection-prepend">
+                                                <div class="input-group-text"><i class="fas fa-cubes"></i></div>
+                                            </div>
+                                            <input class="form-control text-right" id="pack" name="pack" placeholder="Pack" type="text"  autocomplete="off" required>
+                                            <div class="input-group-prepend preselection-prepend">
+                                                <button type="submit" class="btn btn-primary">Agregar</button>
+                                            </div>
+                                             
+                                            
                                         </div>
                                     </div>
                                 </div>

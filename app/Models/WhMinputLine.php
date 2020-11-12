@@ -11,6 +11,8 @@ class WhMinputLine extends Model
     protected $fillable = [
         'minput_id',
         'product_id', 
-        'qty'
+        'qty',
+        'price',
+        'pack'
     ];
 }

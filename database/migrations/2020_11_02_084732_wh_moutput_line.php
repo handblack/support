@@ -26,6 +26,9 @@ class WhMoutputLine extends Migration
                 ->references('id')
                 ->on('wh_products');
             $table->float('qty')->nullable();
+            $table->float('price')->nullable()->default(0);
+            $table->float('pack')->nullable();
+            $table->float('grandline')->nullable();
             $table->timestamps();
         });
     }

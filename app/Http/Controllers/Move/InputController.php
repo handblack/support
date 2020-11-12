@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\WhMinput;
 use App\Models\WhMinputLine;
-use App\Models\WhWarehouse;
 use App\Models\WhTemp;
  
 class InputController extends Controller{
@@ -21,7 +20,7 @@ class InputController extends Controller{
                 'wh_warehouses.warehousename')
             ->where('datetrx','LIKE',"%{$request->q}%")
             ->leftJoin('wh_bpartners','wh_bpartners.id','=','wh_minputs.bpartner_id')
-            ->leftJoin('wh_warehouses','wh_warehouses.id','=','wh_minputs.reason_id')
+            ->leftJoin('wh_warehouses','wh_warehouses.id','=','wh_minputs.warehouse_id')
             ->leftJoin('wh_reasons','wh_reasons.id','=','wh_minputs.reason_id')
             ->where('wh_bpartners.bpartnername','LIKE',$q)
             ->paginate($this->items);
@@ -36,7 +35,10 @@ class InputController extends Controller{
     public function create(){
         $token = md5(Str::random(9));
         session(['input_token' => $token]);
-        session(['input_datetrx' => date("Y-m-d")]);     
+        session(['input_datetrx' => date("Y-m-d")]);
+        session()->forget('input_bpartner_id');
+        session()->forget('input_warehouse_id');
+        session()->forget('input_reason_id');
         return redirect(route('inputline.index'));
     }
 
@@ -47,6 +49,10 @@ class InputController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+
+    }
+    /*
+    public function storex(Request $request){
         $request->validate([
             'datetrx' => 'required'
         ]);
@@ -59,7 +65,7 @@ class InputController extends Controller{
         session(['input_reason_id' => $request->reason_id]);
         return redirect(route('inputline.index'));
     }
-
+    */
 
     public function show($id){
         $header = WhMinput::find($id);
@@ -93,9 +99,12 @@ class InputController extends Controller{
             ->get();
         foreach($temp as $tl){
             $line->create([
-                'minput_id' => $header->id,
-                'product_id' => $tl->product_id,
-                'qty' => $tl->qty
+                'minput_id'     => $header->id,
+                'product_id'    => $tl->product_id,
+                'qty'           => $tl->qty,
+                'price'         => $tl->price,
+                'pack'          => $tl->pack,
+                'grandline'     => $tl->grandline
             ]);
         }
         return redirect(route('input.index'))->with('message','Se creo el documento');

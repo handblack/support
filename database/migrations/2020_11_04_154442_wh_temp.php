@@ -19,6 +19,7 @@ class WhTemp extends Migration
             $table->string('productname',100);
             $table->string('productcode',20);
             $table->string('umname',20)->nullable();
+            $table->string('umshort',10)->nullable();
             $table->string('sku',20)->nullable();
             $table->date('datetrx')->nullable();
             $table->bigInteger('warehouse_id')->nullable();
@@ -26,6 +27,9 @@ class WhTemp extends Migration
             $table->bigInteger('bpartner_id')->nullable();
             $table->bigInteger('product_id')->nullable();
             $table->float('qty')->nullable();
+            $table->float('price')->nullable();
+            $table->float('pack')->nullable();
+            $table->double('grandline')->nullable();
             $table->bigInteger('um_id')->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();

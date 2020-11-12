@@ -58,8 +58,12 @@ class OutputLineController extends Controller{
     public function store(Request $request){
         $request->validate([
             'bpartner_id'   => 'required',
+            'warehouse_id'  => 'required',
+            'reason_id'     => 'required',
             'product_id'    => 'required',
-            'qty'           => 'required'
+            'qty'           => 'required',
+            'pack'          => 'required',
+            'price'         => 'required'
         ]);
         //Socio de NEGOCIO
         $sn = WhBpartner::find($request->bpartner_id);
@@ -76,14 +80,14 @@ class OutputLineController extends Controller{
         
         session(['output_datetrx' => $request->datetrx]);
 
-
         $product = WhProduct::find($request->product_id);
         $um = WhUm::find($product->um_id);
         $row = new WhTemp();
         $row->fill($request->all());
         $row->productname = $product->productname;
         $row->productcode = $product->productcode;
-        $row->umname      = $um->umname;  
+        $row->umname      = $um->umname;
+        $row->grandline   = round($request->qty * $request->price,2);  
         $row->save();
         return back()->with('message','Se creo correctamente');
     }

@@ -11,6 +11,8 @@ class WhMoutputLine extends Model
     protected $fillable = [
         'moutput_id',
         'product_id', 
-        'qty'
+        'qty',
+        'price',
+        'pack'
     ];
 }

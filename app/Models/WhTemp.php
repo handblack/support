@@ -20,7 +20,9 @@ class WhTemp extends Model
         'productname',
         'productcode',
         'umname',
-        'qty'
+        'qty',
+        'price',
+        'pack'
     ];
     
 }
