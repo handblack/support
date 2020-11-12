@@ -113,16 +113,14 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('bpartner.index') }}" class="nav-link {{ request()->is('partner/bpartner*') ? 'active' : '' }}">
-                                <i class="fas fa-users nav-icon"></i><p>Maestro SN</p>
+                                <i class="fas fa-users nav-icon"></i> <p>Maestro SN</p>
                             </a>
                         </li> 
                         <li class="nav-item">
                             <a href="{{ route('transfer.index') }}" class="nav-link {{ request()->is('partner/report*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-truck"></i>
-                                <p>Estado de Cuenta</p>
+                                <i class="nav-icon fas fa-truck"></i> <p>Estado de Cuenta</p>
                             </a>
                         </li>
-                        
                     </ul>
                 </li>
 
@@ -213,10 +211,13 @@
             <li class="nav-header"></li>
 
             <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
                     <i class="nav-icon far fa-circle text-danger"></i>
                     <p>Salir</p>
                 </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
             </li>
             
         </ul>

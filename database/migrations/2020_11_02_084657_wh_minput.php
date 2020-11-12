@@ -20,6 +20,9 @@ class WhMinput extends Migration
             $table->foreignId('reason_id')->nullable();
             $table->foreignId('bpartner_id')->nullable();
             $table->foreignId('warehouse_id')->nullable();
+            $table->foreignId('currency_id')->nullable();
+            $table->double('grandqty',15,6)->nullable()->default(0);
+            $table->double('grandamount',15,6)->nullable()->default(0);
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });

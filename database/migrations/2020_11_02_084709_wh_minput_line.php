@@ -25,10 +25,10 @@ class WhMinputLine extends Migration
                 ->nullable()
                 ->references('id')
                 ->on('wh_products');
-            $table->float('qty')->nullable();
-            $table->float('price')->nullable()->default(0);
-            $table->float('pack')->nullable();
-            $table->float('grandline')->nullable();
+            $table->double('qty',15,6)->nullable();
+            $table->double('price',15,6)->nullable()->default(0);
+            $table->double('pack',15,6)->nullable();
+            $table->double('grandline',15,6)->nullable();
             $table->timestamps();
         });
     }

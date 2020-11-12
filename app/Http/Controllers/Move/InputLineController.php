@@ -15,6 +15,9 @@ class InputLineController extends Controller
 {
     private $items = 40;
     public function index(Request $request){
+        if(!session()->has('input_token')){
+            return redirect(route('input.create'));
+        }
         $token              = session('input_token');
         $bpartner['id']     = session('input_bpartner_id');
         $bpartner['text']   = session('input_bpartner_name');
@@ -83,7 +86,7 @@ class InputLineController extends Controller
         $row->productcode = $product->productcode;
         $row->umname      = $um->umname;
         $row->umshort     = $um->shortname;
-        $row->grandline   = round($request->qty * $request->price,2);  
+        $row->grandline   = round($request->qty * $request->price, env('ROUND_DECIMAL_GRANDLINE', 2));  
         $row->save();
         return back()->with('message','Se creo correctamente');
     }
@@ -128,8 +131,9 @@ class InputLineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $row = WhTemp::find($id);
+        $row->delete();
+        return back()->with('message','Se elimino item');
     }
 }

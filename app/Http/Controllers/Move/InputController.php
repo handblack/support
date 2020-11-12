@@ -68,7 +68,16 @@ class InputController extends Controller{
     */
 
     public function show($id){
-        $header = WhMinput::find($id);
+        $header = WhMinput::select('wh_minputs.*',
+                'wh_bpartners.bpartnername',
+                'wh_reasons.reasonname',
+                'wh_warehouses.warehousecode',
+                'wh_warehouses.warehousename')
+            ->leftJoin('wh_bpartners','wh_bpartners.id','=','wh_minputs.bpartner_id')
+            ->leftJoin('wh_warehouses','wh_warehouses.id','=','wh_minputs.warehouse_id')
+            ->leftJoin('wh_reasons','wh_reasons.id','=','wh_minputs.reason_id')
+            ->find($id);
+
         $lines = WhMinputLine::select(
                     'wh_minput_lines.*',
                     'wh_products.productcode',
@@ -94,7 +103,7 @@ class InputController extends Controller{
         $header->save();
         // Lines  - Creamos las lineas
         $line = new WhMinputLine();
-        $temp = WhTemp::select('wh_temp.product_id','wh_temp.qty')
+        $temp = WhTemp::select('product_id','qty','price','pack','grandline')
             ->where('token',$token)
             ->get();
         foreach($temp as $tl){
@@ -107,6 +116,10 @@ class InputController extends Controller{
                 'grandline'     => $tl->grandline
             ]);
         }
+        // Adicionamos los datos de la cabecera
+        $header->grandqty = $temp->sum('qty');
+        $header->grandamount = $temp->sum('grandline');
+        $header->save();
         return redirect(route('input.index'))->with('message','Se creo el documento');
     }
 

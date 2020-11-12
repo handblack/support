@@ -15,7 +15,7 @@ class WhStock extends Migration
     public function up(){
         Schema::create('wh_stock', function (Blueprint $table) {
             $table->id();
-            $table->double('stock')->default(0);
+            $table->double('stock',15,6)->default(0);
             $table->foreignId('product_id')
                 ->nullable()
                 ->references('id')

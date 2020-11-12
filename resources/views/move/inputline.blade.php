@@ -19,15 +19,14 @@
                     Nota de Ingreso [NUEVO]
                 </h3>
                 <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 190px;">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Fecha</span>
-                          </div>
-                        <input type="text" name="datetrx" id="datetrx" class="form-control float-right"  value="{{ old('datetrx', $datetrx) }}">
-                        <div class="input-group-append">
+                    <div class="input-group input-group-sm date" id="reservationdate" data-target-input="nearest">
+                        <input type="text" name="datetrx" id="datetrx"  class="form-control datetimepicker-input" data-target="#reservationdate"  value="{{ old('datetrx', $datetrx) }}">
+                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
                         </div>
                     </div>
+               
+                   
                 </div>
             </div>
             <!-- /.card-header -->
@@ -128,13 +127,13 @@
                 <h3 class="card-title"><i class="fas fa-list"></i> Detalle(s)</h3>
 
                 <div class="card-tools">
-                    <form action="{{ route('line.index') }}" method="GET" style="margin:0px;padding:0px;">
+                    <form action="{{ route('inputline.index') }}" method="GET" style="margin:0px;padding:0px;">
                         @csrf
                         <div class="input-group input-group-sm" style="width: 250px;">
                             <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                <a href="{{ route('line.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
+                                <a href="{{ route('inputline.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
                             </div>
                         </div>
                     </form>
@@ -142,13 +141,13 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap table-sm table-borderless" data-toggle="dataTable" data-form="deleteForm">
+                <table class="table table-hover text-nowrap table-sm  " data-toggle="dataTable" data-form="deleteForm">
                     <thead>
                     <tr>
-                        <th width="80"><i class="fas fa-list"></i> Codigo</th>
-                        <th><i class="far fa-list-alt"></i> Descripcion</th>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
                         <th class="text-right">Cantidad</th>
-                        <th width="80">UM</th>
+                        <th>UM</th>
                         <th class="text-right">PRECIO</th>
                         <th class="text-right">TOTAL</th>
                         <th><i class="far fa-play-circle"></i> Accion</th>
@@ -156,34 +155,32 @@
                     </thead>
                     <tbody>
                         @foreach($result as $item)
-                            <form action="{{ route('line.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
-                                <tr>
-                                    <td width="100">{{ $item->productcode }}</td>
-                                    <td>{{ $item->productname }}</td>
-                                    <td class="text-right">{{ number_format($item->qty,4) }}</td>
-                                    <td>{{ $item->umshort }}</td>
-                                    <td class="text-right">{{ number_format($item->price,4) }}</td>
-                                    <td class="text-right">{{ number_format($item->grandline,2) }}</td>
-                                    <td width="80">
-                                    
-                                        @method('delete')
-                                        @csrf
-                                        
-                                        <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
-                                    </td>
-                                </tr>
-                            </form>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr style="border-top:1px solid #dcdcdc;">
-                            <td>  
-                                <div class="card-title">
-                                    
-                                </div>
+                        <tr>
+                            <td>{{ $item->productcode }}</td>
+                            <td>{{ $item->productname }}</td>
+                            <td class="text-right">{{ number_format($item->qty, env('ROUND_DECIMAL_QTY', 4),) }}</td>
+                            <td style="width:80px;">{{ $item->umshort }}</td>
+                            <td style="width:80px;" class="text-right">{{ number_format($item->price, env('ROUND_DECIMAL_PRICE', 2),) }}</td>
+                            <td class="text-right">{{ number_format($item->grandline, env('ROUND_DECIMAL_GRANDLINE', 2),) }}</td>
+                            <td style="width:80px;">
+                                <a href="{{ route('inputline.destroy',$item->id) }}" onclick="event.preventDefault(); document.getElementById('form-delete').submit();"><i class="far fa-trash-alt"></i> Eliminar</a>
+                                <form action="{{ route('inputline.destroy',$item->id) }}" method="POST" id='form-delete' style="display:none;">
+                                    @method('delete')
+                                    {{ csrf_field() }}
+                                </form>
                             </td>
                         </tr>
-                    </tfoot>
+                             
+                        @endforeach
+                        <tr style="border-top:1px solid #dcdcdc;">
+                            <td colspan="2"><strong>{{ $result->count('id') }} - items </strong></td>
+                            <td class="text-right"><strong>{{ number_format($result->sum('qty'), env('ROUND_DECIMAL_QTY', 1),) }}</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right"><strong>{{ number_format($result->sum('grandline'), env('ROUND_DECIMAL_AMOUNT', 1),) }}</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <!-- /.card-body -->
@@ -229,14 +226,18 @@
 
 @section('script')
 <script>
-$(document).ready(function () {
-    $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
-        e.preventDefault();
-        var $form=$(this);
-        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
-                .on('click', '#delete-btn', function(){
-                    $form.submit();
-                });
+$(function(){
+    $('input[name="datetrx"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 2020,
+        maxYear: parseInt(moment().format('YYYY'),10),
+        locale: {
+            format: 'YYYY-MM-DD'
+        }
+    }, function(start, end, label) {
+        //var years = moment().diff(start, 'years');
+        //alert("You are " + years + " years old!");
     });
 
     $.ajaxSetup({
@@ -296,7 +297,7 @@ $(document).ready(function () {
     });
     $('.select2-reason').select2({
         ajax: {
-            url: "{{ route('ajax.search.reason.output') }}",
+            url: "{{ route('ajax.search.reason.input') }}",
             type:'post',
             dataType: 'json',
             delay: 150,
