@@ -33,31 +33,31 @@
                         <th>Almacen</th>
                         <th>Motivo</th>
                         <th>Estado</th>
+                        <th>Usuario</th>
                         <th>Accion</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($result as $item)
-                            <form action="{{ route('input.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
-                                <tr>
-                                    <td width="60">{{ $item->id }}</td>
-                                    <td width="100">{{ $item->datetrx }}</td>
-                                    <td>{{ $item->bpartnername }}</td>
-                                    <td>{{ $item->warehousename }}</td>
-                                    <td>{{ $item->reasonname }}</td>
-                                    <td>{{ $item->isactive }}</td>
-                                    <td width="80">
-                                        @method('delete')
-                                        @csrf
-                                        <a href="{{ route('subline.edit',$item->id) }}" 
-                                            class="ajax-view" 
-                                            data-id="{{ $item->id }}"
-                                            data-toggle="modal" 
-                                            data-target="#ajax-doc-view"><i class="fas fa-print"></i> Ver </a> | 
-                                        <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
-                                    </td>
-                                </tr>
-                            </form>
+                            <tr>
+                                <td width="60">{{ str_pad($item->id, 4, "0", STR_PAD_LEFT) }}</td>
+                                <td width="100">{{ $item->datetrx }}</td>
+                                <td>{{ $item->bpartnername }}</td>
+                                <td>{{ $item->warehousename }}</td>
+                                <td>{{ $item->reasonname }}</td>
+                                <td>{{ $item->isactive }}</td>
+                                <td>{{ $item->username }}</td>
+                                <td width="80">
+                                    @method('delete')
+                                    @csrf
+                                    <a href="#" 
+                                        class="ajax-view" 
+                                        data-id="{{ $item->id }}"
+                                        data-toggle="modal" 
+                                        data-target="#ajax-doc-view"><i class="fas fa-print"></i> Ver </a> | 
+                                    <a href="{{ route('input.show',$item->id) }}?pdf"><i class="far fa-file-pdf"></i> PDF</a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
@@ -119,14 +119,8 @@
 @section('script')
 <script>
 $(document).ready(function () {
-    $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
-        e.preventDefault();
-        var $form=$(this);
-        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
-                .on('click', '#delete-btn', function(){
-                    $form.submit();
-                });
-    });
+  
+  
     $('.ajax-view').click(function(){
                 
                 var id = $(this).data('id');

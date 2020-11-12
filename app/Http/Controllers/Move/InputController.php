@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 use App\Models\WhMinput;
 use App\Models\WhMinputLine;
 use App\Models\WhTemp;
- 
+use Illuminate\Support\Facades\Auth;
+use PDF;
+
 class InputController extends Controller{
     private $items = 40;
     public function index(Request $request){
@@ -17,11 +19,13 @@ class InputController extends Controller{
                 'wh_bpartners.bpartnername',
                 'wh_reasons.reasonname',
                 'wh_warehouses.warehousecode',
-                'wh_warehouses.warehousename')
+                'wh_warehouses.warehousename',
+                'wh_users.name AS username')
             ->where('datetrx','LIKE',"%{$request->q}%")
             ->leftJoin('wh_bpartners','wh_bpartners.id','=','wh_minputs.bpartner_id')
             ->leftJoin('wh_warehouses','wh_warehouses.id','=','wh_minputs.warehouse_id')
             ->leftJoin('wh_reasons','wh_reasons.id','=','wh_minputs.reason_id')
+            ->leftJoin('wh_users','wh_users.id','=','wh_minputs.created_by')
             ->where('wh_bpartners.bpartnername','LIKE',$q)
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
@@ -42,30 +46,9 @@ class InputController extends Controller{
         return redirect(route('inputline.index'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request){
 
     }
-    /*
-    public function storex(Request $request){
-        $request->validate([
-            'datetrx' => 'required'
-        ]);
-        $token = md5(Str::random(9));
-        $fecha = $request->datetrx;
-        session(['input_token' => $token]);
-        session(['input_datetrx' => $fecha]);
-        session(['input_warehouse_id' => $request->warehouse_id]);
-        session(['input_bpartner_id' => $request->bpartner_id]);
-        session(['input_reason_id' => $request->reason_id]);
-        return redirect(route('inputline.index'));
-    }
-    */
 
     public function show($id){
         $header = WhMinput::select('wh_minputs.*',
@@ -85,6 +68,15 @@ class InputController extends Controller{
             ->where('minput_id',$header->id)
             ->leftJoin('wh_products','wh_products.id','=','wh_minput_lines.product_id')
             ->get();
+        //Verifiamos si la peticion es para PDF
+        if(isset($_GET['pdf'])){
+            return \PDF::loadView('move.input_view_pdf',[
+                        'header' => $header,
+                        'lines' => $lines
+                    ])
+                ->setPaper('a4', 'portrait')
+                ->download("NI_{$header->id}.pdf");
+        }        
         return view('move.input_view',[
             'header' => $header,
             'lines' => $lines
@@ -100,6 +92,7 @@ class InputController extends Controller{
         $header->warehouse_id  = session('input_warehouse_id');
         $header->bpartner_id   = session('input_bpartner_id');
         $header->reason_id     = session('input_reason_id');
+        $header->created_by    = Auth::id();
         $header->save();
         // Lines  - Creamos las lineas
         $line = new WhMinputLine();
