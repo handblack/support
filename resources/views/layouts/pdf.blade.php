@@ -1,41 +1,47 @@
 <html>
     <head>
-    <style>
-        .page-break {
-            page-break-after: always;
-        }
-        @page {
-            margin: 0cm 0cm;
-            font-family: Arial;
-        }
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <style>
+            .page-break {
+                page-break-after: always;
+            }
+            @page {
+                margin: 0cm 0cm;
+                font-family: Arial;
+                font-size:12px;
+            }
 
-        body {
-            margin: 3cm 2cm 2cm;
-        }
-        header {
-            position: fixed;
-            top: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
-            background-color: #2a0927;
-            color: white;
-            text-align: center;
-            line-height: 30px;
-        }
+            body {
+                margin: 3cm 2cm 2cm;
+                font-size:10px;
+                font-family: 'Roboto', sans-serif;
+            }
+            header {
+                position: fixed;
+                top: 0cm;
+                left: 0cm;
+                right: 0cm;
+                height: 2cm;
+                background-color: #2a0927;
+                color: white;
+                text-align: center;
+                line-height: 30px;
+            }
 
-        footer {
-            position: fixed;
-            bottom: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
-            background-color: #2a0927;
-            color: white;
-            text-align: center;
-            line-height: 35px;
-        }
-    </style>
+            footer {
+                position: fixed;
+                bottom: 0cm;
+                left: 0cm;
+                right: 0cm;
+                height: 2cm;
+                background-color: #2a0927;
+                color: white;
+                text-align: center;
+                line-height: 35px;
+            }
+            .text-right{text-align: left;}
+        </style>
     </head>
     <body>
         <header>

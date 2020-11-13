@@ -70,6 +70,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     /* Socio de Negocio */
     Route::resource('/partner/bpartner',BPartnerController::class);
     Route::get('/partner/report',[QueryController::class,'search_eecc'])->name('bpartner.eecc');
+    Route::get('/partner/report/pdf/{id}/{fi}/{ff}',[QueryController::class,'search_eecc_pdf'])->name('bpartner.eecc.pdf');
     Route::post('/partner/report/result',[QueryController::class,'search_eecc_result'])->name('bpartner.eecc.result');
 
 
@@ -108,6 +109,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/query/stock',[QueryController::class,'query_stock_live'])->name('query.stock');
     Route::post('/query/stock',[QueryController::class,'query_stock_live_result'])->name('query.stock.result');
     Route::get('/query/kardex',[QueryController::class,'query_kardex'])->name('query.kardex');
+    Route::post('/query/kardex',[QueryController::class,'query_kardex_result'])->name('query.kardex.result');
+    Route::get('/query/kardex/pdf/{id}/{fi}/{ff}',[QueryController::class,'query_kardex_pdf'])->name('query.kardex.pdf');
+
 
 
 });

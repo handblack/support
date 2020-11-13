@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\WhWarehouse;
 use App\Models\WhStock;
 use App\Models\WhBpartner;
+use App\Models\WhProduct;
 
 class QueryController extends Controller
 {
@@ -49,6 +50,28 @@ class QueryController extends Controller
         return view('move.query_kardex');
     }
 
+    public function query_kardex_result(Request $request){
+        $product = WhProduct::find($request->product_id);
+        session(['kardex_product_id' => $product->id ]);
+        session(['kardex_dateinit'    => $request->dateinit ]);
+        session(['kardex_dateend'     => $request->dateend ]);
+        $result = DB::select('CALL sp_report_kardex_product(:product, :dateinit, :dateend)', [
+            ':product' => $request->product_id,
+            ':dateinit' => $request->dateinit,
+            ':dateend' => $request->dateend
+        ]);
+        return view('move.query_kardex_result',[
+            'result' => $result,
+            'product' => $product,
+            'dateinit' => $request->dateinit,
+            'dateend' => $request->dateend,
+        ]);
+    }
+    
+    public function query_kardex_pdf($id,$fi,$ff){
+
+    }
+
     public function search_eecc(){
         $dateinit = date("Y-m-d",strtotime(date("Y-m-d")." -1 month"));
         $dateend = date("Y-m-d");
@@ -66,6 +89,24 @@ class QueryController extends Controller
         ]);
     }
 
+    public function search_eecc_pdf($id,$fi,$ff){
+        $bpartner = WhBpartner::find($id);
+        $result = DB::select('CALL sp_report_eecc(:bpartner, :dateinit, :dateend)', [
+            ':bpartner' => $id,
+            ':dateinit' => $fi,
+            ':dateend' => $ff
+        ]);
+        $filename = 'eecc_'.str_replace('-','',$fi).'_'.str_replace('-','',$ff).'.pdf' ;
+        return \PDF::loadView('dashboard.bpartner_eecc_pdf',[
+                'result' => $result,
+                'bpartner' => $bpartner,
+                'dateinit' => $fi,
+                'dateend' => $ff,
+                ])                
+            ->setPaper('a4', 'portrait')
+            ->download($filename);
+
+    }
     public function search_eecc_result(Request $request){
         $bpartner = WhBpartner::find($request->bpartner_id);
         session(['eecc_bpartner_id' => $bpartner->id ]);

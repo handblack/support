@@ -9,8 +9,10 @@
         <div class="card-tools">
             <div class="input-group input-group-sm" >
                 <div class="input-group-append">
-                    <a href="#" class="btn btn-default"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="{{ route('bpartner.eecc.pdf',['id' => $bpartner->id , 'fi' => $dateinit, 'ff' => $dateend]) }}" class="btn btn-default"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <!--
                     <a href="#" class="btn btn-default"><i class="fas fa-file-excel"></i> Excel</a>
+                    -->
                     <a href="{{ route('bpartner.eecc') }}" class="btn btn-primary"><i class="fas fa-chevron-circle-left"></i> Regresar</a>
                 </div>
             </div>
@@ -45,15 +47,18 @@
                     <tr>
                         <td style="width:100px">{{ $item->datetrx }}</td>
                         <td>{{ $item->description }}</td>
-                        <td class="text-right" style="width:130px">{{ ($item->typesignal == '-') ? number_format($item->amount,env('ROUND_DECIMAL_GRANDLINE', 2)) : '' }}</td>
-                        <td class="text-right" style="width:130px">{{ ($item->typesignal == '+') ? number_format($item->amount,env('ROUND_DECIMAL_GRANDLINE', 2)) : '' }}</td>
-                        <td class="text-right" style="width:130px">{{ number_format($item->balance,env('ROUND_DECIMAL_GRANDLINE', 2)) }}</td>
+                        <td class="text-right" style="width:130px;border-left:1px solid #dee2e6;">{{ ($item->typesignal == '-') ? number_format($item->amount,env('ROUND_DECIMAL_GRANDLINE', 2)) : '' }}</td>
+                        <td class="text-right" style="width:130px;border-left:1px solid #dee2e6;">{{ ($item->typesignal == '+') ? number_format($item->amount,env('ROUND_DECIMAL_GRANDLINE', 2)) : '' }}</td>
+                        <td class="text-right" style="width:130px;border-left:1px solid #dee2e6;">{{ number_format($item->balance,env('ROUND_DECIMAL_GRANDLINE', 2)) }}</td>
                     </tr>
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="2"></td>
+                    <td class="text-right" style="width:130px;border-left:1px solid #dee2e6;background-color:#f5f5f5;">0.00</td>
+                    <td class="text-right" style="width:130px;border-left:1px solid #dee2e6;background-color:#f5f5f5;">0.00</td>
+                    <td class="text-right" style="width:130px;border-left:1px solid #dee2e6;"></td>
                 </tr>
             </tfoot>
         </table>
