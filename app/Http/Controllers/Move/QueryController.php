@@ -4,8 +4,10 @@ namespace App\Http\Controllers\move;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\WhWarehouse;
 use App\Models\WhStock;
+use App\Models\WhBpartner;
 
 class QueryController extends Controller
 {
@@ -45,5 +47,40 @@ class QueryController extends Controller
       
     public function query_kardex(){
         return view('move.query_kardex');
+    }
+
+    public function search_eecc(){
+        $dateinit = date("Y-m-d",strtotime(date("Y-m-d")." -1 month"));
+        $dateend = date("Y-m-d");
+        if(session()->has('eecc_bpartner_id')){
+            $bpartner = WhBpartner::find(session('eecc_bpartner_id'));
+            $dateinit = session('eecc_dateinit');
+            $dateend = session('eecc_dateend');
+        }else{
+            $bpartner = new WhBpartner();
+        }        
+        return view('dashboard.bpartner_eecc',[
+            'bpartner' => $bpartner,
+            'dateinit' => $dateinit,
+            'dateend' => $dateend
+        ]);
+    }
+
+    public function search_eecc_result(Request $request){
+        $bpartner = WhBpartner::find($request->bpartner_id);
+        session(['eecc_bpartner_id' => $bpartner->id ]);
+        session(['eecc_dateinit'    => $request->dateinit ]);
+        session(['eecc_dateend'     => $request->dateend ]);
+        $result = DB::select('CALL sp_report_eecc(:bpartner, :dateinit, :dateend)', [
+            ':bpartner' => $request->bpartner_id,
+            ':dateinit' => $request->dateinit,
+            ':dateend' => $request->dateend
+        ]);
+        return view('dashboard.bpartner_eecc_result',[
+            'result' => $result,
+            'bpartner' => $bpartner,
+            'dateinit' => $request->dateinit,
+            'dateend' => $request->dateend,
+        ]);
     }
 }

@@ -34,6 +34,7 @@
 }
   </style>
   @yield('style')
+  @yield('header')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

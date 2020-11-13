@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ url('dashboard') }}" class="brand-link">
         <img src="{{ asset('images/package.png') }}" alt="WareHouse" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Ware<strong>House</strong></span>
     </a>
@@ -117,8 +117,8 @@
                             </a>
                         </li> 
                         <li class="nav-item">
-                            <a href="{{ route('transfer.index') }}" class="nav-link {{ request()->is('partner/report*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-truck"></i> <p>Estado de Cuenta</p>
+                            <a href="{{ route('bpartner.eecc') }}" class="nav-link {{ request()->is('partner/report*') ? 'active' : '' }}">
+                                <i class="far fa-file-alt nav-icon"></i> <p>Estado de Cuenta</p>
                             </a>
                         </li>
                      </ul>
@@ -188,7 +188,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link query-product" data-toggle="modal" data-target="#ajax-query-product-by-code">
+                <a href="#" class="nav-link query-product" data-toggle="modal" data-target="#ajax-query-bpartnercode">
                     <i class="nav-icon far fa-list-alt"></i>
                     <p>Socio de Negocio</p>
                 </a>
@@ -231,42 +231,78 @@
 <!-- Modal -->
 <div class="modal fade" id="ajax-query-product-by-code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header" style="background-color: rgba(0,0,0,.03);">
-            <!-- form id="form-query-product" -->
-                <div class="form-group row" style="margin-bottom: 0px;">
-                    <label for="inputPassword" class="col-sm-4 col-form-label">Consultar STOCK</label>
-                    <div class="col-sm-7">
-                        <div class="input-group">
-                            <input type="text" id="query-product-code" name="query_product_code" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                  <button class="btn btn-primary query-product-engine-bnt" type="button"><i class="fab fa-searchengin"></i> Consultar</button>
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: rgba(0,0,0,.03);">
+                <!-- form id="form-query-product" -->
+                    <div class="form-group row" style="margin-bottom: 0px;">
+                        <label for="inputPassword" class="col-sm-4 col-form-label">Consultar STOCK</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <input type="text" id="query-product-code" name="query_product_code" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary query-product-engine-bnt" type="button"><i class="fab fa-searchengin"></i> Consultar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <!-- /form -->
-
-        
-
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-12 query-result-product-engine">
-                    <h3 class="text-center"><img class="" width="100" alt="User Avatar" src='data:image/svg+xml;utf8,
-                        <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><title/>
-                            <path d="M15,38v2H9a3,3,0,0,1-3-3V31H8v6a1,1,0,0,0,1,1Z"/><path d="M40,31v6a3,3,0,0,1-3,3H31V38h6a1,1,0,0,0,1-1V31Z"/>
-                            <path d="M40,9v6H38V9a1,1,0,0,0-1-1H31V6h6A3,3,0,0,1,40,9Z"/><path d="M15,6V8H9A1,1,0,0,0,8,9v6H6V9A3,3,0,0,1,9,6Z"/>
-                            <rect height="19" width="3" x="10" y="11"/><rect height="3" width="3" x="10" y="32"/><rect height="24" width="1" x="14" y="11"/>
-                            <rect height="24" width="3" x="16" y="11"/><rect height="24" width="1" x="20" y="11"/><rect height="24" width="3" x="22" y="11"/>
-                            <rect height="24" width="1" x="26" y="11"/><rect height="24" width="3" x="28" y="11"/><rect height="24" width="1" x="32" y="11"/>
-                            <rect height="24" width="2" x="34" y="11"/></svg>
-                            '></h3>
+                <!-- /form -->
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 query-result-product-engine">
+                        <h3 class="text-center"><img class="" width="100" alt="User Avatar" src='data:image/svg+xml;utf8,
+                            <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><title/>
+                                <path d="M15,38v2H9a3,3,0,0,1-3-3V31H8v6a1,1,0,0,0,1,1Z"/><path d="M40,31v6a3,3,0,0,1-3,3H31V38h6a1,1,0,0,0,1-1V31Z"/>
+                                <path d="M40,9v6H38V9a1,1,0,0,0-1-1H31V6h6A3,3,0,0,1,40,9Z"/><path d="M15,6V8H9A1,1,0,0,0,8,9v6H6V9A3,3,0,0,1,9,6Z"/>
+                                <rect height="19" width="3" x="10" y="11"/><rect height="3" width="3" x="10" y="32"/><rect height="24" width="1" x="14" y="11"/>
+                                <rect height="24" width="3" x="16" y="11"/><rect height="24" width="1" x="20" y="11"/><rect height="24" width="3" x="22" y="11"/>
+                                <rect height="24" width="1" x="26" y="11"/><rect height="24" width="3" x="28" y="11"/><rect height="24" width="1" x="32" y="11"/>
+                                <rect height="24" width="2" x="34" y="11"/></svg>
+                                '></h3>
+                    </div>
                 </div>
             </div>
+            
         </div>
-        
-      </div>
+    </div>
+</div>
+<!-- /.Modal -->
+<!-- Modal -->
+<div class="modal fade" id="ajax-query-bpartnercode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: rgba(0,0,0,.03);">
+                <!-- form id="form-query-product" -->
+                    <div class="form-group row" style="margin-bottom: 0px;">
+                        <label for="inputPassword" class="col-sm-4 col-form-label">Informacion de Socio de Negocio</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <input type="text" id="query-product-code" name="query_product_code" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary query-product-engine-bnt" type="button"><i class="fab fa-searchengin"></i> Consultar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- /form -->
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 query-result-product-engine">
+                        <h3 class="text-center"><img class="" width="100" alt="User Avatar" src='data:image/svg+xml;utf8,
+                            <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><title/>
+                                <path d="M15,38v2H9a3,3,0,0,1-3-3V31H8v6a1,1,0,0,0,1,1Z"/><path d="M40,31v6a3,3,0,0,1-3,3H31V38h6a1,1,0,0,0,1-1V31Z"/>
+                                <path d="M40,9v6H38V9a1,1,0,0,0-1-1H31V6h6A3,3,0,0,1,40,9Z"/><path d="M15,6V8H9A1,1,0,0,0,8,9v6H6V9A3,3,0,0,1,9,6Z"/>
+                                <rect height="19" width="3" x="10" y="11"/><rect height="3" width="3" x="10" y="32"/><rect height="24" width="1" x="14" y="11"/>
+                                <rect height="24" width="3" x="16" y="11"/><rect height="24" width="1" x="20" y="11"/><rect height="24" width="3" x="22" y="11"/>
+                                <rect height="24" width="1" x="26" y="11"/><rect height="24" width="3" x="28" y="11"/><rect height="24" width="1" x="32" y="11"/>
+                                <rect height="24" width="2" x="34" y="11"/></svg>
+                                '></h3>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
 </div>
 <!-- /.Modal -->
