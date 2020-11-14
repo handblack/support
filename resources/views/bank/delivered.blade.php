@@ -8,7 +8,7 @@
         <div class="card">
  
             <div class="card-header">
-                <h3 class="card-title"><i class="fas fa-coins"></i> Pagos Recibidos</h3>
+                <h3 class="card-title"><i class="fas fa-coins"></i> Pagos Entregados</h3>
 
                 <div class="card-tools">
                     <form action="{{ route('delivered.index') }}" method="GET" style="margin:0px;padding:0px;">
@@ -34,8 +34,9 @@
                         <th>Socio de Negocio</th>
                         <th>Cuenta</th>
                         <th class="text-right">Importe</th>
-                        <th>Divisa</th>
-                        <th class="text-right" width="200">T.Cambio</th>
+                        <th style="width:80px">Divisa</th>
+                        <th class="text-right" style="width:100px">T.Cambio</th>
+                        <th>Usuario</th>
                         <th>Accion</th>
                     </tr>
                     </thead>
@@ -58,7 +59,7 @@
                                 <td class="text-right">{{ number_format($item->amount,2) }}</td>
                                 <td>{{ $item->isoname }}</td>
                                 <td class="text-right">{{ number_format($item->exchange,3) }}</td>
-                        
+                                <td>{{ $item->username }}</td>
                                 <td width="80">
                                     @method('delete')
                                     @csrf

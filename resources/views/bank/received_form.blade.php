@@ -83,7 +83,7 @@
                                         @endforeach
                                     </select>
                                     <div class="input-group-prepend">
-                                        <input type="text" name="amount" id="amount" class="form-control text-right" placeholder="Importe" value="{{ old('amount',number_format($row->amount,2)) }}">
+                                        <input type="text" name="amount" id="amount" class="form-control text-right" placeholder="Importe" value="{{ old('amount',$row->amount) }}">
                                     </div>
                                 </div>
                             </div>
