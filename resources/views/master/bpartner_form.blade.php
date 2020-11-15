@@ -20,6 +20,24 @@
             <div class="row">
                 <!-- COL UNO -->
                 <div class="col-md-8">
+                    
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Tipo de Registro</label>
+                        <div class="col-sm-5">
+                            <select name="bpartnertype" id="bpartnertype" class="form-control">
+                                <option value="P" @if($row->bpartnertype=='P') selected @endif>PROVEEDOR</option>
+                                <option value="C" @if($row->bpartnertype=='C') selected @endif>CLIENTE</option>
+                            </select>
+                        </div>
+                    </div>  
+
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Codigo SN</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="bpartnercode" name="bpartnercode" placeholder="Codigo" value="{{ old('bpartnercode',$row->bpartnercode) }}">
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Razon Social</label>
                         <div class="col-sm-10">
@@ -32,16 +50,13 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="shortname" name="shortname" placeholder="Nombre Corto" value="{{ old('shortname',$row->shortname) }}">
                         </div>
-                    </div>   
+                    </div>  
+
+
                 </div>
                 <!-- COL DOS -->
                 <div class="col-md-4">
-                    <div class="form-group row">
-                        <label for="inputName" class="col-sm-4 col-form-label">Codigo SN</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="bpartnercode" name="bpartnercode" placeholder="Codigo" value="{{ old('bpartnercode',$row->bpartnercode) }}">
-                        </div>
-                    </div>
+                    
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-4 col-form-label">Tipo Documento</label>
                         <div class="col-sm-8">
