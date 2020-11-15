@@ -94,7 +94,7 @@ class ReasonController extends Controller
         return redirect(route('reason.index'))->with('message','Se actualizo correctamente');
     }
 
-    /**
+    /** 
      * Remove the specified resource from storage.
      *
      * @param  int  $id

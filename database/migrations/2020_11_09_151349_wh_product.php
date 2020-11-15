@@ -16,8 +16,8 @@ class WhProduct extends Migration
         /*
         Schema::create('wh_products', function (Blueprint $table) {
             $table->id();
-            $table->string('productname',200);
             $table->string('productcode',20);
+            $table->string('productname',200);
             $table->string('shortname',80)->nullable();
             $table->string('sku',20)->nullable();
             $table->string('ean',20)->nullable();
@@ -25,9 +25,13 @@ class WhProduct extends Migration
             $table->foreignId('line_id')->nullable();
             $table->foreignId('subline_id')->nullable();
             $table->foreignId('family_id')->nullable();
-            $table->foreignId('um_id')->nullable();
+            $table->foreignId('um_id')
+                ->nullable()
+                ->references('id')
+                ->on('wh_ums');
+            $table->double('stk_min',15,6)->default(0);
+            $table->double('stk_max',15,6)->default(0);
             $table->unique('productcode');
-            //$table->foreignId('current_team_id')->nullable();
             $table->timestamps();
         });
         */
@@ -39,6 +43,10 @@ class WhProduct extends Migration
      * @return void
      */
     public function down(){
-        //Schema::dropIfExists('wh_products');
+        /*
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('wh_products');
+        Schema::enableForeignKeyConstraints();
+        */
     }
 }

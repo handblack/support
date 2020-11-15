@@ -4,6 +4,7 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Models\WhProduct;
 use App\Models\WhLine;
 use App\Models\WhSubLine;
@@ -13,7 +14,13 @@ use App\Models\WhUm;
 class ProductController extends Controller{
     private $items = 40; 
     public function index(Request $request){
-        $result = WhProduct::where('productname','LIKE',"%{$request->q}%")
+        $result = WhProduct::select(
+                'wh_products.*',
+                'wh_ums.umname'
+            )
+            ->where('productname','LIKE',"%{$request->q}%")
+            ->leftJoin('wh_ums','wh_ums.id','wh_products.um_id')
+            ->leftJoin('wh_users','wh_users.id','wh_products.updated_by')
             ->paginate($this->items); 
         $result->appends(['q' => $request->q]);
         return view('master.product',[
@@ -68,7 +75,12 @@ class ProductController extends Controller{
 
     public function update(Request $request, $id){
         $request->validate([
-            'productname' => 'required'
+            'productcode' => [
+                                'required',                                 
+                            ],
+            'productname' => 'required',
+            'um_id'     => 'required',
+
         ]);
         $row = WhProduct::find($id);
         $row->fill($request->all());

@@ -37,7 +37,7 @@
                     </thead>
                     <tbody>
                         @foreach($result as $item)
-                            <form action="{{ route('subline.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
+                            <form action="{{ route('warehouse.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr>
                                     <td width="150">{{ $item->id }}</td>
                                     <td>{{ $item->warehousename }}</td>
@@ -47,7 +47,7 @@
                                     <td width="80">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{ route('subline.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
+                                        <a href="{{ route('warehouse.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
                                         <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
                                     </td>
                                 </tr>

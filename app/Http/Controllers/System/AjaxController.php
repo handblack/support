@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\WhProduct;
+use App\Models\WhLine;
+use App\Models\WhSubline;
+use App\Models\WhFamily;
 use App\Models\WhWarehouse;
 use App\Models\WhBpartner;
 use App\Models\WhCurrency;
@@ -64,6 +67,34 @@ class AjaxController extends Controller
         $q = str_replace(' ','%',$request->q).'%';
         $result = WhBank::select('wh_banks.id', DB::raw("CONCAT(wh_banks.bankname) as text"))
             ->where('wh_banks.bankname','LIKE',$q)
+            ->limit(20)
+            ->get();
+        return response()->json(['results' => $result]);
+    }
+
+    
+    public function search_line(Request $request){
+        $q = str_replace(' ','%',$request->q).'%';
+        $result = WhLine::select('wh_lines.id', DB::raw("CONCAT(wh_lines.linename) as text"))
+            ->where('wh_lines.linename','LIKE',$q)
+            ->limit(20)
+            ->get();
+        return response()->json(['results' => $result]);
+    }
+    
+    public function search_subline(Request $request){
+        $q = str_replace(' ','%',$request->q).'%';
+        $result = WhSubline::select('wh_sublines.id', DB::raw("CONCAT(wh_sublines.sublinename) as text"))
+            ->where('wh_sublines.sublinename','LIKE',$q)
+            ->limit(20)
+            ->get();
+        return response()->json(['results' => $result]);
+    }
+    
+    public function search_family(Request $request){
+        $q = str_replace(' ','%',$request->q).'%';
+        $result = WhFamily::select('wh_families.id', DB::raw("CONCAT(wh_families.familyname) as text"))
+            ->where('wh_families.familyname','LIKE',$q)
             ->limit(20)
             ->get();
         return response()->json(['results' => $result]);

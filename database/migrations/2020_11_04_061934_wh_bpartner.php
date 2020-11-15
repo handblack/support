@@ -17,9 +17,11 @@ class WhBpartner extends Migration
             $table->id();
             $table->string('bpartnername',200);
             $table->string('bpartnercode',20);
+            $table->string('shortname',100)->nullable();
             $table->string('documentno',15)->nullable();
             $table->enum('bpartnertype',['C','P'])->default('C');
             $table->enum('isactive',['Y','N'])->default('Y');
+            $table->double('creditline',15,6)->nullable()->default(0);
             $table->timestamps();
         });
     }

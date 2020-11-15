@@ -62,10 +62,10 @@
                     <div class="col-6">
                         
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Fecha Transaccion</label>
+                            <label for="inputName" class="col-sm-3 col-form-label">Fecha Transaccion{{ $row->datetrx }}</label>
                             <div class="col-sm-5">
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" name="datetrx" id="datetrx" class="form-control datetimepicker-input" data-target="#reservationdate">
+                                    <input type="text" name="datetrx" id="datetrx" class="form-control datetimepicker-input" value="{{ old('datetrx',$row->datetrx) }}" data-target="#reservationdate">
                                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>

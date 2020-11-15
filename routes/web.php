@@ -96,6 +96,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     /* Habilitamos el servicio de AJAX */
     Route::post('/ajax/search/productcode',[AjaxController::class,'search_productcode'])->name('ajax.search.productcode');
     Route::post('/ajax/search/product',[AjaxController::class,'search_product'])->name('ajax.search.product');
+    Route::post('/ajax/search/product/line',[AjaxController::class,'search_line'])->name('ajax.search.product.line');
+    Route::post('/ajax/search/product/subline',[AjaxController::class,'search_subline'])->name('ajax.search.product.subline');
+    Route::post('/ajax/search/product/family',[AjaxController::class,'search_family'])->name('ajax.search.product.family');
     Route::post('/ajax/search/warehouse',[AjaxController::class,'search_warehouse'])->name('ajax.search.warehouse');
     Route::post('/ajax/search/bpartner',[AjaxController::class,'search_bpartner'])->name('ajax.search.bpartner');
     Route::post('/ajax/search/bpartnerp',[AjaxController::class,'search_bpartnerp'])->name('ajax.search.bpartnerp');

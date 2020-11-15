@@ -10,6 +10,28 @@ class WhProduct extends Model
     use HasFactory;
     protected $fillable = [
         'sku',
-        'productname'
+        'productname',
+        'shortname',
+        'line_id',
+        'subline_id',
+        'family_id',
+        'um_id',
+        'stk_min',
+        'stk_max',
+        'isactive',
+        'created_by',
+        'updated_by',
     ];
+    /* Vinculamos la relacion */
+    public function line(){
+        return $this->hasOne('App\Models\WhLine', 'id');        
+    }
+
+    public function subline(){
+        return $this->hasOne('App\Models\WhSubLine', 'id');
+    }
+
+    public function family(){
+        return $this->hasOne('App\Models\WhFamily', 'id');
+    }
 }

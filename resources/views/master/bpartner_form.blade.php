@@ -25,6 +25,13 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="bpartnername" name="bpartnername" placeholder="Socio de Negocio" value="{{ old('bpartnername',$row->bpartnername) }}">
                         </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Nombre Comercial</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="shortname" name="shortname" placeholder="Nombre Corto" value="{{ old('shortname',$row->shortname) }}">
+                        </div>
                     </div>   
                 </div>
                 <!-- COL DOS -->
@@ -32,7 +39,7 @@
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-4 col-form-label">Codigo SN</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="bpartnercode" name="bpartnercode" placeholder="Codigo" value="{{ old('bpartnername',$row->bpartnername) }}">
+                            <input type="text" class="form-control" id="bpartnercode" name="bpartnercode" placeholder="Codigo" value="{{ old('bpartnercode',$row->bpartnercode) }}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -47,7 +54,7 @@
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-4 col-form-label">Numero Documento</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="bpartnercode" name="bpartnercode" placeholder="Codigo" value="{{ old('bpartnername',$row->bpartnername) }}">
+                            <input type="text" class="form-control" id="documentno" name="documentno" placeholder="Numero Documento" value="{{ old('documentno',$row->documentno) }}">
                         </div>
                     </div>
 

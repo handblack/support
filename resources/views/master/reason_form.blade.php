@@ -29,11 +29,11 @@
                 <label for="inputName" class="col-sm-2 col-form-label">Modulo</label>
                 <div class="col-sm-5">
                     <select name="movetype" id="movetype" class="form-control">
-                        <option value="IN">Ingreso</option>
-                        <option value="SA">Salida</option>
-                        <option value="TR">Traslado</option>
-                        <option value="PR">Produccion</option>
-                        <option value="ME">Merma</option>
+                        <option value="IN" @if($row->movetype=='IN') selected @endif>Ingreso</option>
+                        <option value="SA" @if($row->movetype=='SA') selected @endif>Salida</option>
+                        <option value="TR" @if($row->movetype=='TR') selected @endif>Traslado</option>
+                        <option value="PR" @if($row->movetype=='PR') selected @endif>Produccion</option>
+                        <option value="ME" @if($row->movetype=='ME') selected @endif>Merma</option>
                     </select>
                 </div>
             </div>        

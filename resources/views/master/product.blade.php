@@ -27,11 +27,13 @@
                 <table class="table table-hover text-nowrap table-sm table-borderless" data-toggle="dataTable" data-form="deleteForm">
                     <thead>
                     <tr>
-                        <th>SKU</th>
+                        <th>Codigo</th>
                         <th>Producto</th>
                         <th>UM</th>
-                        <th>Linea</th>
-                        <th>SubLinea</th>
+                        <th>StkMin</th>
+                        <th>StkMax</th>
+                        <th>Estado</th>
+                        <th>Usuario</th>
                         <th>Accion</th>
                     </tr>
                     </thead>
@@ -41,9 +43,11 @@
                                 <tr>
                                     <td width="100">{{ $item->productcode }}</td>
                                     <td>{{ $item->productname }}</td>
-                                    <td>{{ $item->um_id }}</td>
-                                    <td>{{ $item->line_id }}</td>
-                                    <td>{{ $item->subline_id }}</td>
+                                    <td>{{ $item->umname }}</td>
+                                    <td>{{ number_format($item->stk_min, env('ROUND_DECIMAL_QTY', 4)) }}</td>
+                                    <td>{{ number_format($item->stk_max, env('ROUND_DECIMAL_QTY', 4)) }}</td>
+                                    <td>{{ $item->username }}</td>
+                                    <td>{{ $item->isactive }}</td>
                                     <td width="80">
                                     
                                         @method('delete')
