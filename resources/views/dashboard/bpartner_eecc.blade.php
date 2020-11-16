@@ -12,7 +12,7 @@
         <!-- /.card-header -->
         <div class="card-body">
             <div class="row">
-                <div class="col-8">
+                <div class="col-12">
 
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-3 col-form-label">Socio de Negocio</label>
@@ -37,11 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
 
-                  
-
-                </div>
             </div>
 
 

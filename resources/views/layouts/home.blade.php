@@ -20,8 +20,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Navbar -->
     @include('layouts.home_navbar')
+ 
     @yield('breadcrumbs')
-    
+ 
     <!-- /.navbar -->
     
    
@@ -32,18 +33,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @yield('container')
         </div>
     </div>
+
+    <footer>
+        <div class="content">
+            <div class="container">
+               
+            </div>
+        </div>
+    </footer>
     
 
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-        <h5>Title</h5>
-        <p>Sidebar content</p>
-        </div>
-    </aside>
-    <!-- /.control-sidebar -->
+ 
 
     <!-- Main Footer -->
     <!--

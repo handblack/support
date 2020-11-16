@@ -26,29 +26,29 @@
                     <!-- Columa UNO -->
                     <div class="col-sm-8">
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-2 col-form-label">Codigo del Producto</label>
+                            <label for="inputName" class="col-sm-4 col-form-label">Codigo del Producto</label>
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" id="productcode" name="productcode" placeholder="Codigo Producto" value="{{ old('sku',$row->productcode) }}"  required>
                             </div>
                         </div>        
                     
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-2 col-form-label">Producto</label>
-                            <div class="col-sm-10">
+                            <label for="inputName" class="col-sm-4 col-form-label">Descripcion Producto</label>
+                            <div class="col-sm-8">
                                 <input type="text" class="form-control" id="productname" name="productname" placeholder="Nombre del producto" value="{{ old('productname',$row->productname) }}"  required>
                             </div>
                         </div>        
                     
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-2 col-form-label">Nombre de Corto</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="shortname" name="shortname" placeholder="Name">
+                            <label for="inputName" class="col-sm-4 col-form-label">Nombre de Corto</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="shortname" name="shortname" placeholder="Descrip corta">
                             </div>
                         </div>        
                         
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-2 col-form-label">Linea</label>
-                            <div class="col-sm-10">
+                            <label for="inputName" class="col-sm-4 col-form-label">Linea</label>
+                            <div class="col-sm-8">
                                 <select name="line_id" id="line_id" class="form-control select2-line">
                                     @if($row->line)
                                         <option value="{{ $row->line->line_id }}" selected>{{ $row->line->linename }}</option>
@@ -58,8 +58,8 @@
                         </div>        
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-2 col-form-label">Sub Linea</label>
-                            <div class="col-sm-10">
+                            <label for="inputName" class="col-sm-4 col-form-label">Sub Linea</label>
+                            <div class="col-sm-8">
                                 <select name="subline_id" id="subline_id" class="form-control select2-subline">
                                     @if($row->subline)
                                         <option value="{{ $row->subline->subline_id }}" selected>{{ $row->subline->sublinename }}</option>
@@ -69,8 +69,8 @@
                         </div> 
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-2 col-form-label">Familia</label>
-                            <div class="col-sm-10">
+                            <label for="inputName" class="col-sm-4 col-form-label">Familia</label>
+                            <div class="col-sm-8">
                                 <select name="family_id" id="family_id" class="form-control select2-family">
                                     @if($row->family)
                                         <option value="{{ $row->family->family_id }}" selected>{{ $row->family->familyname }}</option>
@@ -84,22 +84,22 @@
                     <!-- Columa DOS -->
                     <div class="col-sm-4">
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-4 col-form-label">Stock Minimo</label>
-                            <div class="col-sm-8">
+                            <label for="inputName" class="col-sm-5 col-form-label">Stock Minimo</label>
+                            <div class="col-sm-7">
                                 <input type="numeric" class="form-control text-right" id="stk_min" name="stk_min" value="{{ old('stk_min',$row->stk_min) }}" placeholder="Stock Minimo" required>
                             </div>
                         </div>        
                        
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-4 col-form-label">Stock Maximo</label>
-                            <div class="col-sm-8">
+                            <label for="inputName" class="col-sm-5 col-form-label">Stock Maximo</label>
+                            <div class="col-sm-7">
                                 <input type="numeric" class="form-control text-right" id="stk_max" name="stk_max" value="{{ old('stk_max',$row->stk_max) }}" placeholder="Stock Maximo" required>
                             </div>
                         </div>  
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-4 col-form-label">Unidad de Medida</label>
-                            <div class="col-sm-8">
+                            <label for="inputName" class="col-sm-5 col-form-label">Unidad Medida</label>
+                            <div class="col-sm-7">
                                 <select name="um_id" id="um_id" class="form-control" required>
                                     @foreach ($ums as $item)
                                         <option value="{{ $item->id }}">{{ $item->umname }}</option>
@@ -109,8 +109,8 @@
                         </div>   
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-4 col-form-label">Estado</label>
-                            <div class="col-sm-8">
+                            <label for="inputName" class="col-sm-5 col-form-label">Estado</label>
+                            <div class="col-sm-7">
                                 <select name="isactive" id="isactive" class="form-control">
                                     <option value="Y" @if($row->isactive=='Y') selected @endif>ACTIVO</option>
                                     <option value="N" @if($row->isactive=='N') selected @endif>DESACTIVADO</option>

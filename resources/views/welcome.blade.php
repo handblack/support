@@ -2,7 +2,10 @@
 
 
 @section('breadcrumbs')
-    @include('layouts.home_breadcrumbs')
+ 
+ 
+ 
+<br>
 @endsection
 
 
@@ -13,14 +16,19 @@
             <h1 class="display-4">{{ env('APP_NAME','handblack') }}</h1>
             <p class="lead">{{ env('APP_NAME','handblack') }} es una manera sencilla de gestionar y controlar tu stock y cuenta coriente de clientes y proveedores. 
                 Permite controlar multiples almacenes y productos ilimitados asi como el traspaso de mercaderia entre tus almacenes.
-                <br>
-                <br>
-                Ten tu negocio en orden para que sigas creciendo. 
             </p>
+            <p class="lead">
+                De facil uso y de acceso de cualquier dispositivo, para mas información sobre los requerimientos pogase en contacto con nosotros.
+                <br>
+                <br><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;+51 936 610 700
+                <br><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;+51 997 752 822
+                <br><i class="far fa-envelope"></i>&nbsp;&nbsp;ventas@gruposbf.pe
+            </p>
+            <!--
             <hr class="my-4">
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="#" role="button">Mas Información</a>
-            </p>
+            </p> -->
         </div>
         
     </div>

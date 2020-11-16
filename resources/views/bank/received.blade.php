@@ -35,7 +35,7 @@
                         <th>Cuenta</th>
                         <th class="text-right">Importe</th>
                         <th>Divisa</th>
-                        <th class="text-right" width="200">T.Cambio</th>
+                        <th class="text-right" width="80">T.Cambio</th>
                         <th>Accion</th>
                     </tr>
                     </thead>
@@ -63,7 +63,7 @@
                                     @method('delete')
                                     @csrf
                                     <a href="{{ route('received.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
-                                    <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
+                                    <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             </form>
@@ -142,11 +142,11 @@ $(document).ready(function () {
 
                 // AJAX request
                 $.ajax({
-                    url: '{{ route('output.index') }}/' + id,
+                    url: '{{ route('received.index') }}/' + id,
                     type: 'get',
                     data: {
                         id: id,
-                        _token:'Ylosz0WZxhhJKVORJQqoAH05RV91INlRz2jZkZbZ'
+                        _token:'{{ csrf_token() }}'
                     },
                     success: function(response){ 
                         $('.ajax-doc-details').html(response); 

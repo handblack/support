@@ -31,7 +31,7 @@ class WhBankReceived extends Model
     }
 
     public function bank(){
-        return $this->hasOne('App\Models\WhBanks', 'id');        
+        return $this->hasOne('App\Models\WhBank', 'id');        
     }
 
 }

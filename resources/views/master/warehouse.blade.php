@@ -27,9 +27,8 @@
                 <table class="table table-hover text-nowrap table-sm table-borderless" data-toggle="dataTable" data-form="deleteForm">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Almacen</th>
                         <th>Codigo</th>
+                        <th>Almacen</th>
                         <th>Ubigeo</th>
                         <th>Estado</th>
                         <th>Accion</th>
@@ -39,10 +38,8 @@
                         @foreach($result as $item)
                             <form action="{{ route('warehouse.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr>
-                                    <td width="150">{{ $item->id }}</td>
-                                    <td>{{ $item->warehousename }}</td>
                                     <td>{{ $item->warehousecode }}</td>
-                                    <td>{{ $item->ubigeo }}</td>
+                                    <td>{{ $item->warehousename }}</td>
                                     <td>{{ $item->isactive }}</td>
                                     <td width="80">
                                         @method('delete')

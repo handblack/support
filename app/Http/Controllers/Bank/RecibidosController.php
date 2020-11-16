@@ -55,7 +55,8 @@ class RecibidosController extends Controller{
     }
  
     public function show($id){
-        //
+        $row = WhBankReceived::find($id);
+        return view('bank.received_show',['row' => $row]);
     }
 
     public function edit($id){

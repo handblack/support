@@ -97,6 +97,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/bank/received',RecibidosController::class);
     Route::resource('/bank/delivered',EntregadosController::class);
 
+
     /* Habilitamos el servicio de AJAX */
     Route::post('/ajax/search/productcode',[AjaxController::class,'search_productcode'])->name('ajax.search.productcode');
     Route::post('/ajax/search/product',[AjaxController::class,'search_product'])->name('ajax.search.product');

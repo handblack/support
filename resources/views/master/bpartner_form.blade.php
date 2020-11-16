@@ -22,7 +22,7 @@
                 <div class="col-md-8">
                     
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Tipo de Registro</label>
+                        <label for="inputName" class="col-sm-3 col-form-label">Tipo de Registro</label>
                         <div class="col-sm-5">
                             <select name="bpartnertype" id="bpartnertype" class="form-control">
                                 <option value="P" @if($row->bpartnertype=='P') selected @endif>PROVEEDOR</option>
@@ -32,22 +32,27 @@
                     </div>  
 
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Codigo SN</label>
+                        <label for="inputName" class="col-sm-3 col-form-label">Codigo SN</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="bpartnercode" name="bpartnercode" placeholder="Codigo" value="{{ old('bpartnercode',$row->bpartnercode) }}">
+                            <input type="text" class="form-control" id="bpartnercode" name="bpartnercode" placeholder="Codigo" 
+                            value="{{ old('bpartnercode',$row->bpartnercode) }}"
+                            @if($mode == 'edit')
+                                disabled
+                            @endif
+                            >
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Razon Social</label>
-                        <div class="col-sm-10">
+                        <label for="inputName" class="col-sm-3 col-form-label">Razon Social</label>
+                        <div class="col-sm-9">
                             <input type="text" class="form-control" id="bpartnername" name="bpartnername" placeholder="Socio de Negocio" value="{{ old('bpartnername',$row->bpartnername) }}">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Nombre Comercial</label>
-                        <div class="col-sm-10">
+                        <label for="inputName" class="col-sm-3 col-form-label">Nombre Comercial</label>
+                        <div class="col-sm-9">
                             <input type="text" class="form-control" id="shortname" name="shortname" placeholder="Nombre Corto" value="{{ old('shortname',$row->shortname) }}">
                         </div>
                     </div>  
@@ -58,8 +63,8 @@
                 <div class="col-md-4">
                     
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-4 col-form-label">Tipo Documento</label>
-                        <div class="col-sm-8">
+                        <label for="inputName" class="col-sm-5 col-form-label">Tipo Documento</label>
+                        <div class="col-sm-7">
                             <select name="" id="" class="form-control">
                                 <option value="">RUC</option>
                                 <option value="">DNI</option>
@@ -67,15 +72,15 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-4 col-form-label">Numero Documento</label>
-                        <div class="col-sm-8">
+                        <label for="inputName" class="col-sm-5 col-form-label">Nro Documento</label>
+                        <div class="col-sm-7">
                             <input type="text" class="form-control" id="documentno" name="documentno" placeholder="Numero Documento" value="{{ old('documentno',$row->documentno) }}">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-4 col-form-label">Estado</label>
-                        <div class="col-sm-8">
+                        <label for="inputName" class="col-sm-5 col-form-label">Estado</label>
+                        <div class="col-sm-7">
                             <select name="isactive" id="isactive" class="form-control">
                                 <option value="Y" @if($row->isactive=='Y') selected @endif>ACTIVO</option>
                                 <option value="N" @if($row->isactive=='N') selected @endif>DESACTIVADO</option>

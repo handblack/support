@@ -37,7 +37,6 @@
                                     <option value="{{ $row->bpartner_id }}">{{ $row->bpartnername }}</option>
                                 @endif
                             </select>                            
-                            <small id="emailHelp" class="form-text text-muted">Ingrese el nombre del cliente.</small>
                         </div>
                     </div>
                     <div class="col-5">
@@ -48,7 +47,6 @@
                                     <option value="{{ $row->bank_id }}">{{ $row->bankname }}</option>                                    
                                 @endif
                             </select>
-                            <small id="emailHelp" class="form-text text-muted">Caja/Cuenta Banco donde se realizo la operacion.</small>
                         </div>
                     </div>
                      
@@ -62,27 +60,24 @@
                     <div class="col-6">
                         
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Fecha Transaccion</label>
-                            <div class="col-sm-5">
+                            <label for="inputName" class="col-sm-4 col-form-label">Fecha Transaccion</label>
+                            <div class="col-sm-7">
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" name="datetrx" id="datetrx" class="form-control datetimepicker-input" data-target="#reservationdate">
-                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                    </div>
+                                    <input type="text" class="form-control" id="datetrx" name="datetrx" value="{{ old('datetrx',$row->datetrx) }}">
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Moneda / Importe</label>
-                            <div class="col-sm-5">
+                            <label for="inputName" class="col-sm-4 col-form-label">Moneda / Importe</label>
+                            <div class="col-sm-7">
                                 <div class="input-group">
                                     <select name="currency_id" id="currency_id" class="custom-select">
                                         @foreach ($currency as $item)
-                                            <option value="{{ $item->id }}" {{ ($item->id == $row->currency_id) ? ' selected' :'' }}>{{ $item->isoname }}</option>
+                                            <option value="{{ $item->id }}" {{ ($item->id == $row->currency_id) ? ' selected' :'' }}>{{ $item->isoname }} </option>
                                         @endforeach
                                     </select>
-                                    <div class="input-group-prepend">
+                                    <div class="input-group-prepend" style="width:160px;">
                                         <input type="text" name="amount" id="amount" class="form-control text-right" placeholder="Importe" value="{{ old('amount',$row->amount) }}">
                                     </div>
                                 </div>
@@ -93,7 +88,7 @@
  
                         
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Tipo de Cambio</label>
+                            <label for="inputName" class="col-sm-4 col-form-label">Tipo de Cambio</label>
                             <div class="col-sm-5">
                                 <input type="text" name="exchange" id="exchange" value="{{ number_format(old('exchange',$row->exchange),3) }}" class="form-control text-right">
                             </div>
@@ -106,8 +101,8 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Tipo de Transaccion</label>
-                            <div class="col-sm-9">
+                            <label for="inputName" class="col-sm-4 col-form-label">Tipo de Transaccion</label>
+                            <div class="col-sm-8">
                                 <select name="doctype" id="doctype" class="form-control">
                                     <option value="EFE">EFE</option>
                                     <option value="CHE">CHE</option>
@@ -117,23 +112,23 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Nro Operacion</label>
-                            <div class="col-sm-9">
+                            <label for="inputName" class="col-sm-4 col-form-label">Nro Operacion</label>
+                            <div class="col-sm-8">
                                 <input type="text" name="documentno" value="{{ old('documentno',$row->documentno) }}" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Oficina/Lugar</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="office" value="{{ old('office',$row->office) }}" class="form-control">
+                            <label for="inputName" class="col-sm-4 col-form-label">Oficina/Lugar</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="office" value="{{ old('office',$row->office) }}" class="form-control" placeholder="Opcional">
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="inputName" class="col-sm-3 col-form-label">Observacion</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="observation" value="{{ old('observation',$row->observation) }}" class="form-control">
+                            <label for="inputName" class="col-sm-4 col-form-label">Observacion</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="observation" value="{{ old('observation',$row->observation) }}" class="form-control" placeholder="Opcional">
                             </div>
                         </div>
 
@@ -197,17 +192,11 @@ $(document).ready(function() {
 
  
 
-    $('input[name="datetrx"]').daterangepicker({
+   
+    $('#datetrx').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true,
-        minYear: {{ date("Y") }},
-        maxYear: parseInt(moment().format('YYYY'),10),
-        locale: {
-            format: 'YYYY-MM-DD'
-        }
-    }, function(start, end, label) {
-        //var years = moment().diff(start, 'years');
-        //alert("You are " + years + " years old!");
+        locale:{format: 'YYYY-MM-DD'}
     });
 
     $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
