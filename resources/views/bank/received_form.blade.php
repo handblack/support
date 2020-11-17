@@ -146,19 +146,6 @@
 </div>
 </form>
 
-<div class="callout callout-info">
-    <h2><strong>Informacion</strong></h2>
-
-    <dl class="row">
-        <dt class="col-sm-3">Importe</dt>
-        <dd class="col-sm-9">Los valores ingresados se redondearan a 2 decimales.</dd>
-        <dt class="col-sm-3">Tipo de Cambio</dt>
-        <dd class="col-sm-9">El valor redondeado es de 3 decimales.</dd>
-        <dd class="col-sm-9 offset-sm-3">Si la cuenta y la divisa a registrar son del mismo tipo, el valor del tipo de cambio ser de valor <i>1.000</i></dd>
-        
-      </dl>
-  </div>
-
 
 
 <!-- Modal -->

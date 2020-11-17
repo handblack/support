@@ -13,6 +13,7 @@ class WhBpartner extends Model
         'bpartnercode',
         'bpartnertype',
         'documentno',
+        'creditline',
         'isactive'
     ];
 }

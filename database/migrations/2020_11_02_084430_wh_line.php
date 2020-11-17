@@ -16,6 +16,8 @@ class WhLine extends Migration{
     }
 
     public function down(){
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('wh_lines');
+        Schema::enableForeignKeyConstraints();
     }
 }

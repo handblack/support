@@ -71,10 +71,18 @@
                             </select>
                         </div>
                     </div>
+                    
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-5 col-form-label">Nro Documento</label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" id="documentno" name="documentno" placeholder="Numero Documento" value="{{ old('documentno',$row->documentno) }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-5 col-form-label">Linea de Crédito</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control text-right" id="creditline" name="creditline" placeholder="Linea de Credito" value="{{ old('creditline',$row->creditline) }}">
                         </div>
                     </div>
 
