@@ -3,6 +3,9 @@
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\DashboardController;
 
+use App\Http\Controllers\System\UserController;
+use App\Http\Controllers\System\TeamController;
+
 use App\Http\Controllers\System\ProductController;
 use App\Http\Controllers\System\LineController;
 use App\Http\Controllers\System\SubLineController;
@@ -62,6 +65,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::get('ticket',[TicketController::class,'ticket_create'])->name('ticket');
     Route::get('dashboard',[DashboardController::class,'page_dash'])->name('dashboard');
+
+
+    Route::resource('/system/users',UserController::class);
+    Route::resource('/system/teams',TeamController::class);
 
     Route::resource('/master/product',ProductController::class);
     Route::resource('/master/product/barcode',BarCodeController::class);

@@ -13,7 +13,7 @@ class WhProduct extends Migration
      */
     public function up()
     {
-        /*
+    
         Schema::create('wh_products', function (Blueprint $table) {
             $table->id();
             $table->string('productcode',20);
@@ -25,16 +25,15 @@ class WhProduct extends Migration
             $table->foreignId('line_id')->nullable();
             $table->foreignId('subline_id')->nullable();
             $table->foreignId('family_id')->nullable();
-            $table->foreignId('um_id')
-                ->nullable()
-                ->references('id')
-                ->on('wh_ums');
+            $table->foreignId('um_id')->nullable();
             $table->double('stk_min',15,6)->default(0);
             $table->double('stk_max',15,6)->default(0);
             $table->unique('productcode');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
-        */
+        
     }
 
     /**
@@ -43,10 +42,10 @@ class WhProduct extends Migration
      * @return void
      */
     public function down(){
-        /*
+       
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('wh_products');
         Schema::enableForeignKeyConstraints();
-        */
+   
     }
 }

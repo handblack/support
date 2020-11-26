@@ -29,21 +29,19 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview {{ request()->is('system*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link {{ request()->is('system*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tv"></i>
                         <p>Sistema<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link">
-                            <i class="fas fa-user-shield nav-icon"></i>
-                            <p>Usuarios</p>
+                            <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('system/user*') ? 'active' : '' }}">
+                                <i class="fas fa-user-shield nav-icon"></i><p>Usuarios</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
-                            <i class="fas fa-users-cog nav-icon"></i>
-                            <p>Equipos</p>
+                            <a href="{{ route('teams.index') }}" class="nav-link {{ request()->is('system/team*') ? 'active' : '' }}">
+                                <i class="fas fa-users-cog nav-icon"></i><p>Equipos</p>
                             </a>
                         </li>
                         
@@ -52,7 +50,7 @@
                 
 
                 <li class="nav-item has-treeview {{ request()->is('master*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ request()->is('master/product') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('master*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-toolbox"></i>
                         <p>Maestros<i class="right fas fa-angle-left"></i></p>
                     </a>

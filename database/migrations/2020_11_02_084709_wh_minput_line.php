@@ -40,6 +40,8 @@ class WhMinputLine extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('wh_minput_lines');
+        Schema::enableForeignKeyConstraints();
     }
 }
