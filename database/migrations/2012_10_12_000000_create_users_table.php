@@ -25,13 +25,14 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
+            $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });
         
         $user = new User();
         $user->name = 'admin';
         $user->email = 'soporte@miasoftware.net';
-        $user->password = Hash::make('x5w93kra');
+        $user->password = Hash::make('x5w93kra'); //$2y$10$aFV2AmoRLcra8vPXUt9awOi6xcCzevl4FEsRmzl0hTcWl.slB3Gw6
         $user->current_team_id = 1;
         $user->save();        
     }
