@@ -48,12 +48,22 @@
                                 <tr>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->isactive }}</td>
-                                    <td width="80">
-                                    
+                                    <td width="110">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{ route('teams.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
-                                        <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
+                                        <div class="btn-group">
+                                            <a href="{{ route('teams.show',$item->id) }}" class="btn btn-default btn-block btn-sm"><i class="fas fa-key"></i> Accesos </a>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                                </button>
+                                                <div class="dropdown-menu" style="">
+                                                    <a href="{{ route('teams.edit',$item->id) }}" class="dropdown-item"> <i class="fas fa-edit"></i> Modificar</a>
+                                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </td>
                                 </tr>
                             </form>

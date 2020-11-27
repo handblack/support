@@ -27,6 +27,35 @@ class CreateTeamsTable extends Migration
         $team->name = 'Administradores';
         $team->personal_team = 1;
         $team->save();
+        $team = new Team();
+        $team->user_id = 1;
+        $team->name = 'Supervisores';
+        $team->personal_team = 1;
+        $team->save();
+        /*
+        $team->create([
+            'user_id' => 1,
+            'name' => 'Administradores',
+            'personal_team' => 1
+        ]);
+        $team->create([
+            'user_id' => 1,
+            'name' => 'Supervisores',
+            'personal_team' => 1
+        ]);
+        $team->create([
+            'user_id' => 1,
+            'name' => 'Compras',
+            'personal_team' => 1
+        ]);
+        $team->create([
+            'user_id' => 1,
+            'name' => 'Ventas',
+            'personal_team' => 1
+        ]);
+        */
+
+        
     }
 
     /**

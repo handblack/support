@@ -21,7 +21,7 @@
             <div class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">Identificador</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="nombre.apellido" value="{{ old('name',$row->name) }}" required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Identificador del Equipo" value="{{ old('name',$row->name) }}" required>
                 </div>
             </div>
  

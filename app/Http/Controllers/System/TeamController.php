@@ -38,20 +38,16 @@ class TeamController extends Controller{
             'isactive' => 'required',
         ]);
         $row = new Team();
-        $row->name = $request->name;
-        $row->isactive = $request->isactive;
+        $row->fill($request->all());
+        $row->user_id = 1;
+        $row->personal_team = 0;
+        $row->save();
         return redirect(route('teams.index'))->with('message','Registro Creado');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        session(['select_team_id' => $id]);
+        return view('master.teamgrant');
     }
 
     /**
