@@ -4,15 +4,18 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use App\Models\WhProduct;
 use App\Models\WhLine;
 use App\Models\WhSubLine;
 use App\Models\WhFamily;
 use App\Models\WhUm;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 class ProductController extends Controller{
     private $items = 40; 
+    private $module = 'master.product';
     public function index(Request $request){
         $result = WhProduct::select(
                 'wh_products.*',
@@ -23,10 +26,18 @@ class ProductController extends Controller{
             ->leftJoin('wh_users','wh_users.id','wh_products.updated_by')
             ->paginate($this->items); 
         $result->appends(['q' => $request->q]);
-        return view('master.product',[
-            'result' => $result,
-            'q' => $request->q,
-        ]);
+        
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isgrant=='Y'){
+            return view('master.product',[
+                'result' => $result,
+                'q' => $request->q,
+                'grant' => $grant
+            ]);
+        }else{
+            return view('error',['grant' => $grant]);
+        }
+        
     }
 
     public function create(){

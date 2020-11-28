@@ -47,7 +47,7 @@ class TeamController extends Controller{
 
     public function show($id){
         session(['select_team_id' => $id]);
-        return view('master.teamgrant');
+        return redirect(route('teamgrant.index')); 
     }
 
     /**

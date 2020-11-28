@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\System\UserController;
 use App\Http\Controllers\System\TeamController;
+use App\Http\Controllers\System\TeamGrantController;
 
 use App\Http\Controllers\System\ProductController;
 use App\Http\Controllers\System\LineController;
@@ -69,6 +70,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::resource('/system/users',UserController::class);
     Route::resource('/system/teams',TeamController::class);
+    Route::resource('/system/teamgrant',TeamGrantController::class);
+
 
     Route::resource('/master/product',ProductController::class);
     Route::resource('/master/product/barcode',BarCodeController::class);

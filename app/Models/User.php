@@ -9,6 +9,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -59,4 +60,13 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+ 
+    public function getId(){
+        return $this->id;
+    }
+
+    public function grant($module = ''){
+        return DB::select('CALL sp_grant(?,?)',[$this->current_team_id,$module])[0]; 
+    }
+    
 }

@@ -6,17 +6,17 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-list"></i> Gestor de Lineas</h3>
+            <h3 class="card-title"><strong>{{ $team->name }}</strong></h3>
 
             <div class="card-tools">
-                <form action="{{ route('line.index') }}" method="GET" style="margin:0px;padding:0px;">
+                <form action="{{ route('teamgrant.index') }}" method="GET" style="margin:0px;padding:0px;">
                     @csrf
                     <div class="input-group input-group-sm" style="width: 350px;">
                         <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            <a href="{{ route('line.index') }}" class="btn btn-default"><i class="fas fa-sync"></i> Actualizar </a>
-                            <a href="{{ route('line.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
+                            <a href="{{ route('teamgrant.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
+                            <a href="{{ route('teamgrant.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
                         </div>
                     </div>
                 </form>
@@ -28,23 +28,32 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Descripcion</th>
+                        <th>Nombre</th>
+                        <th>Modulo</th>
+                        <th>G-CRUD</th>
                         <th>Estado</th>
                         <th>Accion</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($result as $item)
-                            <form action="{{ route('line.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
+                            <form action="{{ route('teamgrant.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr>
-                                    <td width="150">{{ $item->id }}</td>
-                                    <td>{{ $item->linename }}</td>
+                                    <td width="150">{{ $item->name }}</td>
+                                    <td>{{ $item->module }}</td>
+                                    <td>
+                                        {{ $item->isgrant }}
+                                        {{ $item->iscreate }}
+                                        {{ $item->isread }}
+                                        {{ $item->isupdate }}
+                                        {{ $item->isdelete }}
+                                    </td>                                        
                                     <td>{{ $item->isactive }}</td>
                                     <td width="80">
                                     
                                         @method('delete')
                                         @csrf
-                                        <a href="{{ route('line.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
+                                        <a href="{{ route('teamgrant.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
                                         <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
                                     </td>
                                 </tr>
