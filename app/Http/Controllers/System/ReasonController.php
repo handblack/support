@@ -3,16 +3,23 @@
 namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\WhReason;
 
 class ReasonController extends Controller
 {
     private $items = 40;
+    private $module = 'master.reason';
     public function index(Request $request){
         $result = WhReason::where('reasonname','LIKE',"%{$request->q}%")
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
+
+        // Opciones de seguridad
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'isgrant']);}
+
         return view('master.reason',[
             'result' => $result,
             'q' => $request->q,

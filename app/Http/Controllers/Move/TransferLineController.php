@@ -13,6 +13,7 @@ use App\Models\WhUm;
 
 class TransferLineController extends Controller{
     private $items = 40;
+    private $module = 'move.transfer.line';
     public function index(Request $request){
         $token = session('output_token');
 

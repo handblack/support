@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class ParamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $module = 'master.param';
     public function index()
     {
         //

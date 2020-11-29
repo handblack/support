@@ -13,6 +13,7 @@ use App\Models\WhUm;
 
 class OutputLineController extends Controller{
     private $items = 40;
+    private $module = 'move.output.line';
     public function index(Request $request){
         if(!session()->has('output_token')){
             return redirect(route('output.create'));

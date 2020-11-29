@@ -3,16 +3,23 @@
 namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\WhWarehouse;
 
 class WarehouseController extends Controller
 {
     private $items = 40;
+    private $module = 'master.warehouse';
     public function index(Request $request){
         $result = WhWarehouse::where('warehousename','LIKE',"%{$request->q}%")
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
+        
+        // Opciones de seguridad
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'isgrant']);}
+
         return view('master.warehouse',[
             'result' => $result,
             'q' => $request->q,

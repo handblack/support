@@ -8,6 +8,7 @@ use App\Models\Team;
 
 class TeamController extends Controller{
     private $items = 40; 
+    private $module = 'master.team';
     public function index(Request $request){
         $q = str_replace(' ','%',$request->q);
         $result = Team::where('name','LIKE',"{$q}%")

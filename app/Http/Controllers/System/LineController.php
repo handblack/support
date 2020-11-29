@@ -4,14 +4,21 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\WhLine;
 
 class LineController extends Controller{
     private $items = 40;
+    private $module = 'master.product.line';
     public function index(Request $request){   
         $result = WhLine::where('linename','LIKE',"%{$request->q}%")
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
+
+        // Opciones de seguridad
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'isgrant']);}
+
         return view('master.line',[
             'result' => $result,
             'q' => $request->q,

@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class DocTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $module = 'master.doctype';
     public function index()
     {
         //

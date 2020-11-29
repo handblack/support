@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Move;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\WhProduction;
 use App\Models\WhWarehouse;
@@ -10,10 +11,16 @@ use App\Models\WhWarehouse;
 class ProductionController extends Controller
 {
     private $items = 40;
+    private $module = 'move.production';
     public function index(Request $request){
         $result = WhProduction::where('datetrx','LIKE',"%{$request->q}%")
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
+
+        // Opciones de seguridad
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'isgrant']);}
+
         return view('move.production',[
             'result' => $result,
             'q' => $request->q,

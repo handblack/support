@@ -10,6 +10,7 @@ class WhProduct extends Model
     use HasFactory;
     protected $fillable = [
         'sku',
+        'productcode',
         'productname',
         'shortname',
         'line_id',

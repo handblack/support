@@ -7,16 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\WhTeamGrant;
 use App\Models\Team;
-
 use Illuminate\Support\Facades\DB;
 
 class TeamGrantController extends Controller{
     private $items = 40; 
     private $module = 'team.grant';
-    private $grant = null;
-    public function __construct(){
-        $this->grant = DB::select(DB::raw('CALL sp_grant(?,?,?)',[Auth::id(), $this->module]));
-    }
     public function index(Request $request){
         $q = str_replace(' ','%',$request->q);
         $team = Team::find(session('select_team_id'));
@@ -24,6 +19,7 @@ class TeamGrantController extends Controller{
             ->where('name','LIKE',"{$q}%")
             ->paginate($this->items); 
         $result->appends(['q' => $request->q]);
+
         return view('master.teamgrant',[
             'team' => $team,
             'result' => $result,

@@ -14,6 +14,7 @@ use App\Models\WhWarehouse;
 class InputLineController extends Controller
 {
     private $items = 40;
+    private $module = 'move.input.line';
     public function index(Request $request){
         if(!session()->has('input_token')){
             return redirect(route('input.create'));

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class BankController extends Controller{
     private $items = 40;
+    private $module = 'master.bank';
     public function index(Request $request){
         $result = WhBank::where('bankname','LIKE',"%{$request->q}%")
             ->paginate($this->items);

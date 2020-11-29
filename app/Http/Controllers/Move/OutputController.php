@@ -13,6 +13,7 @@ use PDF;
 
 class OutputController extends Controller{
     private $items = 40;
+    private $module = 'move.output';
     public function index(Request $request){
         $q = str_replace(' ','%',$request->q).'%';
         $result = WhMoutput::select('wh_moutputs.*',
@@ -30,6 +31,11 @@ class OutputController extends Controller{
             ->leftJoin('wh_users','wh_users.id','=','wh_moutputs.created_by')
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
+
+        // Opciones de seguridad
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'isgrant']);}
+        
         return view('move.output',[
             'result' => $result,
             'q' => $request->q,

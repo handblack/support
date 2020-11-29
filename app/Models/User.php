@@ -66,7 +66,7 @@ class User extends Authenticatable
     }
 
     public function grant($module = ''){
-        return DB::select('CALL sp_grant(?,?)',[$this->current_team_id,$module])[0]; 
+        return DB::select('CALL sp_grant(?,?,?)',[$this->id, $this->current_team_id, $module])[0]; 
     }
     
 }

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class EntregadosController extends Controller{
     private $items = 40;
+    private $module = 'master.bank.delivered';
     public function index(Request $request){
         $q = str_replace(' ','%',$request->q).'%';
         $result = WhBankDelivered::select('wh_bank_delivered.*',

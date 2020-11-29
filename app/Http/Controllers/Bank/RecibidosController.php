@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class RecibidosController extends Controller{
     private $items = 40;
+    private $module = 'master.bank.received';
     public function index(Request $request){
         $q = str_replace(' ','%',$request->q).'%';
         $result = WhBankReceived::select('wh_bank_received.*',
