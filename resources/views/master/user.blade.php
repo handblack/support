@@ -48,7 +48,11 @@
                         @foreach($result as $item)
                             <form action="{{ route('users.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr>
-                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->name }}
+                                        @if($item->isadmin=='Y')
+                                            <small class="badge badge-success"><i class="fas fa-crown"></i> admin</small>
+                                        @endif
+                                    </td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->teamname }}</td>
                                     <td>{{ $item->isactive }}</td>

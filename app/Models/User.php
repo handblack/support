@@ -22,20 +22,10 @@ class User extends Authenticatable
 
     protected $table = 'wh_users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -43,20 +33,10 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = [
         'profile_photo_url',
     ];
@@ -66,7 +46,11 @@ class User extends Authenticatable
     }
 
     public function grant($module = ''){
-        return DB::select('CALL sp_grant(?,?,?)',[$this->id, $this->current_team_id, $module])[0]; 
+        //$grant = DB::select('CALL sp_grant(?,?,?)',[$this->id, $this->current_team_id, $module])[0]; 
+        //dd($grant);
+        //return view('error',['grant' => $grant,'action'=>'isgrant']);
+        //
+        return  DB::select('CALL sp_grant(?,?,?)',[$this->id, $this->current_team_id, $module])[0]; 
     }
     
 }

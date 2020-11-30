@@ -11,7 +11,7 @@ use App\Models\WhFamily;
 use App\Models\WhUm;
 
 use Illuminate\Support\Facades\Auth;
- 
+
 
 class ProductController extends Controller{
     private $items = 40; 
@@ -29,7 +29,7 @@ class ProductController extends Controller{
 
         // Opciones de seguridad
         $grant = Auth::user()->grant($this->module);
-        if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'isgrant']);}
+        if($grant->isgrant == 'N'){ return view('error',['grant' => $grant,'action'=>'isgrant']);}
 
         return view('master.product',[
             'result' => $result,
@@ -71,7 +71,15 @@ class ProductController extends Controller{
     }
  
     public function edit($id){
-        $row = WhProduct::findOrFail($id);
+        $row = WhProduct::select('wh_products.*',
+                                'wh_lines.linename',
+                                'wh_sublines.sublinename',
+                                'wh_families.familyname')
+            ->leftJoin('wh_lines','wh_lines.id','wh_products.line_id')
+            ->leftJoin('wh_sublines','wh_sublines.id','wh_products.subline_id')
+            ->leftJoin('wh_families','wh_families.id','wh_products.family_id')
+            ->find($id);
+        //$row = WhProduct::findOrFail($id);
         $lines = WhLine::all();
         $sublines = WhSubLine::all();
         $families = WhFamily::all();
@@ -88,13 +96,12 @@ class ProductController extends Controller{
 
     public function update(Request $request, $id){
         $request->validate([
-            'productcode' => [
-                                'required',                                 
-                            ],
+            'productcode' => 'required',                                 
             'productname' => 'required',
             'um_id'     => 'required',
 
         ]);
+        //dd($request);
         // -------------------------------------------
         $grant = Auth::user()->grant($this->module);
         if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'isupdate']);}
@@ -106,12 +113,16 @@ class ProductController extends Controller{
     }
 
     public function destroy($id){
-        // #########################################################################################
         $grant = Auth::user()->grant($this->module);
-        if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'isdelete']);}
-        // #########################################################################################
-        $row = WhProduct::find($id);
-        $row->delete();
-        return back()->with('message','Se elimino correctamente');
+        if($grant->isupdate == 'N'){ 
+            return response()->json(['status' => FALSE,'message' => 'No tienes permiso para eliminar']);
+        }
+        try {
+            $row = WhProduct::findOrFail($id);
+            $row->delete();
+        } catch(\Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => FALSE,'message' => $e->getMessage()]);
+        }
+        return response()->json(['status' => TRUE,'message' => "Se elimino el registro #{$row->id}"]);
     }
 }

@@ -11,9 +11,7 @@ class WhProduct extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-    
+    public function up(){
         Schema::create('wh_products', function (Blueprint $table) {
             $table->id();
             $table->string('productcode',20);
@@ -22,9 +20,18 @@ class WhProduct extends Migration
             $table->string('sku',20)->nullable();
             $table->string('ean',20)->nullable();
             $table->enum('isactive',['Y','N']);
-            $table->foreignId('line_id')->nullable();
-            $table->foreignId('subline_id')->nullable();
-            $table->foreignId('family_id')->nullable();
+            $table->foreignId('line_id')
+                ->nullable()
+                ->references('id')
+                ->on('wh_lines');
+            $table->foreignId('subline_id')
+                ->nullable()
+                ->references('id')
+                ->on('wh_sublines');
+            $table->foreignId('family_id')
+                ->nullable()
+                ->references('id')
+                ->on('wh_families');
             $table->foreignId('um_id')->nullable();
             $table->double('stk_min',15,6)->default(0);
             $table->double('stk_max',15,6)->default(0);
@@ -33,9 +40,8 @@ class WhProduct extends Migration
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
-        
     }
-
+ 
     /**
      * Reverse the migrations.
      *

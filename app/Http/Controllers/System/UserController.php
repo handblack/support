@@ -10,6 +10,7 @@ use App\Models\Team;
 
 class UserController extends Controller{
     private $items = 40; 
+    private $module = 'system.user';
     public function index(Request $request){
         $q = str_replace(' ','%',$request->q);
         $result = User::select(

@@ -73,10 +73,9 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer no-print">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.5
+      github <a href="https://github.com/handblack">нαи∂вℓαςк</a>
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
+    <strong>Grupo SBF Perú SAC.</strong>
   </footer>
 
   <!-- Control Sidebar -->
@@ -138,6 +137,7 @@
 
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte') }}/js/adminlte.js"></script>
+<script src="{{ asset('js/utility.js') }}"></script>
 <script>
   $('.query-product-engine-bnt').click(function(){
       var id = $('#query-product-code').val();

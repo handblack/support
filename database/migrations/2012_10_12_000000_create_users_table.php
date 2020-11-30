@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
         $user->name = 'admin';
         $user->email = 'soporte@miasoftware.net';
         $user->password = Hash::make('x5w93kra'); //$2y$10$aFV2AmoRLcra8vPXUt9awOi6xcCzevl4FEsRmzl0hTcWl.slB3Gw6
-        $user->isadmin = 'N';
+        $user->isadmin = 'Y';
         $user->current_team_id = 1;
         $user->save();        
     }

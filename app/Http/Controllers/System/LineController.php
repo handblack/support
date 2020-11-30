@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\WhLine;
 
+
 class LineController extends Controller{
     private $items = 40;
     private $module = 'master.product.line';
@@ -90,10 +91,18 @@ class LineController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $row = WhLine::find($id);
-        $row->delete();
-        return back()->with('message','Se elimino correctamente');
+    public function destroy($id){
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isupdate == 'N'){ 
+            return response()->json(['status' => FALSE,'message' => 'No tienes permiso para eliminar']);
+            //return view('error',['grant' => $grant,'action'=>'isdelete']);
+        }
+        try {
+            $row = WhLine::findOrFail($id);
+            $row->delete();
+        } catch(\Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => FALSE,'message' => $e->getMessage()]);
+        }
+        return response()->json(['status' => TRUE,'message' => "Se elimino el registro #{$row->id}"]);
     }
 }

@@ -7,7 +7,7 @@
 @section('container')
 
 @if($mode == 'new') 
-<form class="form-horizontal" action="{{ route('product.store') }}" method="POST">
+<form class="form-horizontal needs-validation was-validated" action="{{ route('product.store') }}" method="POST" novalidate>
     <input type="hidden" name="created_by" value="{{ Auth::id() }}">
 @elseif($mode == 'edit')
 <form class="form-horizontal" action="{{ route('product.update',$row->id) }}" method="POST">
@@ -49,9 +49,11 @@
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-4 col-form-label">Linea</label>
                             <div class="col-sm-8">
-                                <select name="line_id" id="line_id" class="form-control select2-line">
-                                    @if($row->line)
-                                        <option value="{{ $row->line->line_id }}" selected>{{ $row->line->linename }}</option>
+                                <select name="line_id" id="line_id" class="form-control select2-line" required>
+                                    @if($mode=='new')
+                                        <option>-- SELECCIONE --</option>
+                                    @else
+                                        <option value="{{ $row->line_id }}" selected>{{ $row->linename }}</option>
                                     @endif
                                 </select>
                             </div>
@@ -60,9 +62,11 @@
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-4 col-form-label">Sub Linea</label>
                             <div class="col-sm-8">
-                                <select name="subline_id" id="subline_id" class="form-control select2-subline">
-                                    @if($row->subline)
-                                        <option value="{{ $row->subline->subline_id }}" selected>{{ $row->subline->sublinename }}</option>
+                                <select name="subline_id" id="subline_id" class="form-control select2-subline" required>
+                                    @if($mode=='new')
+                                        <option>-- SELECCIONE --</option>
+                                    @else
+                                        <option value="{{ $row->subline_id }}" selected>{{ $row->sublinename }}</option>
                                     @endif
                                 </select>
                             </div>
@@ -71,14 +75,15 @@
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-4 col-form-label">Familia</label>
                             <div class="col-sm-8">
-                                <select name="family_id" id="family_id" class="form-control select2-family">
-                                    @if($row->family)
-                                        <option value="{{ $row->family->family_id }}" selected>{{ $row->family->familyname }}</option>
+                                <select name="family_id" id="family_id" class="form-control select2-family" required>
+                                    @if($mode=='new')
+                                        <option>-- SELECCIONE --</option>
+                                    @else
+                                        <option value="{{ $row->family_id }}" selected>{{ $row->familyname }}</option>
                                     @endif
                                 </select>
                             </div>
                         </div>  
-
                     </div>
                     <!-- /.Columa UNO -->
                     <!-- Columa DOS -->

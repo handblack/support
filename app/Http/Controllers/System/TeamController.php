@@ -3,28 +3,28 @@
 namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Team;
 
 class TeamController extends Controller{
     private $items = 40; 
-    private $module = 'master.team';
+    private $module = 'system.team';
     public function index(Request $request){
         $q = str_replace(' ','%',$request->q);
         $result = Team::where('name','LIKE',"{$q}%")
             ->paginate($this->items); 
         $result->appends(['q' => $request->q]);
+         // Opciones de seguridad
+         $grant = Auth::user()->grant($this->module);
+         if($grant->isgrant == 'N'){ return view('error',['grant' => $grant,'action'=>'isgrant']);}
+ 
         return view('master.team',[
             'result' => $result,
             'q' => $request->q,
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('master.team_form',[
@@ -51,12 +51,6 @@ class TeamController extends Controller{
         return redirect(route('teamgrant.index')); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id){
         $row = Team::findOrFail($id);
         return view('master.team_form',[
@@ -77,12 +71,6 @@ class TeamController extends Controller{
         return redirect(route('teams.index'))->with('message','Se actualizo correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $row = Team::find($id);

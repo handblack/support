@@ -49,6 +49,10 @@ class BPartnerController extends Controller
         $request->validate([
             'bpartnername' => 'required'
         ]);
+        // -------------------------------------------
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'iscreate']);}
+
         $row = new WhBpartner();
         $row->create($request->all());
         return redirect(route('bpartner.index'))->with('message','Se creo el registro!');
@@ -93,22 +97,27 @@ class BPartnerController extends Controller
         $request->validate([
             'bpartnername' => 'required'
         ]);
+        // -------------------------------------------
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isupdate == 'N'){ return view('error',['grant' => $grant,'action'=>'isupdate']);}
+        
         $row = WhBpartner::find($id);
         $row->fill($request->all());
         $row->save();
         return redirect(route('bpartner.index'))->with('message','Se actualizo correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $row = WhBpartner::find($id);
-        $row->delete();
-        return back()->with('message','Se elimino correctamente');
+    public function destroy($id){
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isupdate == 'N'){ 
+            return response()->json(['status' => FALSE,'message' => 'No tienes permiso para eliminar']);
+        }
+        try {
+            $row = WhBpartner::findOrFail($id);
+            $row->delete();
+        } catch(\Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => FALSE,'message' => $e->getMessage()]);
+        }
+        return response()->json(['status' => TRUE,'message' => "Se elimino el registro #{$row->id}"]);
     }
 }

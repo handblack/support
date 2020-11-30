@@ -24,6 +24,10 @@ class WhProduct extends Model
         'updated_by',
     ];
     /* Vinculamos la relacion */
+    public function family(){
+        return $this->hasOne('App\Models\WhFamily', 'id');
+    }
+    
     public function line(){
         return $this->hasOne('App\Models\WhLine', 'id');        
     }
@@ -32,7 +36,4 @@ class WhProduct extends Model
         return $this->hasOne('App\Models\WhSubLine', 'id');
     }
 
-    public function family(){
-        return $this->hasOne('App\Models\WhFamily', 'id');
-    }
 }

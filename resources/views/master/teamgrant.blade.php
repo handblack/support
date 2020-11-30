@@ -8,18 +8,14 @@
             <div class="card-header">
             <h3 class="card-title"><strong>{{ $team->name }}</strong></h3>
 
-            <div class="card-tools">
-                <form action="{{ route('teamgrant.index') }}" method="GET" style="margin:0px;padding:0px;">
-                    @csrf
-                    <div class="input-group input-group-sm" style="width: 350px;">
-                        <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
+            <div class="card-tools float-right">
+                    <div class="input-group input-group-sm" style="width: 190px;">
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            <a href="{{ route('teamgrant.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
-                            <a href="{{ route('teamgrant.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo </a>
+                            <a href="{{ route('teamgrant.index') }}" class="btn btn-default"><i class="fas fa-sync"></i> Actualizar</a>
+                            <a href="{{ route('teams.index') }}" class="btn btn-default"><i class="fas fa-arrow-circle-left"></i> Regresar </a>
                         </div>
                     </div>
-                </form>
+              
             </div>
             </div>
             <!-- /.card-header -->
@@ -27,53 +23,72 @@
                 <table class="table table-hover text-nowrap table-sm table-borderless" data-toggle="dataTable" data-form="deleteForm">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
                         <th>Modulo</th>
-                        <th>G-CRUD</th>
-                        <th>Estado</th>
-                        <th>Accion</th>
+                        <th class="text-center">Acceso</th>
+                        <th class="text-center">Crear</th>
+                        <th class="text-center">Leer</th>
+                        <th class="text-center">Modificar</th>
+                        <th class="text-center">Eliminar</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($result as $item)
-                            <form action="{{ route('teamgrant.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
+                            <form action="{{ route('teamgrant.update',$item->id) }}" method="POST" name="form-grant-{{ $item->id }}" id="form-grant-{{ $item->id }}">
+                                @csrf
+                                @method('put')
                                 <tr>
-                                    <td width="150">{{ $item->name }}</td>
-                                    <td>{{ $item->module }}</td>
-                                    <td>
-                                        {{ $item->isgrant }}
-                                        {{ $item->iscreate }}
-                                        {{ $item->isread }}
-                                        {{ $item->isupdate }}
-                                        {{ $item->isdelete }}
-                                    </td>                                        
-                                    <td>{{ $item->isactive }}</td>
+                                    <td width="150" style="border-right:1px solid #dcdcdc;">{{ $item->module }}</td>
+                                    <td width="80" class="text-center">
+                                        <div class="custom-control custom-switch" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="isgrant" id="grant-{{ $item->id }}" {{ ($item->isgrant=='Y')? 'checked' : '' }}>
+                                            <label class="custom-control-label" for="grant-{{ $item->id }}"></label>
+                                        </div>
+                                    </td>
+                                    <td width="80" class="text-center">
+                                        <div class="custom-control custom-switch" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="iscreate" id="create-{{ $item->id }}" {{ ($item->iscreate=='Y')? 'checked' : '' }}>
+                                            <label class="custom-control-label" for="create-{{ $item->id }}"></label>
+                                        </div>
+                                    </td>
+                                    <td width="80" class="text-center">
+                                        <div class="custom-control custom-switch" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="isread" id="read-{{ $item->id }}" {{ ($item->isread=='Y')? 'checked' : '' }}>
+                                            <label class="custom-control-label" for="read-{{ $item->id }}"></label>
+                                        </div>
+                                    </td>
+                                    <td width="80" class="text-center">
+                                        <div class="custom-control custom-switch" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="isupdate" id="update-{{ $item->id }}" {{ ($item->isupdate=='Y')? 'checked' : '' }}>
+                                            <label class="custom-control-label" for="update-{{ $item->id }}"></label>
+                                        </div>
+                                    </td>
+                                    <td width="80" class="text-center">
+                                        <div class="custom-control custom-switch" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="isdelete" id="delete-{{ $item->id }}" {{ ($item->isdelete=='Y')? 'checked' : '' }}>
+                                            <label class="custom-control-label" for="delete-{{ $item->id }}"></label>
+                                        </div>
+                                    </td>                                     
                                     <td width="80">
                                     
-                                        @method('delete')
-                                        @csrf
-                                        <a href="{{ route('teamgrant.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
-                                        <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
+                           
+                                        <button type="submit" class="btn btn-default btn-sm"><i class="fas fa-save"></i> Guardar</button>
+                                        
                                     </td>
                                 </tr>
                             </form>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>  
-                                <div class="card-title">
-                                
-                                </div>
-                            </td>
-                        </tr>
-                    </tfoot>
+                    
                 </table>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                {{ $result->links('layouts.paginate') }}
+        
+                <div class="float-right">
+                    <a href="{{ route('teams.index') }}" class="btn btn-default"><i class="fas fa-arrow-circle-left"></i> Regresar </a>
+                </div>
+                   
             </div>
         </div>
       <!-- /.card -->
@@ -81,42 +96,31 @@
 </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Confirmacion de eliminar</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <p>Estas seguro, quieres eliminar?</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="delete-btn"> Eliminar</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal"> Cancelar</button>
-        </div>
-      </div>
-    </div>
-</div>
-<!-- /.Modal -->
-
  
 @endsection
 
 @section('script')
 <script>
-$(document).ready(function () {
-    $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
-        e.preventDefault();
-        var $form=$(this);
-        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
-                .on('click', '#delete-btn', function(){
-                    $form.submit();
-                });
-    });
+
+$(document).on("submit", "form", function(event)
+{
+    event.preventDefault();        
+    $.ajax({
+        url: $(this).attr("action"),
+        type: $(this).attr("method"),
+        dataType: "JSON",
+        data: new FormData(this),
+        processData: false,
+        contentType: false,
+        success: function (data, status){
+            toastr.success(data.message)
+        },
+        error: function (xhr, desc, err)
+        {
+            alert('error');
+
+        }
+    });        
 });
 </script>
 @endsection

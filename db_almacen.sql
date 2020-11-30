@@ -43,45 +43,45 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4531 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4857 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
 insert  into `migrations`(`id`,`migration`,`batch`) values 
-(4497,'2012_10_12_000000_create_users_table',1),
-(4498,'2013_05_21_100000_create_teams_table',1),
-(4499,'2014_10_12_100000_create_password_resets_table',1),
-(4500,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),
-(4501,'2019_08_19_000000_create_failed_jobs_table',1),
-(4502,'2019_12_14_000001_create_personal_access_tokens_table',1),
-(4503,'2020_05_21_200000_create_team_user_table',1),
-(4504,'2020_11_02_053654_wh_currency',1),
-(4505,'2020_11_02_055432_wh_warehouse',1),
-(4506,'2020_11_02_083324_create_sessions_table',1),
-(4507,'2020_11_02_084430_wh_line',1),
-(4508,'2020_11_02_084439_wh_sub_line',1),
-(4509,'2020_11_02_084448_wh_family',1),
-(4510,'2020_11_02_084519_wh_bar_code',1),
-(4511,'2020_11_02_084601_wh_reason',1),
-(4512,'2020_11_02_084649_wh_product',1),
-(4513,'2020_11_02_084657_wh_minput',1),
-(4514,'2020_11_02_084709_wh_minput_line',1),
-(4515,'2020_11_02_084724_wh_moutput',1),
-(4516,'2020_11_02_084732_wh_moutput_line',1),
-(4517,'2020_11_02_084800_wh_transfer',1),
-(4518,'2020_11_02_084807_wh_transfer_line',1),
-(4519,'2020_11_02_084845_wh_production',1),
-(4520,'2020_11_02_084852_wh_production_line',1),
-(4521,'2020_11_03_204500_wh_um',1),
-(4522,'2020_11_04_061934_wh_bpartner',1),
-(4523,'2020_11_04_154442_wh_temp',1),
-(4524,'2020_11_09_002024_wh_stock',1),
-(4525,'2020_11_09_144528_wh_bank',1),
-(4526,'2020_11_09_152223_bank_received',1),
-(4527,'2020_11_09_152344_bank_delivered',1),
-(4528,'2020_11_10_003507_wh_doc_type',1),
-(4529,'2020_11_26_050021_create_wh_team_grants_table',1),
-(4530,'2022_11_10_004346_wh_param',1);
+(4823,'2012_10_12_000000_create_users_table',1),
+(4824,'2013_05_21_100000_create_teams_table',1),
+(4825,'2014_10_12_100000_create_password_resets_table',1),
+(4826,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),
+(4827,'2019_08_19_000000_create_failed_jobs_table',1),
+(4828,'2019_12_14_000001_create_personal_access_tokens_table',1),
+(4829,'2020_05_21_200000_create_team_user_table',1),
+(4830,'2020_11_02_053654_wh_currency',1),
+(4831,'2020_11_02_055432_wh_warehouse',1),
+(4832,'2020_11_02_083324_create_sessions_table',1),
+(4833,'2020_11_02_084430_wh_line',1),
+(4834,'2020_11_02_084439_wh_sub_line',1),
+(4835,'2020_11_02_084448_wh_family',1),
+(4836,'2020_11_02_084519_wh_bar_code',1),
+(4837,'2020_11_02_084601_wh_reason',1),
+(4838,'2020_11_02_084649_wh_product',1),
+(4839,'2020_11_02_084657_wh_minput',1),
+(4840,'2020_11_02_084709_wh_minput_line',1),
+(4841,'2020_11_02_084724_wh_moutput',1),
+(4842,'2020_11_02_084732_wh_moutput_line',1),
+(4843,'2020_11_02_084800_wh_transfer',1),
+(4844,'2020_11_02_084807_wh_transfer_line',1),
+(4845,'2020_11_02_084845_wh_production',1),
+(4846,'2020_11_02_084852_wh_production_line',1),
+(4847,'2020_11_03_204500_wh_um',1),
+(4848,'2020_11_04_061934_wh_bpartner',1),
+(4849,'2020_11_04_154442_wh_temp',1),
+(4850,'2020_11_09_002024_wh_stock',1),
+(4851,'2020_11_09_144528_wh_bank',1),
+(4852,'2020_11_09_152223_bank_received',1),
+(4853,'2020_11_09_152344_bank_delivered',1),
+(4854,'2020_11_10_003507_wh_doc_type',1),
+(4855,'2020_11_26_050021_create_wh_team_grants_table',1),
+(4856,'2022_11_10_004346_wh_param',1);
 
 /*Table structure for table `password_resets` */
 
@@ -136,7 +136,7 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('QXDjxKnlYFhN5CIW4cQ6SPlYguKqUFjVp1khmcIV',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36','YTo2OntzOjY6Il90b2tlbiI7czo0MDoiZVhkNjUxOWVkdVdFd01Mb2tIZ1B6SVFEU2ZxeVRJOGlBVEg5Z2FQeiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly9hbG1hY2VuLmxvY2FsaG9zdC9tYXN0ZXIvcHJvZHVjdCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCQ2VWRaWjJJS2VNenAxRTNYd0F6RWhlSlZYdnU0bXRtM09QTGhETEJYc2sud1cvZlNiNnczLiI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkNlVkWloySUtlTXpwMUUzWHdBekVoZUpWWHZ1NG10bTNPUExoRExCWHNrLndXL2ZTYjZ3My4iO30=',1606548528);
+('yNgbdq0YSE6T24zl3GUdN9ZrL9VM2EMq0I7zvR6l',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36','YTo4OntzOjY6Il90b2tlbiI7czo0MDoiTThISTkwcmJ4RGhma211VmRhT2xUS21CczdKR0FpMUFDSnBmcHNUTyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM0OiJodHRwOi8vYWxtYWNlbi5sb2NhbGhvc3QvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGxiYzFmekJtTjhMaXJySjk5YkU0dS56YWF3WVpMWllKblVob3RvWTAzWUJ0aFVZSVdpUy5lIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRsYmMxZnpCbU44TGlycko5OWJFNHUuemFhd1laTFpZSm5VaG90b1kwM1lCdGhVWUlXaVMuZSI7czoxNDoic2VsZWN0X3RlYW1faWQiO3M6MToiMiI7fQ==',1606695934);
 
 /*Table structure for table `team_user` */
 
@@ -185,9 +185,9 @@ CREATE TABLE `wh_bank_delivered` (
 /*Data for the table `wh_bank_delivered` */
 
 insert  into `wh_bank_delivered`(`id`,`datetrx`,`amount`,`exchange`,`bpartner_id`,`currency_id`,`bank_id`,`doctype`,`documentno`,`office`,`observation`,`created_at`,`updated_at`) values 
-(1,'2020-11-17',300.55,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL),
-(2,'2020-11-20',320.45,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL),
-(3,'2020-11-21',117.5,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL);
+(1,'2020-11-19',300.55,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL),
+(2,'2020-11-22',320.45,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL),
+(3,'2020-11-23',117.5,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_bank_received` */
 
@@ -219,10 +219,10 @@ CREATE TABLE `wh_bank_received` (
 /*Data for the table `wh_bank_received` */
 
 insert  into `wh_bank_received`(`id`,`datetrx`,`amount`,`exchange`,`bpartner_id`,`currency_id`,`bank_id`,`doctype`,`documentno`,`office`,`observation`,`created_at`,`updated_at`) values 
-(1,'2020-11-12',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL),
-(2,'2020-11-14',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL),
-(3,'2020-11-17',3200,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL),
-(4,'2020-11-19',1500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL);
+(1,'2020-11-14',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL),
+(2,'2020-11-16',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL),
+(3,'2020-11-19',3200,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL),
+(4,'2020-11-21',1500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_banks` */
 
@@ -343,12 +343,15 @@ CREATE TABLE `wh_lines` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `wh_lines` */
 
 insert  into `wh_lines`(`id`,`linename`,`isactive`,`created_at`,`updated_at`) values 
-(1,'TELA ACABADA','Y',NULL,NULL);
+(1,'TELA ACABADA','Y',NULL,NULL),
+(2,'iuhyfr','Y','2020-11-29 23:36:08','2020-11-29 23:36:35'),
+(3,'ppooiyiuyo','Y','2020-11-29 23:36:14','2020-11-29 23:36:14'),
+(4,'plplokokijiju','Y','2020-11-29 23:49:59','2020-11-29 23:49:59');
 
 /*Table structure for table `wh_minput_lines` */
 
@@ -402,8 +405,8 @@ CREATE TABLE `wh_minputs` (
 /*Data for the table `wh_minputs` */
 
 insert  into `wh_minputs`(`id`,`datetrx`,`token`,`reason_id`,`bpartner_id`,`warehouse_id`,`currency_id`,`grandqty`,`grandamount`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
-(1,'2020-11-15','',NULL,1,1,NULL,0.000000,1446.000000,'Y',NULL,NULL,NULL,NULL),
-(2,'2020-11-20','',NULL,1,1,NULL,0.000000,4761.190000,'Y',NULL,NULL,NULL,NULL);
+(1,'2020-11-17','',NULL,1,1,NULL,0.000000,1446.000000,'Y',NULL,NULL,NULL,NULL),
+(2,'2020-11-22','',NULL,1,1,NULL,0.000000,4761.190000,'Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_moutput_lines` */
 
@@ -457,8 +460,8 @@ CREATE TABLE `wh_moutputs` (
 /*Data for the table `wh_moutputs` */
 
 insert  into `wh_moutputs`(`id`,`datetrx`,`token`,`reason_id`,`bpartner_id`,`warehouse_id`,`currency_id`,`grandqty`,`grandamount`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
-(1,'2020-11-16','',NULL,1,1,NULL,0.000000,780.000000,'Y',NULL,NULL,NULL,NULL),
-(2,'2020-11-22','',NULL,1,1,NULL,0.000000,980.100000,'Y',NULL,NULL,NULL,NULL);
+(1,'2020-11-18','',NULL,1,1,NULL,0.000000,780.000000,'Y',NULL,NULL,NULL,NULL),
+(2,'2020-11-24','',NULL,1,1,NULL,0.000000,980.100000,'Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_param` */
 
@@ -1153,7 +1156,7 @@ CREATE TABLE `wh_stock` (
 /*Data for the table `wh_stock` */
 
 insert  into `wh_stock`(`id`,`stock`,`product_id`,`warehouse_id`,`created_at`,`updated_at`) values 
-(1,377.200004,5,1,'2020-11-27 22:53:23','2020-11-27 22:53:24');
+(1,377.200004,5,1,'2020-11-29 18:32:35','2020-11-29 18:32:35');
 
 /*Table structure for table `wh_sublines` */
 
@@ -1180,9 +1183,9 @@ DROP TABLE IF EXISTS `wh_team_grants`;
 
 CREATE TABLE `wh_team_grants` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `module` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `team_id` bigint(20) unsigned NOT NULL,
   `isgrant` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
   `iscreate` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
@@ -1193,15 +1196,47 @@ CREATE TABLE `wh_team_grants` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `wh_team_grants` */
 
 insert  into `wh_team_grants`(`id`,`name`,`module`,`url`,`team_id`,`isgrant`,`iscreate`,`isread`,`isupdate`,`isdelete`,`isactive`,`created_at`,`updated_at`) values 
-(1,'','fdafds','',0,'N','N','N','N','N','N',NULL,NULL),
-(2,'','asdfadsf','',0,'N','N','N','N','N','N',NULL,NULL),
-(3,'','','',0,'N','N','N','N','N','N',NULL,NULL),
-(4,'','master.product','',1,'N','N','N','N','N','N',NULL,NULL);
+(1,'','system.user',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(2,'','system.team',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(3,'','system.team.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(4,'','master.bpartner',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(5,'','master.product',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(6,'','master.product.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(7,'','master.product.subline',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(8,'','master.product.family',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(9,'','master.product.barcode',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(10,'','master.product.reason',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(11,'','move.input',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(12,'','move.input.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(13,'','move.output',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(14,'','move.output.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(15,'','move.transfer',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(16,'','move.transfer.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(17,'','move.production',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(18,'','move.production.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
+(19,'system.user','system.user',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(20,'system.team','system.team',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(21,'system.team.line','system.team.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(22,'master.bpartner','master.bpartner',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(23,'master.product','master.product',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(24,'master.product.line','master.product.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(25,'master.product.subline','master.product.subline',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(26,'master.product.family','master.product.family',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(27,'master.product.barcode','master.product.barcode',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(28,'master.product.reason','master.product.reason',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(29,'move.input','move.input',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(30,'move.input.line','move.input.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(31,'move.output','move.output',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(32,'move.output.line','move.output.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(33,'move.transfer','move.transfer',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(34,'move.transfer.line','move.transfer.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(35,'move.production','move.production',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
+(36,'move.production.line','move.production.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06');
 
 /*Table structure for table `wh_teams` */
 
@@ -1222,8 +1257,8 @@ CREATE TABLE `wh_teams` (
 /*Data for the table `wh_teams` */
 
 insert  into `wh_teams`(`id`,`user_id`,`name`,`personal_team`,`isactive`,`created_at`,`updated_at`) values 
-(1,1,'Administradores',1,'Y','2020-11-28 03:53:21','2020-11-28 03:53:21'),
-(2,1,'Supervisores',1,'Y','2020-11-28 03:53:21','2020-11-28 03:53:21');
+(1,1,'Administradores',1,'Y','2020-11-29 23:32:33','2020-11-29 23:32:33'),
+(2,1,'Supervisores',1,'Y','2020-11-29 23:32:33','2020-11-29 23:32:33');
 
 /*Table structure for table `wh_temp` */
 
@@ -1310,6 +1345,7 @@ CREATE TABLE `wh_users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `current_team_id` bigint(20) unsigned DEFAULT NULL,
   `profile_photo_path` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `isadmin` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -1319,8 +1355,8 @@ CREATE TABLE `wh_users` (
 
 /*Data for the table `wh_users` */
 
-insert  into `wh_users`(`id`,`name`,`email`,`email_verified_at`,`password`,`two_factor_secret`,`two_factor_recovery_codes`,`remember_token`,`current_team_id`,`profile_photo_path`,`isactive`,`created_at`,`updated_at`) values 
-(1,'admin','soporte@miasoftware.net',NULL,'$2y$10$6UdZZ2IKeMzp1E3XwAzEheJVXvu4mtm3OPLhDLBXsk.wW/fSb6w3.',NULL,NULL,'GWPvAWguK4JMtiFFANxXFZ1hajPaqSnj5j5DdiF90U7TawZLP1JQ53j81RfV',1,NULL,'Y','2020-11-28 03:53:21','2020-11-28 03:53:21');
+insert  into `wh_users`(`id`,`name`,`email`,`email_verified_at`,`password`,`two_factor_secret`,`two_factor_recovery_codes`,`remember_token`,`current_team_id`,`profile_photo_path`,`isadmin`,`isactive`,`created_at`,`updated_at`) values 
+(1,'admin','soporte@miasoftware.net',NULL,'$2y$10$lbc1fzBmN8LirrJ99bE4u.zaawYZLZYJnUhotoY03YBthUYIWiS.e',NULL,NULL,NULL,1,NULL,'Y','Y','2020-11-29 23:32:33','2020-11-29 23:32:33');
 
 /*Table structure for table `wh_warehouses` */
 
@@ -2052,9 +2088,10 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE PROCEDURE `sp_grant`(p_team_id bigint,p_module varchar(100))
+/*!50003 CREATE PROCEDURE `sp_grant`(p_user_id bigint,p_team_id bigint,p_module varchar(100))
 BEGIN
 	set @flag = 0;
+	set @IsAdmin = 'N';
 	set @response = 'N';
 	-- declare flag int DEFAULT 0;
 	-- declare @response char(1) DEFAULT 'N';
@@ -2066,17 +2103,30 @@ BEGIN
 						team_id = p_team_id
 						AND module = p_module
 				);
+	set @IsAdmin = (
+					SELECT isadmin
+					from wh_users
+					WHERE wh_users.id = p_user_id
+				);
 	if @flag = 0 then
 		INSERT INTO wh_team_grants(team_id,module) values (p_team_id,p_module);
 	end if;
 	-- Recuperamos el registro
-	select module,isgrant, iscreate,isread,isupdate,isdelete,isactive 
-	-- into @isgrant,@iscreate,@isread,@isupdate,@isdelete,@isactive 
-	FROM wh_team_grants
-	where team_id = p_team_id
-		AND module = p_module;
-	-- verificamos el tipo de accion para responder el grant
-	-- SELECT *;
+	if @IsAdmin = 'Y' then
+		SELECT p_module as module,
+				'Y' as isgrant, 
+				'Y' AS iscreate,
+				'Y' AS isread,
+				'Y' AS isupdate,
+				'Y' AS isdelete,
+				'Y' AS isactive; 	
+	else
+		SELECT module, isgrant, iscreate, isread, isupdate, isdelete, isactive 
+		FROM wh_team_grants
+		WHERE team_id = p_team_id
+			AND module = p_module;
+	end if;
+	
 		
 END */$$
 DELIMITER ;
