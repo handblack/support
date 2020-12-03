@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 
-@section('style')
+@section('style') 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('container')
 <!-- Informacion de la cabecera -->
 @if($mode == 'new') 
-<form class="form-horizontal" action="{{ route('received.store') }}" method="POST">
+<form class="form-horizontal needs-validation was-validated" action="{{ route('received.store') }}" method="POST" novalidate>
 @elseif($mode == 'edit')
-<form class="form-horizontal" action="{{ route('received.update',$row->id) }}" method="POST">
+<form class="form-horizontal needs-validation was-validated" action="{{ route('received.update',$row->id) }}" method="POST" novalidate>
     <input type="hidden" name="_method" value="put">
 @endif    
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -78,7 +78,7 @@
                                         @endforeach
                                     </select>
                                     <div class="input-group-prepend" style="width:160px;">
-                                        <input type="text" name="amount" id="amount" class="form-control text-right" placeholder="Importe" value="{{ old('amount',$row->amount) }}">
+                                        <input type="text" name="amount" id="amount" class="form-control text-right" placeholder="Importe" value="{{ old('amount',$row->amount) }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-4 col-form-label">Tipo de Cambio</label>
                             <div class="col-sm-5">
-                                <input type="text" name="exchange" id="exchange" value="{{ number_format(old('exchange',$row->exchange),3) }}" class="form-control text-right">
+                                <input type="text" name="exchange" id="exchange" value="{{ number_format(old('exchange',$row->exchange),3) }}" class="form-control text-right" required>
                             </div>
                         </div>
 

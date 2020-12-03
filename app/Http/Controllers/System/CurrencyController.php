@@ -4,23 +4,39 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\WhCurrency;
+use Illuminate\Support\Facades\Auth;
 
 class CurrencyController extends Controller
 {
     private $module = 'master.currency';
-    public function index()
-    {
-        //
+    private $items = 40; 
+    public function index(Request $request){
+        $result = WhCurrency::paginate($this->items); 
+        $result->appends(['q' => $request->q]);
+
+        // Opciones de seguridad
+        $grant = Auth::user()->grant($this->module);
+        if($grant->isgrant == 'N'){ return view('error',['grant' => $grant,'action'=>'isgrant']);}
+
+        return view('master.currency',[
+            'result' => $result,
+            'q' => $request->q,
+            'grant' => $grant
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function create()
     {
-        //
+        return view('master.currency_form',[
+            'mode' => 'new',
+            'row' => new WhCurrency(),
+        ]);
     }
 
     /**
@@ -53,7 +69,12 @@ class CurrencyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $row = WhCurrency::find($id);
+
+        return view('master.currency_form',[
+            'mode' => 'edit',
+            'row' => $row,
+        ]);
     }
 
     /**

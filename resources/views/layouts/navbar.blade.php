@@ -1,15 +1,35 @@
-<nav class="main-header navbar navbar-expand navbar-primary navbar-dark"  >
+<nav class="main-header navbar navbar-expand-lg navbar-primary navbar-dark"  >
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+        <li class="nav-item d-none d-sm-inline-block active">
+            <a href="index3.html" class="nav-link">
+                <i class="fas fa-circle"></i> Punto de Venta
+            </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">Compras</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Logistica</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Bancos</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              POS Ventas
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Caja 0001</a>
+              <a class="dropdown-item" href="#">Caja 002</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Gestor de CAJA</a>
+            </div>
+        </li>
+
     </ul>
   
    

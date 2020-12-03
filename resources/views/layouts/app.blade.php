@@ -88,6 +88,37 @@
 
 
 
+
+
+<!-- Modal 
+    Punto de Venta
+-->
+<div class="modal fade" id="ticket-bug-create" tabindex="-1" role="dialog" aria-labelledby="modal-pos" aria-hidden="true">
+  <form  method="POST" id="ticket-form-bug" name="ticket-form-bug">
+    <input type="hidden" name="name" value="{{ Auth::user()->name }}">
+    <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-bug"></i> Reportar Bug</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea id="ticket-message" name="ticket_message" required></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="ticket-form-button-submit"><i class="fas fa-share-square"></i> Reportar</button>
+            </div>
+        </div>
+    </div>
+  </form>
+</div>
+<!-- ./Modal -->
+
+
 <!-- Modal -->
 <div class="modal fade" id="ticket-bug-create" tabindex="-1" role="dialog" aria-labelledby="ticket-bug-create" aria-hidden="true">
   <form  method="POST" id="ticket-form-bug" name="ticket-form-bug">
@@ -112,7 +143,7 @@
     </div>
   </form>
 </div>
-
+<!-- ./Modal -->
 
 <!-- jQuery -->
 <script src="{{ asset('plugins') }}/jquery/jquery.min.js"></script>

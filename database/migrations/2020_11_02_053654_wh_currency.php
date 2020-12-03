@@ -18,7 +18,9 @@ class WhCurrency extends Migration
             $table->id();
             $table->string('currencyname',05);
             $table->string('isoname',5);
-            $table->string('symbol',5);
+            $table->string('prefix',5)->nullable();
+            $table->string('suffix',5)->nullable();
+            $table->string('symbol',5)->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->timestamps();
         });

@@ -44,6 +44,17 @@
                                 <i class="fas fa-users-cog nav-icon"></i><p>Equipos</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('sequencer.index') }}" class="nav-link {{ request()->is('system/sequencer*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>Series SUNAT</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('delivered.index') }}" class="nav-link {{ request()->is('bank/pos*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-coins"></i>
+                                <p>Configuracion POS</p>
+                            </a>
+                        </li>
                         
                     </ul>
                 </li>
@@ -154,6 +165,7 @@
                         </li>
                     </ul>
                 </li>    
+
                 <li class="nav-item has-treeview {{ request()->is('bank*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('bank*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cash-register"></i>
@@ -175,7 +187,21 @@
                         
                     </ul>
                 </li> 
-              
+            
+                <li class="nav-item has-treeview {{ request()->is('report*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('report*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>Reportes<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('received.index') }}" class="nav-link {{ request()->is('report/received*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-coins"></i>
+                                <p>Arqueo de Caja</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
             <li class="nav-header">CONSULTAS RAPIDAS</li>
