@@ -34,6 +34,8 @@ class BankReceived extends Migration
             $table->string('documentno',20)->nullable();
             $table->string('office',50)->nullable();
             $table->string('observation',100)->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

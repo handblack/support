@@ -26,6 +26,8 @@ class WhStock extends Migration
                 ->references('id')
                 ->on('wh_warehouses');
             //$table->unique('product_id', 'warehouse_id');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
         DB::statement('ALTER TABLE `db_almacen`.`wh_stock`  ADD UNIQUE INDEX `warehouse_id` (`product_id`, `warehouse_id`)');

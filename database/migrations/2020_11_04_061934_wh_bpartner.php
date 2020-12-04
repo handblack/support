@@ -22,6 +22,8 @@ class WhBpartner extends Migration
             $table->enum('bpartnertype',['C','P'])->default('C');
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->double('creditline',15,6)->nullable()->default(0);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

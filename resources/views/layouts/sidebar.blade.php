@@ -50,11 +50,16 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('delivered.index') }}" class="nav-link {{ request()->is('bank/pos*') ? 'active' : '' }}">
+                            <a href="{{ route('delivered.index') }}" class="nav-link {{ request()->is('system/pos*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-coins"></i>
                                 <p>Configuracion POS</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('currency.index') }}" class="nav-link {{ request()->is('system/currency*') ? 'active' : '' }}">
+                                <i class="fas fa-coins nav-icon"></i><p>Divisa</p>
+                            </a>
+                        </li> 
                         
                     </ul>
                 </li>
@@ -101,11 +106,7 @@
                                 <i class="far fa-circle nav-icon"></i><p>Almacenes</p>
                             </a>
                         </li> 
-                        <li class="nav-item">
-                            <a href="{{ route('currency.index') }}" class="nav-link {{ request()->is('master/currency*') ? 'active' : '' }}">
-                                <i class="fas fa-coins nav-icon"></i><p>Divisa</p>
-                            </a>
-                        </li> 
+                       
                         <li class="nav-item">
                             <a href="{{ route('bank.index') }}" class="nav-link {{ request()->is('master/bank*') ? 'active' : '' }}">
                                 <i class="fas fa-coins nav-icon"></i><p>Cuenta Bancos</p>

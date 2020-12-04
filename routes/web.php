@@ -75,6 +75,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/system/teams',TeamController::class);
     Route::resource('/system/teamgrant',TeamGrantController::class);
     Route::resource('/system/sequencer',SequencerController::class);
+    Route::resource('/system/currency',CurrencyController::class);
     Route::resource('/profile',ProfileController::class);
 
 
@@ -86,7 +87,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/master/family',FamilyController::class);
     Route::resource('/master/um',UnitController::class);
     Route::resource('/master/reason',ReasonController::class);
-    Route::resource('/master/currency',CurrencyController::class);
     Route::resource('/master/warehouse',WarehouseController::class);
     Route::resource('/master/bank',BankController::class);
 

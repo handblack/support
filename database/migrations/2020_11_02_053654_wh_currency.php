@@ -22,6 +22,8 @@ class WhCurrency extends Migration
             $table->string('suffix',5)->nullable();
             $table->string('symbol',5)->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

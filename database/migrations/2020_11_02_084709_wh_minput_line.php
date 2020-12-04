@@ -29,6 +29,8 @@ class WhMinputLine extends Migration
             $table->double('price',15,6)->nullable()->default(0);
             $table->double('pack',15,6)->nullable();
             $table->double('grandline',15,6)->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

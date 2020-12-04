@@ -29,6 +29,8 @@ class WhMoutputLine extends Migration
             $table->float('price')->nullable()->default(0);
             $table->float('pack')->nullable();
             $table->float('grandline')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

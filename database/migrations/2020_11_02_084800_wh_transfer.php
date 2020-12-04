@@ -29,6 +29,8 @@ class WhTransfer extends Migration
             $table->foreignId('reason_id');
                 
             $table->enum('isactive',['Y','N'])->default('Y');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

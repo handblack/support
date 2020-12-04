@@ -11,6 +11,8 @@ class WhLine extends Migration{
             $table->id();
             $table->string('linename',200);
             $table->enum('isactive',['Y','N']);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

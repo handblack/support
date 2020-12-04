@@ -11,6 +11,8 @@ class WhSubLine extends Migration
             $table->id();
             $table->string('sublinename',100);
             $table->enum('isactive',['Y','N'])->default('Y');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

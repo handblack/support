@@ -19,6 +19,8 @@ class WhWarehouse extends Migration
             $table->string('warehousecode',50)->nullable();
             $table->string('ubigeo',10)->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

@@ -17,6 +17,8 @@ class WhDocType extends Migration
             $table->id();
             $table->string('doctypename',80);
             $table->enum('isactive',['Y','N'])->default('Y');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

@@ -15,9 +15,14 @@ class CreateWhSequencersTable extends Migration
     {
         Schema::create('wh_sequencers', function (Blueprint $table) {
             $table->id();
-            $table->string('sequencename',50);
+            $table->string('sequencername',50);
+            $table->string('serial',10);
+            $table->bigInteger('lastnumber')->default(0);
             $table->foreignId('doctype_id');
-            $table->enum('isactive',['Y','N'])->default('Y');
+            $table->enum('isfex',['Y','N'])->default('N');
+            $table->enum('isactive',['Y','N'])->default('Y'); 
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +34,8 @@ class CreateWhSequencersTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('wh_sequencers');
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -11,7 +11,7 @@ class SequencerController extends Controller{
     private $items = 40;
     private $module = 'system.sequencer';
     public function index(Request $request){   
-        $result = WhSequencer::where('sequencename','LIKE',"%{$request->q}%")
+        $result = WhSequencer::where('sequencername','LIKE',"%{$request->q}%")
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
 
@@ -34,7 +34,8 @@ class SequencerController extends Controller{
 
     public function store(Request $request){
         $request->validate([
-            'sequencename' => 'required'
+            'sequencername' => 'required',
+            'serial' => 'required'
         ]);
         $row = new WhSequencer();
         $row->create($request->all());

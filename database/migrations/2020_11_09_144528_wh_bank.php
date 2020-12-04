@@ -18,6 +18,8 @@ class WhBank extends Migration
             $table->string('bankname',200)->nullable();
             $table->bigInteger('currency_id')->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }
