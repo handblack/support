@@ -8,6 +8,7 @@ use App\Http\Controllers\System\TeamController;
 use App\Http\Controllers\System\TeamGrantController;
 use App\Http\Controllers\System\ProfileController;
 use App\Http\Controllers\System\SequencerController;
+use App\Http\Controllers\System\PosConfigController;
 
 
 use App\Http\Controllers\System\ProductController;
@@ -76,6 +77,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/system/teamgrant',TeamGrantController::class);
     Route::resource('/system/sequencer',SequencerController::class);
     Route::resource('/system/currency',CurrencyController::class);
+    Route::resource('/system/posconfig',PosConfigController::class);
     Route::resource('/profile',ProfileController::class);
 
 

@@ -17,7 +17,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="card card-primary card-outline">
         <div class="card-header">
-            <h3 class="card-title">Serie <strong>[@if($mode=='new') NUEVO @else MODIFICAR @endif]</strong></h3>
+            <h3 class="card-title"> Configuracion POS <strong>[@if($mode=='new') NUEVO @else MODIFICAR @endif]</strong></h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">

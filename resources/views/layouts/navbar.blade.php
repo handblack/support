@@ -18,6 +18,10 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Bancos</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+             
+            <a href="#" class="nav-link"><i class="fas fa-server"></i> FEX</a>
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               POS Ventas

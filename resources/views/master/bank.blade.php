@@ -6,7 +6,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-list"></i> Gestor de Lineas</h3>
+            <h3 class="card-title"><i class="fas fa-list"></i> Gestor de Banco / Caja</h3>
 
             <div class="card-tools">
                 <form action="{{ route('bank.index') }}" method="GET" style="margin:0px;padding:0px;">

@@ -43,45 +43,46 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4857 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5089 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
 insert  into `migrations`(`id`,`migration`,`batch`) values 
-(4823,'2012_10_12_000000_create_users_table',1),
-(4824,'2013_05_21_100000_create_teams_table',1),
-(4825,'2014_10_12_100000_create_password_resets_table',1),
-(4826,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),
-(4827,'2019_08_19_000000_create_failed_jobs_table',1),
-(4828,'2019_12_14_000001_create_personal_access_tokens_table',1),
-(4829,'2020_05_21_200000_create_team_user_table',1),
-(4830,'2020_11_02_053654_wh_currency',1),
-(4831,'2020_11_02_055432_wh_warehouse',1),
-(4832,'2020_11_02_083324_create_sessions_table',1),
-(4833,'2020_11_02_084430_wh_line',1),
-(4834,'2020_11_02_084439_wh_sub_line',1),
-(4835,'2020_11_02_084448_wh_family',1),
-(4836,'2020_11_02_084519_wh_bar_code',1),
-(4837,'2020_11_02_084601_wh_reason',1),
-(4838,'2020_11_02_084649_wh_product',1),
-(4839,'2020_11_02_084657_wh_minput',1),
-(4840,'2020_11_02_084709_wh_minput_line',1),
-(4841,'2020_11_02_084724_wh_moutput',1),
-(4842,'2020_11_02_084732_wh_moutput_line',1),
-(4843,'2020_11_02_084800_wh_transfer',1),
-(4844,'2020_11_02_084807_wh_transfer_line',1),
-(4845,'2020_11_02_084845_wh_production',1),
-(4846,'2020_11_02_084852_wh_production_line',1),
-(4847,'2020_11_03_204500_wh_um',1),
-(4848,'2020_11_04_061934_wh_bpartner',1),
-(4849,'2020_11_04_154442_wh_temp',1),
-(4850,'2020_11_09_002024_wh_stock',1),
-(4851,'2020_11_09_144528_wh_bank',1),
-(4852,'2020_11_09_152223_bank_received',1),
-(4853,'2020_11_09_152344_bank_delivered',1),
-(4854,'2020_11_10_003507_wh_doc_type',1),
-(4855,'2020_11_26_050021_create_wh_team_grants_table',1),
-(4856,'2022_11_10_004346_wh_param',1);
+(5054,'2012_10_12_000000_create_users_table',1),
+(5055,'2013_05_21_100000_create_teams_table',1),
+(5056,'2014_10_12_100000_create_password_resets_table',1),
+(5057,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),
+(5058,'2019_08_19_000000_create_failed_jobs_table',1),
+(5059,'2019_12_14_000001_create_personal_access_tokens_table',1),
+(5060,'2020_05_21_200000_create_team_user_table',1),
+(5061,'2020_11_02_053654_wh_currency',1),
+(5062,'2020_11_02_055432_wh_warehouse',1),
+(5063,'2020_11_02_083324_create_sessions_table',1),
+(5064,'2020_11_02_084430_wh_line',1),
+(5065,'2020_11_02_084439_wh_sub_line',1),
+(5066,'2020_11_02_084448_wh_family',1),
+(5067,'2020_11_02_084519_wh_bar_code',1),
+(5068,'2020_11_02_084601_wh_reason',1),
+(5069,'2020_11_02_084649_wh_product',1),
+(5070,'2020_11_02_084657_wh_minput',1),
+(5071,'2020_11_02_084709_wh_minput_line',1),
+(5072,'2020_11_02_084724_wh_moutput',1),
+(5073,'2020_11_02_084732_wh_moutput_line',1),
+(5074,'2020_11_02_084800_wh_transfer',1),
+(5075,'2020_11_02_084807_wh_transfer_line',1),
+(5076,'2020_11_02_084845_wh_production',1),
+(5077,'2020_11_02_084852_wh_production_line',1),
+(5078,'2020_11_03_204500_wh_um',1),
+(5079,'2020_11_04_061934_wh_bpartner',1),
+(5080,'2020_11_04_154442_wh_temp',1),
+(5081,'2020_11_09_002024_wh_stock',1),
+(5082,'2020_11_09_144528_wh_bank',1),
+(5083,'2020_11_09_152223_bank_received',1),
+(5084,'2020_11_09_152344_bank_delivered',1),
+(5085,'2020_11_10_003507_wh_doc_type',1),
+(5086,'2020_11_26_050021_create_wh_team_grants_table',1),
+(5087,'2020_12_03_024854_create_wh_sequencers_table',1),
+(5088,'2022_11_10_004346_wh_param',1);
 
 /*Table structure for table `password_resets` */
 
@@ -136,7 +137,7 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('yNgbdq0YSE6T24zl3GUdN9ZrL9VM2EMq0I7zvR6l',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36','YTo4OntzOjY6Il90b2tlbiI7czo0MDoiTThISTkwcmJ4RGhma211VmRhT2xUS21CczdKR0FpMUFDSnBmcHNUTyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM0OiJodHRwOi8vYWxtYWNlbi5sb2NhbGhvc3QvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGxiYzFmekJtTjhMaXJySjk5YkU0dS56YWF3WVpMWllKblVob3RvWTAzWUJ0aFVZSVdpUy5lIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRsYmMxZnpCbU44TGlycko5OWJFNHUuemFhd1laTFpZSm5VaG90b1kwM1lCdGhVWUlXaVMuZSI7czoxNDoic2VsZWN0X3RlYW1faWQiO3M6MToiMiI7fQ==',1606695934);
+('Dao6FfkTVnxarnwQVFIz6MKigDwZAvLOeySQDjIV',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36','YTo3OntzOjY6Il90b2tlbiI7czo0MDoiTXNvejRmWm9CeWVOeXV5N3Z3c3VhZmRUa3pGd1AxMWo0VDdRZ2tlMyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM4OiJodHRwOi8vYWxtYWNlbi5sb2NhbGhvc3QvYmFuay9yZWNlaXZlZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRuV1JteHdNTHduNzRDRk5KWllROTkuaGlsYUdJSXZHU1JhaVg5aWFyLjZwMk9odFJnWnpuZSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkbldSbXh3TUx3bjc0Q0ZOSlpZUTk5LmhpbGFHSUl2R1NSYWlYOWlhci42cDJPaHRSZ1p6bmUiO30=',1607050936);
 
 /*Table structure for table `team_user` */
 
@@ -171,6 +172,8 @@ CREATE TABLE `wh_bank_delivered` (
   `documentno` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `office` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `observation` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -184,10 +187,10 @@ CREATE TABLE `wh_bank_delivered` (
 
 /*Data for the table `wh_bank_delivered` */
 
-insert  into `wh_bank_delivered`(`id`,`datetrx`,`amount`,`exchange`,`bpartner_id`,`currency_id`,`bank_id`,`doctype`,`documentno`,`office`,`observation`,`created_at`,`updated_at`) values 
-(1,'2020-11-19',300.55,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL),
-(2,'2020-11-22',320.45,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL),
-(3,'2020-11-23',117.5,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL);
+insert  into `wh_bank_delivered`(`id`,`datetrx`,`amount`,`exchange`,`bpartner_id`,`currency_id`,`bank_id`,`doctype`,`documentno`,`office`,`observation`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'2020-11-23',300.55,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(2,'2020-11-26',320.45,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3,'2020-11-27',117.5,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_bank_received` */
 
@@ -205,6 +208,8 @@ CREATE TABLE `wh_bank_received` (
   `documentno` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `office` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `observation` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -218,11 +223,11 @@ CREATE TABLE `wh_bank_received` (
 
 /*Data for the table `wh_bank_received` */
 
-insert  into `wh_bank_received`(`id`,`datetrx`,`amount`,`exchange`,`bpartner_id`,`currency_id`,`bank_id`,`doctype`,`documentno`,`office`,`observation`,`created_at`,`updated_at`) values 
-(1,'2020-11-14',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL),
-(2,'2020-11-16',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL),
-(3,'2020-11-19',3200,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL),
-(4,'2020-11-21',1500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL);
+insert  into `wh_bank_received`(`id`,`datetrx`,`amount`,`exchange`,`bpartner_id`,`currency_id`,`bank_id`,`doctype`,`documentno`,`office`,`observation`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'2020-11-18',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(2,'2020-11-20',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3,'2020-11-23',3200,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(4,'2020-11-25',1500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_banks` */
 
@@ -233,6 +238,8 @@ CREATE TABLE `wh_banks` (
   `bankname` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `currency_id` bigint(20) DEFAULT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -240,9 +247,9 @@ CREATE TABLE `wh_banks` (
 
 /*Data for the table `wh_banks` */
 
-insert  into `wh_banks`(`id`,`bankname`,`currency_id`,`isactive`,`created_at`,`updated_at`) values 
-(1,'BCP SOLES',1,'Y',NULL,NULL),
-(2,'BBVA SOLES',2,'Y',NULL,NULL);
+insert  into `wh_banks`(`id`,`bankname`,`currency_id`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'BCP SOLES',1,'Y',NULL,NULL,NULL,NULL),
+(2,'BBVA SOLES',2,'Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_bpartners` */
 
@@ -257,6 +264,8 @@ CREATE TABLE `wh_bpartners` (
   `bpartnertype` enum('C','P') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'C',
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `creditline` double(15,6) DEFAULT 0.000000,
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -264,12 +273,12 @@ CREATE TABLE `wh_bpartners` (
 
 /*Data for the table `wh_bpartners` */
 
-insert  into `wh_bpartners`(`id`,`bpartnername`,`bpartnercode`,`shortname`,`documentno`,`bpartnertype`,`isactive`,`creditline`,`created_at`,`updated_at`) values 
-(1,'GRUPO SBF PERU SAC','C20606384387',NULL,NULL,'C','Y',0.000000,NULL,NULL),
-(2,'CLIENTE UNO SAC','C20123456789',NULL,NULL,'C','Y',0.000000,NULL,NULL),
-(3,'SIFUENTES LETELIER ELIZABETH','C10123456780',NULL,NULL,'C','Y',0.000000,NULL,NULL),
-(4,'TRICOT FINE SAC','C20000000001',NULL,NULL,'C','Y',0.000000,NULL,NULL),
-(5,'COMERCIAL PICHARA PERU SAC','P20602367615',NULL,NULL,'P','Y',0.000000,NULL,NULL);
+insert  into `wh_bpartners`(`id`,`bpartnername`,`bpartnercode`,`shortname`,`documentno`,`bpartnertype`,`isactive`,`creditline`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'GRUPO SBF PERU SAC','C20606384387',NULL,NULL,'C','Y',0.000000,NULL,NULL,NULL,NULL),
+(2,'CLIENTE UNO SAC','C20123456789',NULL,NULL,'C','Y',0.000000,NULL,NULL,NULL,NULL),
+(3,'SIFUENTES LETELIER ELIZABETH','C10123456780',NULL,NULL,'C','Y',0.000000,NULL,NULL,NULL,NULL),
+(4,'TRICOT FINE SAC','C20000000001',NULL,NULL,'C','Y',0.000000,NULL,NULL,NULL,NULL),
+(5,'COMERCIAL PICHARA PERU SAC','P20602367615',NULL,NULL,'P','Y',0.000000,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_currency` */
 
@@ -279,8 +288,12 @@ CREATE TABLE `wh_currency` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `currencyname` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isoname` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `symbol` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prefix` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `suffix` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `symbol` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -288,9 +301,9 @@ CREATE TABLE `wh_currency` (
 
 /*Data for the table `wh_currency` */
 
-insert  into `wh_currency`(`id`,`currencyname`,`isoname`,`symbol`,`isactive`,`created_at`,`updated_at`) values 
-(1,'SOLES','PEN','S/','Y',NULL,NULL),
-(2,'DOLAR','USD','$','Y',NULL,NULL);
+insert  into `wh_currency`(`id`,`currencyname`,`isoname`,`prefix`,`suffix`,`symbol`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'SOLES','PEN',NULL,NULL,'S/','Y',NULL,NULL,NULL,NULL),
+(2,'DOLAR','USD',NULL,NULL,'$','Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_doc_type` */
 
@@ -300,6 +313,8 @@ CREATE TABLE `wh_doc_type` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `doctypename` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -315,6 +330,8 @@ CREATE TABLE `wh_families` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `familyname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -322,15 +339,15 @@ CREATE TABLE `wh_families` (
 
 /*Data for the table `wh_families` */
 
-insert  into `wh_families`(`id`,`familyname`,`isactive`,`created_at`,`updated_at`) values 
-(1,'JER ALG OSC','Y',NULL,NULL),
-(2,'JER ALG CLARO','Y',NULL,NULL),
-(3,'JER ALG MEDIOS','Y',NULL,NULL),
-(4,'JER ALG BLANCO','Y',NULL,NULL),
-(5,'GAMUZA ALG OSC','Y',NULL,NULL),
-(6,'GAMUZA ALG CLARO','Y',NULL,NULL),
-(7,'GAMUZA ALG MEDIOS','Y',NULL,NULL),
-(8,'GAMUZA ALG BLANCO','Y',NULL,NULL);
+insert  into `wh_families`(`id`,`familyname`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'JER ALG OSC','Y',NULL,NULL,NULL,NULL),
+(2,'JER ALG CLARO','Y',NULL,NULL,NULL,NULL),
+(3,'JER ALG MEDIOS','Y',NULL,NULL,NULL,NULL),
+(4,'JER ALG BLANCO','Y',NULL,NULL,NULL,NULL),
+(5,'GAMUZA ALG OSC','Y',NULL,NULL,NULL,NULL),
+(6,'GAMUZA ALG CLARO','Y',NULL,NULL,NULL,NULL),
+(7,'GAMUZA ALG MEDIOS','Y',NULL,NULL,NULL,NULL),
+(8,'GAMUZA ALG BLANCO','Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_lines` */
 
@@ -340,18 +357,17 @@ CREATE TABLE `wh_lines` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `linename` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `wh_lines` */
 
-insert  into `wh_lines`(`id`,`linename`,`isactive`,`created_at`,`updated_at`) values 
-(1,'TELA ACABADA','Y',NULL,NULL),
-(2,'iuhyfr','Y','2020-11-29 23:36:08','2020-11-29 23:36:35'),
-(3,'ppooiyiuyo','Y','2020-11-29 23:36:14','2020-11-29 23:36:14'),
-(4,'plplokokijiju','Y','2020-11-29 23:49:59','2020-11-29 23:49:59');
+insert  into `wh_lines`(`id`,`linename`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'TELA ACABADA','Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_minput_lines` */
 
@@ -365,6 +381,8 @@ CREATE TABLE `wh_minput_lines` (
   `price` double(15,6) DEFAULT 0.000000,
   `pack` double(15,6) DEFAULT NULL,
   `grandline` double(15,6) DEFAULT NULL,
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -376,9 +394,9 @@ CREATE TABLE `wh_minput_lines` (
 
 /*Data for the table `wh_minput_lines` */
 
-insert  into `wh_minput_lines`(`id`,`minput_id`,`product_id`,`qty`,`price`,`pack`,`grandline`,`created_at`,`updated_at`) values 
-(1,1,5,120.500000,12.000000,NULL,1446.000000,NULL,NULL),
-(2,2,5,400.100000,11.900000,NULL,4761.190000,NULL,NULL);
+insert  into `wh_minput_lines`(`id`,`minput_id`,`product_id`,`qty`,`price`,`pack`,`grandline`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,1,5,120.500000,12.000000,NULL,1446.000000,NULL,NULL,NULL,NULL),
+(2,2,5,400.100000,11.900000,NULL,4761.190000,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_minputs` */
 
@@ -405,8 +423,8 @@ CREATE TABLE `wh_minputs` (
 /*Data for the table `wh_minputs` */
 
 insert  into `wh_minputs`(`id`,`datetrx`,`token`,`reason_id`,`bpartner_id`,`warehouse_id`,`currency_id`,`grandqty`,`grandamount`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
-(1,'2020-11-17','',NULL,1,1,NULL,0.000000,1446.000000,'Y',NULL,NULL,NULL,NULL),
-(2,'2020-11-22','',NULL,1,1,NULL,0.000000,4761.190000,'Y',NULL,NULL,NULL,NULL);
+(1,'2020-11-21','',NULL,1,1,NULL,0.000000,1446.000000,'Y',NULL,NULL,NULL,NULL),
+(2,'2020-11-26','',NULL,1,1,NULL,0.000000,4761.190000,'Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_moutput_lines` */
 
@@ -420,6 +438,8 @@ CREATE TABLE `wh_moutput_lines` (
   `price` double(8,2) DEFAULT 0.00,
   `pack` double(8,2) DEFAULT NULL,
   `grandline` double(8,2) DEFAULT NULL,
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -431,9 +451,9 @@ CREATE TABLE `wh_moutput_lines` (
 
 /*Data for the table `wh_moutput_lines` */
 
-insert  into `wh_moutput_lines`(`id`,`moutput_id`,`product_id`,`qty`,`price`,`pack`,`grandline`,`created_at`,`updated_at`) values 
-(1,1,5,62.40,12.50,NULL,780.00,NULL,NULL),
-(2,2,5,81.00,12.10,NULL,980.10,NULL,NULL);
+insert  into `wh_moutput_lines`(`id`,`moutput_id`,`product_id`,`qty`,`price`,`pack`,`grandline`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,1,5,62.40,12.50,NULL,780.00,NULL,NULL,NULL,NULL),
+(2,2,5,81.00,12.10,NULL,980.10,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_moutputs` */
 
@@ -460,8 +480,8 @@ CREATE TABLE `wh_moutputs` (
 /*Data for the table `wh_moutputs` */
 
 insert  into `wh_moutputs`(`id`,`datetrx`,`token`,`reason_id`,`bpartner_id`,`warehouse_id`,`currency_id`,`grandqty`,`grandamount`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
-(1,'2020-11-18','',NULL,1,1,NULL,0.000000,780.000000,'Y',NULL,NULL,NULL,NULL),
-(2,'2020-11-24','',NULL,1,1,NULL,0.000000,980.100000,'Y',NULL,NULL,NULL,NULL);
+(1,'2020-11-22','',NULL,1,1,NULL,0.000000,780.000000,'Y',NULL,NULL,NULL,NULL),
+(2,'2020-11-28','',NULL,1,1,NULL,0.000000,980.100000,'Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_param` */
 
@@ -494,6 +514,8 @@ CREATE TABLE `wh_productions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `datetrx` date NOT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -524,7 +546,13 @@ CREATE TABLE `wh_products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `wh_products_productcode_unique` (`productcode`)
+  UNIQUE KEY `wh_products_productcode_unique` (`productcode`),
+  KEY `wh_products_line_id_foreign` (`line_id`),
+  KEY `wh_products_subline_id_foreign` (`subline_id`),
+  KEY `wh_products_family_id_foreign` (`family_id`),
+  CONSTRAINT `wh_products_family_id_foreign` FOREIGN KEY (`family_id`) REFERENCES `wh_families` (`id`),
+  CONSTRAINT `wh_products_line_id_foreign` FOREIGN KEY (`line_id`) REFERENCES `wh_lines` (`id`),
+  CONSTRAINT `wh_products_subline_id_foreign` FOREIGN KEY (`subline_id`) REFERENCES `wh_sublines` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=582 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `wh_products` */
@@ -1121,6 +1149,8 @@ CREATE TABLE `wh_reasons` (
   `reasonname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `movetype` enum('IN','SA','TR','PR','ME') COLLATE utf8mb4_unicode_ci NOT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -1128,12 +1158,33 @@ CREATE TABLE `wh_reasons` (
 
 /*Data for the table `wh_reasons` */
 
-insert  into `wh_reasons`(`id`,`reasonname`,`movetype`,`isactive`,`created_at`,`updated_at`) values 
-(1,'COMPRA','IN','Y',NULL,NULL),
-(2,'VENTA','SA','Y',NULL,NULL),
-(3,'TRASLADO ENTRE ALMACENES','TR','Y',NULL,NULL),
-(4,'PRODUCCION','PR','Y',NULL,NULL),
-(5,'AJUSTE POR MERMA','ME','Y',NULL,NULL);
+insert  into `wh_reasons`(`id`,`reasonname`,`movetype`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'COMPRA','IN','Y',NULL,NULL,NULL,NULL),
+(2,'VENTA','SA','Y',NULL,NULL,NULL,NULL),
+(3,'TRASLADO ENTRE ALMACENES','TR','Y',NULL,NULL,NULL,NULL),
+(4,'PRODUCCION','PR','Y',NULL,NULL,NULL,NULL),
+(5,'AJUSTE POR MERMA','ME','Y',NULL,NULL,NULL,NULL);
+
+/*Table structure for table `wh_sequencers` */
+
+DROP TABLE IF EXISTS `wh_sequencers`;
+
+CREATE TABLE `wh_sequencers` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `sequencername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `serial` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastnumber` bigint(20) NOT NULL DEFAULT 0,
+  `doctype_id` bigint(20) unsigned NOT NULL,
+  `isfex` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
+  `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `wh_sequencers` */
 
 /*Table structure for table `wh_stock` */
 
@@ -1144,6 +1195,8 @@ CREATE TABLE `wh_stock` (
   `stock` double(15,6) NOT NULL DEFAULT 0.000000,
   `product_id` bigint(20) unsigned DEFAULT NULL,
   `warehouse_id` bigint(20) unsigned DEFAULT NULL,
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -1155,8 +1208,8 @@ CREATE TABLE `wh_stock` (
 
 /*Data for the table `wh_stock` */
 
-insert  into `wh_stock`(`id`,`stock`,`product_id`,`warehouse_id`,`created_at`,`updated_at`) values 
-(1,377.200004,5,1,'2020-11-29 18:32:35','2020-11-29 18:32:35');
+insert  into `wh_stock`(`id`,`stock`,`product_id`,`warehouse_id`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,377.200004,5,1,NULL,NULL,'2020-12-03 21:58:31','2020-12-03 21:58:31');
 
 /*Table structure for table `wh_sublines` */
 
@@ -1166,6 +1219,8 @@ CREATE TABLE `wh_sublines` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `sublinename` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -1173,9 +1228,9 @@ CREATE TABLE `wh_sublines` (
 
 /*Data for the table `wh_sublines` */
 
-insert  into `wh_sublines`(`id`,`sublinename`,`isactive`,`created_at`,`updated_at`) values 
-(1,'LAPICEROS TINTA SECA','Y',NULL,NULL),
-(2,'LAPICEROS TINTA GEL','Y',NULL,NULL);
+insert  into `wh_sublines`(`id`,`sublinename`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'LAPICEROS TINTA SECA','Y',NULL,NULL,NULL,NULL),
+(2,'LAPICEROS TINTA GEL','Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_team_grants` */
 
@@ -1196,47 +1251,31 @@ CREATE TABLE `wh_team_grants` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `wh_team_grants` */
 
 insert  into `wh_team_grants`(`id`,`name`,`module`,`url`,`team_id`,`isgrant`,`iscreate`,`isread`,`isupdate`,`isdelete`,`isactive`,`created_at`,`updated_at`) values 
-(1,'','system.user',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(2,'','system.team',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(3,'','system.team.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(4,'','master.bpartner',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(5,'','master.product',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(6,'','master.product.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(7,'','master.product.subline',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(8,'','master.product.family',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(9,'','master.product.barcode',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(10,'','master.product.reason',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(11,'','move.input',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(12,'','move.input.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(13,'','move.output',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(14,'','move.output.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(15,'','move.transfer',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(16,'','move.transfer.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(17,'','move.production',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(18,'','move.production.line',NULL,1,'N','N','N','N','N','N','2020-11-29 23:32:35','2020-11-29 23:32:35'),
-(19,'system.user','system.user',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(20,'system.team','system.team',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(21,'system.team.line','system.team.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(22,'master.bpartner','master.bpartner',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(23,'master.product','master.product',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(24,'master.product.line','master.product.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(25,'master.product.subline','master.product.subline',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(26,'master.product.family','master.product.family',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(27,'master.product.barcode','master.product.barcode',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(28,'master.product.reason','master.product.reason',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(29,'move.input','move.input',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(30,'move.input.line','move.input.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(31,'move.output','move.output',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(32,'move.output.line','move.output.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(33,'move.transfer','move.transfer',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(34,'move.transfer.line','move.transfer.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(35,'move.production','move.production',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06'),
-(36,'move.production.line','move.production.line',NULL,2,'N','N','N','N','N','N','2020-11-29 23:33:06','2020-11-29 23:33:06');
+(1,'','system.user',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(2,'','system.team',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(3,'','system.team.line',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(4,'','master.bpartner',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(5,'','master.product',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(6,'','master.product.line',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(7,'','master.product.subline',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(8,'','master.product.family',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(9,'','master.product.barcode',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(10,'','master.product.reason',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(11,'','move.input',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(12,'','move.input.line',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(13,'','move.output',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(14,'','move.output.line',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(15,'','move.transfer',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(16,'','move.transfer.line',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(17,'','move.production',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(18,'','move.production.line',NULL,1,'N','N','N','N','N','N','2020-12-04 02:58:30','2020-12-04 02:58:30'),
+(19,NULL,'system.sequencer',NULL,1,'N','N','N','N','N','N',NULL,NULL),
+(20,NULL,'master.currency',NULL,1,'N','N','N','N','N','N',NULL,NULL);
 
 /*Table structure for table `wh_teams` */
 
@@ -1257,8 +1296,8 @@ CREATE TABLE `wh_teams` (
 /*Data for the table `wh_teams` */
 
 insert  into `wh_teams`(`id`,`user_id`,`name`,`personal_team`,`isactive`,`created_at`,`updated_at`) values 
-(1,1,'Administradores',1,'Y','2020-11-29 23:32:33','2020-11-29 23:32:33'),
-(2,1,'Supervisores',1,'Y','2020-11-29 23:32:33','2020-11-29 23:32:33');
+(1,1,'Administradores',1,'Y','2020-12-04 02:58:28','2020-12-04 02:58:28'),
+(2,1,'Supervisores',1,'Y','2020-12-04 02:58:28','2020-12-04 02:58:28');
 
 /*Table structure for table `wh_temp` */
 
@@ -1283,6 +1322,8 @@ CREATE TABLE `wh_temp` (
   `grandline` double(15,6) DEFAULT NULL,
   `um_id` bigint(20) DEFAULT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -1300,6 +1341,8 @@ CREATE TABLE `wh_transfers` (
   `warehouse_id` bigint(20) unsigned DEFAULT NULL,
   `reason_id` bigint(20) unsigned NOT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -1319,6 +1362,8 @@ CREATE TABLE `wh_ums` (
   `shortname` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isoname` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -1326,9 +1371,9 @@ CREATE TABLE `wh_ums` (
 
 /*Data for the table `wh_ums` */
 
-insert  into `wh_ums`(`id`,`umname`,`shortname`,`isoname`,`isactive`,`created_at`,`updated_at`) values 
-(1,'KILOS','KG',NULL,'Y',NULL,NULL),
-(2,'UNIDADES','UND',NULL,'Y',NULL,NULL);
+insert  into `wh_ums`(`id`,`umname`,`shortname`,`isoname`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'KILOS','KG',NULL,'Y',NULL,NULL,NULL,NULL),
+(2,'UNIDADES','UND',NULL,'Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_users` */
 
@@ -1356,7 +1401,7 @@ CREATE TABLE `wh_users` (
 /*Data for the table `wh_users` */
 
 insert  into `wh_users`(`id`,`name`,`email`,`email_verified_at`,`password`,`two_factor_secret`,`two_factor_recovery_codes`,`remember_token`,`current_team_id`,`profile_photo_path`,`isadmin`,`isactive`,`created_at`,`updated_at`) values 
-(1,'admin','soporte@miasoftware.net',NULL,'$2y$10$lbc1fzBmN8LirrJ99bE4u.zaawYZLZYJnUhotoY03YBthUYIWiS.e',NULL,NULL,NULL,1,NULL,'Y','Y','2020-11-29 23:32:33','2020-11-29 23:32:33');
+(1,'admin','soporte@miasoftware.net',NULL,'$2y$10$nWRmxwMLwn74CFNJZYQ99.hilaGIIvGSRaiX9iar.6p2OhtRgZzne',NULL,NULL,'6VsPG1id6wgnaOO8OlbeouOw3GMHK9YnjVOQSJKiapTn6gLnbDwg0XEL5HbH',1,NULL,'Y','Y','2020-12-04 02:58:28','2020-12-04 02:58:28');
 
 /*Table structure for table `wh_warehouses` */
 
@@ -1368,6 +1413,8 @@ CREATE TABLE `wh_warehouses` (
   `warehousecode` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ubigeo` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` bigint(20) unsigned DEFAULT NULL,
+  `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -1375,13 +1422,13 @@ CREATE TABLE `wh_warehouses` (
 
 /*Data for the table `wh_warehouses` */
 
-insert  into `wh_warehouses`(`id`,`warehousename`,`warehousecode`,`ubigeo`,`isactive`,`created_at`,`updated_at`) values 
-(1,'ALMACEN PRINCIPAL','AP01',NULL,'Y',NULL,NULL),
-(2,'AREQUIPA','AR01',NULL,'Y',NULL,NULL),
-(3,'LIMA - LOS OLIVOS','LI01',NULL,'Y',NULL,NULL),
-(4,'LIMA - LA VICTORIA','LI02',NULL,'Y',NULL,NULL),
-(5,'LIMA - SAN BORJA','LI03',NULL,'Y',NULL,NULL),
-(6,'LIMA - INDEPENDENCIA','LI04',NULL,'Y',NULL,NULL);
+insert  into `wh_warehouses`(`id`,`warehousename`,`warehousecode`,`ubigeo`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'ALMACEN PRINCIPAL','AP01',NULL,'Y',NULL,NULL,NULL,NULL),
+(2,'AREQUIPA','AR01',NULL,'Y',NULL,NULL,NULL,NULL),
+(3,'LIMA - LOS OLIVOS','LI01',NULL,'Y',NULL,NULL,NULL,NULL),
+(4,'LIMA - LA VICTORIA','LI02',NULL,'Y',NULL,NULL,NULL,NULL),
+(5,'LIMA - SAN BORJA','LI03',NULL,'Y',NULL,NULL,NULL,NULL),
+(6,'LIMA - INDEPENDENCIA','LI04',NULL,'Y',NULL,NULL,NULL,NULL);
 
 /* Trigger structure for table `wh_minput_lines` */
 

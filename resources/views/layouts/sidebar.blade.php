@@ -50,8 +50,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('delivered.index') }}" class="nav-link {{ request()->is('system/pos*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-coins"></i>
+                            <a href="{{ route('posconfig.index') }}" class="nav-link {{ request()->is('system/pos*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
                                 <p>Configuracion POS</p>
                             </a>
                         </li>
