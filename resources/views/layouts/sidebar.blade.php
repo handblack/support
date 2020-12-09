@@ -137,7 +137,7 @@
                 <li class="nav-item has-treeview {{ request()->is('move*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('move*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-toolbox"></i>
-                        <p>Almacen<i class="right fas fa-angle-left"></i></p>
+                        <p>Logistica<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">

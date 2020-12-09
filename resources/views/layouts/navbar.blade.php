@@ -5,7 +5,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block active">
-            <a href="index3.html" class="nav-link">
+            <a href="{{ route('pos.run') }}" class="nav-link">
                 <i class="fas fa-circle"></i> Punto de Venta
             </a>
         </li>

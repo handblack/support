@@ -36,6 +36,11 @@ use App\Http\Controllers\Move\WastageController;
 use App\Http\Controllers\Move\TempController;
 use App\Http\Controllers\Move\QueryController;
 
+/* Controladores de POS */
+use App\Http\Controllers\Pos\PosController;
+
+
+
 /* Bancos */
 use App\Http\Controllers\Bank\RecibidosController;
 use App\Http\Controllers\Bank\EntregadosController;
@@ -110,7 +115,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/move/wastage',WastageController::class);
     Route::resource('/move/temp',WastageController::class);
     
-    
+    /* Punto de Venta  */
+    Route::get('/pos/invoice/create',[PosController::class,'pos_run'])->name('pos.run');
     /* Bancos */
     Route::resource('/bank/received',RecibidosController::class);
     Route::resource('/bank/delivered',EntregadosController::class);
