@@ -139,6 +139,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/ajax/search/reason/transfer',[AjaxController::class,'search_reason'])->name('ajax.search.reason.transfer');
     Route::post('/ajax/search/reason/production',[AjaxController::class,'search_reason'])->name('ajax.search.reason.production');
     Route::post('/ajax/search/reason/decrease',[AjaxController::class,'search_reason'])->name('ajax.search.reason.decrease');
+    Route::post('/ajax/search/sequencer',[AjaxController::class,'search_sequencer'])->name('ajax.search.sequencer');
 
     // Consulta de STOCK
     Route::get('/query/stock',[QueryController::class,'query_stock_live'])->name('query.stock');

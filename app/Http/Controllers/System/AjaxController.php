@@ -15,6 +15,7 @@ use App\Models\WhWarehouse;
 use App\Models\WhBpartner;
 use App\Models\WhCurrency;
 use App\Models\WhReason;
+use App\Models\WhSequencer;
 use App\Models\WhStock;
 
 class AjaxController extends Controller
@@ -86,6 +87,15 @@ class AjaxController extends Controller
         $q = str_replace(' ','%',$request->q).'%';
         $result = WhSubline::select('wh_sublines.id', DB::raw("CONCAT(wh_sublines.sublinename) as text"))
             ->where('wh_sublines.sublinename','LIKE',$q)
+            ->limit(20)
+            ->get();
+        return response()->json(['results' => $result]);
+    }
+    
+    public function search_sequencer(Request $request){
+        $q = str_replace(' ','%',$request->q).'%';
+        $result = WhSequencer::select('wh_sequencers.id', DB::raw("CONCAT(wh_sequencers.codsunat,' - ',wh_sequencers.sequencername) as text"))
+            ->where('wh_sequencers.sequencername','LIKE',$q)
             ->limit(20)
             ->get();
         return response()->json(['results' => $result]);

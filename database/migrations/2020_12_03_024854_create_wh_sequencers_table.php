@@ -17,6 +17,7 @@ class CreateWhSequencersTable extends Migration
             $table->id();
             $table->string('sequencername',50);
             $table->string('serial',10);
+            $table->string('codsunat',10)->nullable();
             $table->bigInteger('lastnumber')->default(0);
             $table->foreignId('doctype_id');
             $table->enum('isfex',['Y','N'])->default('N');
@@ -25,6 +26,7 @@ class CreateWhSequencersTable extends Migration
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**

@@ -31,10 +31,12 @@
                     <thead>
                     <tr>
                         <th>Identificador</th>
-                        <th>Documento</th>
-                        <th>Serie</th>
-                        <th>Ultimo</th>
-                        <th>FEX</th>
+                        <th>Almacen</th>
+                        <th>Secuenciador</th>
+                        <th>Ultimo Nro</th>
+                        <th>Stock</th>
+                        <th>Producto</th>
+                        <th>Socio</th>
                         <th>Estado</th>
                         <th>Accion</th>
                     </tr>
@@ -43,11 +45,13 @@
                         @foreach($result as $item)
                             <form action="{{ route('posconfig.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr id="form-field-{{ $item->id }}">
-                                    <td width="100">{{ $item->sequencename }}</td>
-                                    <td>{{ $item->serial }}</td>
-                                    <td>{{ $item->lastnumber }}</td>
-                                    <td>{{ $item->doctype_id }}</td>
-                                    <td>{{ $item->isfec }}</td>
+                                    <td width="100">{{ $item->posname }}</td>
+                                    <td>{{ $item->warehouse->warehousename }}</td>
+                                    <td>{{ $item->sequencer->sequencername }}</td>
+                                    <td>{{ $item->sequencer->lastnumber }}</td>
+                                    <td width="80" style="text-align: center;">{{ $item->ismovestock }}</td>
+                                    <td width="80" style="text-align: center;">{{ $item->iscreateproduct }}</td>
+                                    <td width="80" style="text-align: center;">{{ $item->iscreatebpartner }}</td>
                                     <td>{{ $item->isactive }}</td>
                                     <td width="80">
                                         <a href="{{ route('posconfig.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
@@ -69,6 +73,14 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+<script>
+    @if (\Session::has('message'))
+        toastr.info('{{ session('message') }}');
+    @endif
+</script>
 @endsection
 
  

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class WhDocType extends Model
 {
     use HasFactory;
+    protected $table = 'wh_doc_type';
 }

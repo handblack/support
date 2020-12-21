@@ -31,9 +31,10 @@
                     <thead>
                     <tr>
                         <th>Identificador</th>
-                        <th>Documento</th>
+                        <th>Tipo documento</th>
                         <th>Serie</th>
-                        <th>Ultimo</th>
+                        <th>SUNAT</th>
+                        <th class="text-right">Ultimo</th>
                         <th>FEX</th>
                         <th>Estado</th>
                         <th>Accion</th>
@@ -43,11 +44,12 @@
                         @foreach($result as $item)
                             <form action="{{ route('sequencer.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
                                 <tr id="form-field-{{ $item->id }}">
-                                    <td width="100">{{ $item->sequencename }}</td>
-                                    <td>{{ $item->serial }}</td>
-                                    <td>{{ $item->lastnumber }}</td>
-                                    <td>{{ $item->doctype_id }}</td>
-                                    <td>{{ $item->isfec }}</td>
+                                    <td >{{ $item->sequencername }}</td>
+                                    <td>{{ $item->doctypename }}</td>
+                                    <td width="80">{{ $item->serial }}</td>
+                                    <td width="80">{{ $item->codsunat }}</td>
+                                    <td width="50" class="text-right">{{ $item->lastnumber }}</td>
+                                    <td>{{ $item->isfex }}</td>
                                     <td>{{ $item->isactive }}</td>
                                     <td width="80">
                                         <a href="{{ route('sequencer.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 

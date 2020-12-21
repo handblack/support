@@ -24,50 +24,66 @@
             
                 <div class="row">
                     <!-- Columa UNO -->
-                    <div class="col-sm-8">
-                        <div class="form-group row">
-                            <label for="inputName" class="col-sm-4 col-form-label">identificador</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="sequencername" name="sequencername" placeholder="Identificador" value="{{ old('sequencername',$row->sequencername) }}"  required>
-                            </div>
-                        </div>        
-                    
-                        <div class="form-group row">
-                            <label for="inputName" class="col-sm-4 col-form-label">Serie</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="serial" name="serial" placeholder="Serie" value="{{ old('serial',$row->serial) }}"  required>
-                            </div>
-                        </div>        
-                    
-                             
+                    <div class="col-sm-7">
+                        
+                        
+                        
                         
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-4 col-form-label">Tipo Documento</label>
                             <div class="col-sm-8">
-                                <select name="line_id" id="line_id" class="form-control select2-line" required>
+                                <select name="doctype_id" id="doctype_id" class="form-control" required>
                                     @if($mode=='new')
-                                        <option>-- SELECCIONE --</option>
-                                    @else
-                                        <option value="{{ $row->line_id }}" selected>{{ $row->linename }}</option>
+                                        <option disabled selected></option>
                                     @endif
+                                    @foreach ($doctype as $item)
+                                        <option value="{{ $item->id }}" {{ ($item->id == $row->doctype_id ) ? 'selected' : '' }}>{{ $item->doctypename }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>        
+                        
+                        <div class="form-group row">
+                            <label for="inputName" class="col-sm-4 col-form-label">Identificador</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="sequencername" name="sequencername" placeholder="Identificador" value="{{ old('sequencername',$row->sequencername) }}"  required>
+                            </div>
+                        </div>  
 
+                        <div class="form-group row">
+                            <label for="inputName" class="col-sm-4 col-form-label">CodSunat</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="codsunat" name="codsunat" placeholder="CodSunat" value="{{ old('codsunat',$row->codsunat) }}" >
+                            </div>
+                        </div>        
        
                     </div>
                     <!-- /.Columa UNO -->
                     <!-- Columa DOS -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-5">
+                        <div class="form-group row">
+                            <label for="inputName" class="col-sm-5 col-form-label">Serie</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="serial" name="serial" placeholder="Serie" value="{{ old('serial',$row->serial) }}" maxlength="4" required>
+                            </div>
+                        </div>  
                        
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-5 col-form-label">Ultimo Emitido</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="lastnumber" name="lastnumber" placeholder="Ultimo Numero" required>
+                                <input type="number" class="form-control text-right" id="lastnumber" name="lastnumber" value="{{ old('lastnumber',$row->lastnumber) }}" placeholder="Ultimo Numero" required>
                             </div>
                         </div>  
 
-                   
+                        <div class="form-group row">
+                            <label for="inputName" class="col-sm-5 col-form-label">FEX</label>
+                            <div class="col-sm-7">
+                                <select name="isfex" id="isfex" class="form-control">
+                                    <option value="Y" @if($row->isfex=='Y') selected @endif>ACTIVO</option>
+                                    <option value="N" @if($row->isfex=='N') selected @endif>DESACTIVADO</option>
+                                </select>
+                            </div>
+                        </div> 
 
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-5 col-form-label">Estado</label>
@@ -126,8 +142,14 @@
             },
             minimumInputLength: 0
         });
-      
- 
+        
+        //Muestra los mensajes de error de validacion
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error('{{ $error }}');
+            @endforeach
+        @endif
+
          
       
         // Aqui configuramos los elementos select2

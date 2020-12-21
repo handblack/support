@@ -4,6 +4,7 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use App\Models\WhSequencer;
+use App\Models\WhDocType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +12,9 @@ class SequencerController extends Controller{
     private $items = 40;
     private $module = 'system.sequencer';
     public function index(Request $request){   
-        $result = WhSequencer::where('sequencername','LIKE',"%{$request->q}%")
+        $result = WhSequencer::select('wh_sequencers.*','wh_doc_type.doctypename')
+            ->join('wh_doc_type','wh_doc_type.id','wh_sequencers.doctype_id')
+            ->where('sequencername','LIKE',"%{$request->q}%")
             ->paginate($this->items);
         $result->appends(['q' => $request->q]);
 
@@ -28,14 +31,17 @@ class SequencerController extends Controller{
     public function create(){
         return view('system.sequencer_form',[
             'mode' => 'new',
+            'doctype' => WhDocType::all(),
             'row' => new WhSequencer(),
         ]);
     }
 
     public function store(Request $request){
         $request->validate([
+            'doctype_id' => 'required',
             'sequencername' => 'required',
-            'serial' => 'required'
+            'serial' => 'required|min:4|max:4',
+            'lastnumber' => 'required'
         ]);
         $row = new WhSequencer();
         $row->create($request->all());
@@ -63,6 +69,7 @@ class SequencerController extends Controller{
         $row = WhSequencer::find($id);
         return view('system.sequencer_form',[
             'mode' => 'edit',
+            'doctype' => WhDocType::all(),
             'row' => $row,
         ]);
     }
@@ -74,10 +81,12 @@ class SequencerController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         $request->validate([
-            'sequencename' => 'required'
+            'doctype_id' => 'required',
+            'sequencername' => 'required',
+            'serial' => 'required|min:4|max:4',
+            'lastnumber' => 'required'
         ]);
         $row = WhSequencer::find($id);
         $row->fill($request->all());

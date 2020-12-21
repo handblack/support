@@ -66,3 +66,10 @@
 </div>
 @endsection
 
+@section('script')
+<script>
+    @if (\Session::has('message'))
+        toastr.info('{{ session('message') }}');
+    @endif
+</script>
+@endsection
