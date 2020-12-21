@@ -185,24 +185,38 @@
                                 <p>Pagos Emitidos</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('delivered.index') }}" class="nav-link {{ request()->is('bank/allocation*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Asignación</p>
+                            </a>
+                        </li>
+                        
                         
                     </ul>
                 </li> 
-            
+
                 <li class="nav-item has-treeview {{ request()->is('report*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('report*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cash-register"></i>
+                        <i class="nav-icon fas fa-print"></i>
                         <p>Reportes<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('received.index') }}" class="nav-link {{ request()->is('report/received*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-coins"></i>
+                                <i class="nav-icon far fa-circle"></i>
                                 <p>Arqueo de Caja</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('received.index') }}" class="nav-link {{ request()->is('report/received*') ? 'active' : '' }}">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>Resumen de Ventas</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+            
 
 
             <li class="nav-header">CONSULTAS RAPIDAS</li>

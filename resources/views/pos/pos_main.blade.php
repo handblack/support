@@ -88,7 +88,7 @@
     <div class="card-body p-0">
         <div class="row">
             <!-- Cantidad -->
-            <div class="col-3" style="padding-right: 0px;">
+            <div class="col-4" style="padding-right: 0px;">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id=""><i class="fas fa-plus"></i> Cantidad</span>
