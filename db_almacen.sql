@@ -43,47 +43,47 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5125 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5749 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
 insert  into `migrations`(`id`,`migration`,`batch`) values 
-(5089,'2012_10_12_000000_create_users_table',1),
-(5090,'2013_05_21_100000_create_teams_table',1),
-(5091,'2014_10_12_100000_create_password_resets_table',1),
-(5092,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),
-(5093,'2019_08_19_000000_create_failed_jobs_table',1),
-(5094,'2019_12_14_000001_create_personal_access_tokens_table',1),
-(5095,'2020_05_21_200000_create_team_user_table',1),
-(5096,'2020_11_02_053654_wh_currency',1),
-(5097,'2020_11_02_055432_wh_warehouse',1),
-(5098,'2020_11_02_083324_create_sessions_table',1),
-(5099,'2020_11_02_084430_wh_line',1),
-(5100,'2020_11_02_084439_wh_sub_line',1),
-(5101,'2020_11_02_084448_wh_family',1),
-(5102,'2020_11_02_084519_wh_bar_code',1),
-(5103,'2020_11_02_084601_wh_reason',1),
-(5104,'2020_11_02_084649_wh_product',1),
-(5105,'2020_11_02_084657_wh_minput',1),
-(5106,'2020_11_02_084709_wh_minput_line',1),
-(5107,'2020_11_02_084724_wh_moutput',1),
-(5108,'2020_11_02_084732_wh_moutput_line',1),
-(5109,'2020_11_02_084800_wh_transfer',1),
-(5110,'2020_11_02_084807_wh_transfer_line',1),
-(5111,'2020_11_02_084845_wh_production',1),
-(5112,'2020_11_02_084852_wh_production_line',1),
-(5113,'2020_11_03_204500_wh_um',1),
-(5114,'2020_11_04_061934_wh_bpartner',1),
-(5115,'2020_11_04_154442_wh_temp',1),
-(5116,'2020_11_09_002024_wh_stock',1),
-(5117,'2020_11_09_144528_wh_bank',1),
-(5118,'2020_11_09_152223_bank_received',1),
-(5119,'2020_11_09_152344_bank_delivered',1),
-(5120,'2020_11_10_003507_wh_doc_type',1),
-(5121,'2020_11_26_050021_create_wh_team_grants_table',1),
-(5122,'2020_12_03_024854_create_wh_sequencers_table',1),
-(5123,'2020_12_07_050449_create_wh_pos_configs_table',1),
-(5124,'2022_11_10_004346_wh_param',1);
+(5713,'2012_10_12_000000_create_users_table',1),
+(5714,'2013_05_21_100000_create_teams_table',1),
+(5715,'2014_10_12_100000_create_password_resets_table',1),
+(5716,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),
+(5717,'2019_08_19_000000_create_failed_jobs_table',1),
+(5718,'2019_12_14_000001_create_personal_access_tokens_table',1),
+(5719,'2020_05_21_200000_create_team_user_table',1),
+(5720,'2020_11_02_053654_wh_currency',1),
+(5721,'2020_11_02_055432_wh_warehouse',1),
+(5722,'2020_11_02_083324_create_sessions_table',1),
+(5723,'2020_11_02_084430_wh_line',1),
+(5724,'2020_11_02_084439_wh_sub_line',1),
+(5725,'2020_11_02_084448_wh_family',1),
+(5726,'2020_11_02_084519_wh_bar_code',1),
+(5727,'2020_11_02_084601_wh_reason',1),
+(5728,'2020_11_02_084649_wh_product',1),
+(5729,'2020_11_02_084657_wh_minput',1),
+(5730,'2020_11_02_084709_wh_minput_line',1),
+(5731,'2020_11_02_084724_wh_moutput',1),
+(5732,'2020_11_02_084732_wh_moutput_line',1),
+(5733,'2020_11_02_084800_wh_transfer',1),
+(5734,'2020_11_02_084807_wh_transfer_line',1),
+(5735,'2020_11_02_084845_wh_production',1),
+(5736,'2020_11_02_084852_wh_production_line',1),
+(5737,'2020_11_03_204500_wh_um',1),
+(5738,'2020_11_04_061934_wh_bpartner',1),
+(5739,'2020_11_04_154442_wh_temp',1),
+(5740,'2020_11_09_002024_wh_stock',1),
+(5741,'2020_11_09_144528_wh_bank',1),
+(5742,'2020_11_09_152223_bank_received',1),
+(5743,'2020_11_09_152344_bank_delivered',1),
+(5744,'2020_11_10_003507_wh_doc_type',1),
+(5745,'2020_11_26_050021_create_wh_team_grants_table',1),
+(5746,'2020_12_03_024854_create_wh_sequencers_table',1),
+(5747,'2020_12_07_050449_create_wh_pos_configs_table',1),
+(5748,'2022_11_10_004346_wh_param',1);
 
 /*Table structure for table `password_resets` */
 
@@ -138,7 +138,7 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('ZKnistan23aqXr0vHJh4tTp4doNO0Vgl4oRGUl6G',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36','YTo3OntzOjY6Il90b2tlbiI7czo0MDoiazR1c0lvQnRUMGp4SVZUeVBaMGNkQlIxT05HWWlob1RhUmg0Z3JzUSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQxOiJodHRwOi8vYWxtYWNlbi5sb2NhbGhvc3Qvc3lzdGVtL3Bvc2NvbmZpZyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCQuLzQvc1VvOFFBVzlUMHN4OHlSVnAuZVZoeUxKLy5Pd2Y4eVRkVmV4OGVzNENyc1BFMGt6YSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkLi80L3NVbzhRQVc5VDBzeDh5UlZwLmVWaHlMSi8uT3dmOHlUZFZleDhlczRDcnNQRTBremEiO30=',1607318960);
+('CDyKRB6bluzXeBXJsgu96YuNC9K3uFiPKBZPy1dU',1,'::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36','YTo4OntzOjY6Il90b2tlbiI7czo0MDoiR3BWcXhzNlBvbkZreUtjc3dCRzNHaWxHQVA5emZEYnRNajVYRzhYaCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQzOiJodHRwOi8vYWxtYWNlbi5sb2NhbGhvc3QvcG9zL2ludm9pY2UvY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGg3bmUybXI1QklVSnVUQVBTa2lKZHVGMkp3VGtvUEh0UUxQU29BSGV0L2xLdlRVRGxFSk0uIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRoN25lMm1yNUJJVUp1VEFQU2tpSmR1RjJKd1Rrb1BIdFFMUFNvQUhldC9sS3ZUVURsRUpNLiI7czoxNDoic2VsZWN0X3RlYW1faWQiO3M6MToiMiI7fQ==',1608528007);
 
 /*Table structure for table `team_user` */
 
@@ -189,9 +189,9 @@ CREATE TABLE `wh_bank_delivered` (
 /*Data for the table `wh_bank_delivered` */
 
 insert  into `wh_bank_delivered`(`id`,`datetrx`,`amount`,`exchange`,`bpartner_id`,`currency_id`,`bank_id`,`doctype`,`documentno`,`office`,`observation`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
-(1,'2020-11-27',300.55,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(2,'2020-11-30',320.45,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(3,'2020-12-01',117.5,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+(1,'2020-12-10',300.55,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(2,'2020-12-13',320.45,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3,'2020-12-14',117.5,1,1,1,1,'EFE',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_bank_received` */
 
@@ -225,10 +225,10 @@ CREATE TABLE `wh_bank_received` (
 /*Data for the table `wh_bank_received` */
 
 insert  into `wh_bank_received`(`id`,`datetrx`,`amount`,`exchange`,`bpartner_id`,`currency_id`,`bank_id`,`doctype`,`documentno`,`office`,`observation`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
-(1,'2020-11-22',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(2,'2020-11-24',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(3,'2020-11-27',3200,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(4,'2020-11-29',1500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+(1,'2020-12-05',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(2,'2020-12-07',2500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3,'2020-12-10',3200,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(4,'2020-12-12',1500,1,1,1,1,'DEP',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_banks` */
 
@@ -313,15 +313,27 @@ DROP TABLE IF EXISTS `wh_doc_type`;
 CREATE TABLE `wh_doc_type` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `doctypename` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isorder` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
+  `isinvoice` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
+  `isreturn` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
+  `iswarehouse` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_by` bigint(20) unsigned DEFAULT NULL,
   `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `wh_doc_type` */
+
+insert  into `wh_doc_type`(`id`,`doctypename`,`isorder`,`isinvoice`,`isreturn`,`iswarehouse`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'FACTURA','N','Y','N','N','Y',NULL,NULL,NULL,NULL),
+(2,'BOLETA DE VENTA','N','Y','N','N','Y',NULL,NULL,NULL,NULL),
+(3,'NOTA DE DEBITO','N','Y','N','N','Y',NULL,NULL,NULL,NULL),
+(4,'NOTA DE CREDITO','N','N','Y','N','Y',NULL,NULL,NULL,NULL),
+(5,'GUIA DE REMISION REMITENTE','N','N','N','Y','Y',NULL,NULL,NULL,NULL),
+(6,'PEDIDO','Y','N','N','N','Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_families` */
 
@@ -424,8 +436,8 @@ CREATE TABLE `wh_minputs` (
 /*Data for the table `wh_minputs` */
 
 insert  into `wh_minputs`(`id`,`datetrx`,`token`,`reason_id`,`bpartner_id`,`warehouse_id`,`currency_id`,`grandqty`,`grandamount`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
-(1,'2020-11-25','',NULL,1,1,NULL,0.000000,1446.000000,'Y',NULL,NULL,NULL,NULL),
-(2,'2020-11-30','',NULL,1,1,NULL,0.000000,4761.190000,'Y',NULL,NULL,NULL,NULL);
+(1,'2020-12-08','',NULL,1,1,NULL,0.000000,1446.000000,'Y',NULL,NULL,NULL,NULL),
+(2,'2020-12-13','',NULL,1,1,NULL,0.000000,4761.190000,'Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_moutput_lines` */
 
@@ -481,8 +493,8 @@ CREATE TABLE `wh_moutputs` (
 /*Data for the table `wh_moutputs` */
 
 insert  into `wh_moutputs`(`id`,`datetrx`,`token`,`reason_id`,`bpartner_id`,`warehouse_id`,`currency_id`,`grandqty`,`grandamount`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
-(1,'2020-11-26','',NULL,1,1,NULL,0.000000,780.000000,'Y',NULL,NULL,NULL,NULL),
-(2,'2020-12-02','',NULL,1,1,NULL,0.000000,980.100000,'Y',NULL,NULL,NULL,NULL);
+(1,'2020-12-09','',NULL,1,1,NULL,0.000000,780.000000,'Y',NULL,NULL,NULL,NULL),
+(2,'2020-12-15','',NULL,1,1,NULL,0.000000,980.100000,'Y',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `wh_param` */
 
@@ -519,15 +531,31 @@ CREATE TABLE `wh_pos_configs` (
   `sequencer_id` bigint(20) unsigned NOT NULL,
   `warehouse_id` bigint(20) unsigned NOT NULL,
   `ismovestock` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `iscreateproduct` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
+  `iscreatebpartner` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
   `isactive` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
   `created_by` bigint(20) unsigned DEFAULT NULL,
   `updated_by` bigint(20) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `wh_pos_configs_sequencer_id_foreign` (`sequencer_id`),
+  KEY `wh_pos_configs_warehouse_id_foreign` (`warehouse_id`),
+  CONSTRAINT `wh_pos_configs_sequencer_id_foreign` FOREIGN KEY (`sequencer_id`) REFERENCES `wh_sequencers` (`id`),
+  CONSTRAINT `wh_pos_configs_warehouse_id_foreign` FOREIGN KEY (`warehouse_id`) REFERENCES `wh_warehouses` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `wh_pos_configs` */
+
+insert  into `wh_pos_configs`(`id`,`posname`,`sequencer_id`,`warehouse_id`,`ismovestock`,`iscreateproduct`,`iscreatebpartner`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'sdfsd',4,1,'Y','N','N','Y',NULL,NULL,'2020-12-20 16:14:31','2020-12-20 16:15:50'),
+(2,'dadf',4,2,'Y','N','N','N',NULL,NULL,'2020-12-20 16:17:36','2020-12-20 16:17:36'),
+(3,'FFFFF',5,3,'N','N','N','N',NULL,NULL,'2020-12-20 16:23:18','2020-12-20 16:24:16'),
+(4,'DADSFSADF',2,1,'Y','Y','Y','Y',NULL,NULL,'2020-12-20 16:28:56','2020-12-20 16:28:56'),
+(5,'F1',4,3,'N','N','N','N',NULL,NULL,'2020-12-20 16:29:07','2020-12-20 16:29:07'),
+(7,'dsfadfads',1,2,'Y','Y','Y','Y',NULL,NULL,'2020-12-20 21:11:23','2020-12-21 04:56:44'),
+(8,'ttt',1,5,'N','N','N','N',NULL,NULL,'2020-12-21 01:22:21','2020-12-21 04:56:28'),
+(9,'zz',3,2,'N','N','N','N',NULL,NULL,'2020-12-21 04:58:21','2020-12-21 04:58:37');
 
 /*Table structure for table `wh_productions` */
 
@@ -1196,6 +1224,7 @@ CREATE TABLE `wh_sequencers` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `sequencername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `serial` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codsunat` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lastnumber` bigint(20) NOT NULL DEFAULT 0,
   `doctype_id` bigint(20) unsigned NOT NULL,
   `isfex` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
@@ -1205,9 +1234,16 @@ CREATE TABLE `wh_sequencers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `wh_sequencers` */
+
+insert  into `wh_sequencers`(`id`,`sequencername`,`serial`,`codsunat`,`lastnumber`,`doctype_id`,`isfex`,`isactive`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
+(1,'F001-FACTURA','F001','01',0,1,'Y','Y',NULL,NULL,NULL,NULL),
+(2,'B001-BOLETA','B001','03',0,2,'Y','Y',NULL,NULL,NULL,NULL),
+(3,'F001-NOTA DE CREDITO/FACTURA','F001','07',0,4,'Y','Y',NULL,NULL,NULL,NULL),
+(4,'B001-NOTA DE CREDITO/BOLETA','B001','07',0,4,'Y','Y',NULL,NULL,NULL,NULL),
+(5,'FACTRA','F002','01',0,1,'Y','Y',1,1,'2020-12-20 16:23:04','2020-12-21 05:05:22');
 
 /*Table structure for table `wh_stock` */
 
@@ -1232,7 +1268,7 @@ CREATE TABLE `wh_stock` (
 /*Data for the table `wh_stock` */
 
 insert  into `wh_stock`(`id`,`stock`,`product_id`,`warehouse_id`,`created_by`,`updated_by`,`created_at`,`updated_at`) values 
-(1,377.200004,5,1,NULL,NULL,'2020-12-07 00:20:17','2020-12-07 00:20:17');
+(1,377.200004,5,1,NULL,NULL,'2020-12-20 10:45:02','2020-12-20 10:45:02');
 
 /*Table structure for table `wh_sublines` */
 
@@ -1274,30 +1310,53 @@ CREATE TABLE `wh_team_grants` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `wh_team_grants` */
 
 insert  into `wh_team_grants`(`id`,`name`,`module`,`url`,`team_id`,`isgrant`,`iscreate`,`isread`,`isupdate`,`isdelete`,`isactive`,`created_at`,`updated_at`) values 
-(1,'','system.user',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(2,'','system.team',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(3,'','system.team.line',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(4,'','master.bpartner',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(5,'','master.product',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(6,'','master.product.line',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(7,'','master.product.subline',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(8,'','master.product.family',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(9,'','master.product.barcode',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(10,'','master.product.reason',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(11,'','move.input',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(12,'','move.input.line',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(13,'','move.output',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(14,'','move.output.line',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(15,'','move.transfer',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(16,'','move.transfer.line',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(17,'','move.production',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(18,'','move.production.line',NULL,1,'N','N','N','N','N','N','2020-12-07 05:20:17','2020-12-07 05:20:17'),
-(19,NULL,'system.posconfig',NULL,1,'N','N','N','N','N','N',NULL,NULL);
+(1,'','system.user',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(2,'','system.team',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(3,'','system.team.line',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(4,'','master.bpartner',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(5,'','master.product',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(6,'','master.product.line',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(7,'','master.product.subline',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(8,'','master.product.family',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(9,'','master.product.barcode',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(10,'','master.product.reason',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(11,'','move.input',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(12,'','move.input.line',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(13,'','move.output',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:01','2020-12-20 15:45:01'),
+(14,'','move.output.line',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:02','2020-12-20 15:45:02'),
+(15,'','move.transfer',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:02','2020-12-20 15:45:02'),
+(16,'','move.transfer.line',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:02','2020-12-20 15:45:02'),
+(17,'','move.production',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:02','2020-12-20 15:45:02'),
+(18,'','move.production.line',NULL,1,'N','N','N','N','N','N','2020-12-20 15:45:02','2020-12-20 15:45:02'),
+(19,NULL,'system.posconfig',NULL,1,'N','N','N','N','N','N',NULL,NULL),
+(20,NULL,'system.sequencer',NULL,1,'N','N','N','N','N','N',NULL,NULL),
+(21,NULL,'master.reason',NULL,1,'N','N','N','N','N','N',NULL,NULL),
+(22,'system.user','system.user',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(23,'system.team','system.team',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(24,'system.team.line','system.team.line',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(25,'master.bpartner','master.bpartner',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(26,'master.product','master.product',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(27,'master.product.line','master.product.line',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(28,'master.product.subline','master.product.subline',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(29,'master.product.family','master.product.family',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(30,'master.product.barcode','master.product.barcode',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(31,'master.product.reason','master.product.reason',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(32,'move.input','move.input',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(33,'move.input.line','move.input.line',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(34,'move.output','move.output',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(35,'move.output.line','move.output.line',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(36,'move.transfer','move.transfer',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(37,'move.transfer.line','move.transfer.line',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(38,'move.production','move.production',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(39,'move.production.line','move.production.line',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(40,'system.posconfig','system.posconfig',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(41,'system.sequencer','system.sequencer',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34'),
+(42,'master.reason','master.reason',NULL,2,'N','N','N','N','N','N','2020-12-21 05:14:34','2020-12-21 05:14:34');
 
 /*Table structure for table `wh_teams` */
 
@@ -1318,8 +1377,8 @@ CREATE TABLE `wh_teams` (
 /*Data for the table `wh_teams` */
 
 insert  into `wh_teams`(`id`,`user_id`,`name`,`personal_team`,`isactive`,`created_at`,`updated_at`) values 
-(1,1,'Administradores',1,'Y','2020-12-07 05:20:15','2020-12-07 05:20:15'),
-(2,1,'Supervisores',1,'Y','2020-12-07 05:20:15','2020-12-07 05:20:15');
+(1,1,'Administradores',1,'Y','2020-12-20 15:45:00','2020-12-20 15:45:00'),
+(2,1,'Supervisores',1,'Y','2020-12-20 15:45:00','2020-12-20 15:45:00');
 
 /*Table structure for table `wh_temp` */
 
@@ -1423,7 +1482,7 @@ CREATE TABLE `wh_users` (
 /*Data for the table `wh_users` */
 
 insert  into `wh_users`(`id`,`name`,`email`,`email_verified_at`,`password`,`two_factor_secret`,`two_factor_recovery_codes`,`remember_token`,`current_team_id`,`profile_photo_path`,`isadmin`,`isactive`,`created_at`,`updated_at`) values 
-(1,'admin','soporte@miasoftware.net',NULL,'$2y$10$./4/sUo8QAW9T0sx8yRVp.eVhyLJ/.Owf8yTdVex8es4CrsPE0kza',NULL,NULL,'DylWU7GkqxKmACJ0BQFLecuJCQPDLFtkKmpajTCUkrSUeVSBagVah9ghgzCO',1,NULL,'Y','Y','2020-12-07 05:20:15','2020-12-07 05:20:15');
+(1,'admin','soporte@miasoftware.net',NULL,'$2y$10$h7ne2mr5BIUJuTAPSkiJduF2JwTkoPHtQLPSoAHet/lKvTUDlEJM.',NULL,NULL,NULL,1,NULL,'Y','Y','2020-12-20 15:45:00','2020-12-20 15:45:00');
 
 /*Table structure for table `wh_warehouses` */
 
@@ -2135,6 +2194,21 @@ BEGIN
 		INSERT INTO wh_products(productname,productcode)VALUES('WAFFER 30/1 ALGODON 78 ROSADO','W0581');
 		INSERT INTO wh_products(productname,productcode)VALUES('WAFFER 30/1 ALGODON 78 VERDE','W0582');
 		update wh_products set um_id=1;
+	/* Tipo de Documento */
+	TRUNCATE TABLE wh_doc_type;
+		INSERT INTO wh_doc_type(doctypename,isinvoice)VALUES('FACTURA','Y');
+		INSERT INTO wh_doc_type(doctypename,isinvoice)VALUES('BOLETA DE VENTA','Y');
+		INSERT INTO wh_doc_type(doctypename,isinvoice)VALUES('NOTA DE DEBITO','Y');
+		INSERT INTO wh_doc_type(doctypename,isreturn)VALUES('NOTA DE CREDITO','Y');
+		INSERT INTO wh_doc_type(doctypename,iswarehouse)VALUES('GUIA DE REMISION REMITENTE','Y');
+		INSERT INTO wh_doc_type(doctypename,isorder)VALUES('PEDIDO','Y');
+	/* Sequencer - SERIE */		
+	TRUNCATE TABLE wh_sequencers;
+		INSERT INTO wh_sequencers(codsunat,sequencername,`serial`,lastnumber,isfex,isactive,doctype_id) VALUES ('01','F001-FACTURA','F001','0','Y','Y',1);
+		INSERT INTO wh_sequencers(codsunat,sequencername,`serial`,lastnumber,isfex,isactive,doctype_id) VALUES ('03','B001-BOLETA','B001','0','Y','Y',2);
+		INSERT INTO wh_sequencers(codsunat,sequencername,`serial`,lastnumber,isfex,isactive,doctype_id) VALUES ('07','F001-NOTA DE CREDITO/FACTURA','F001','0','Y','Y',4);
+		INSERT INTO wh_sequencers(codsunat,sequencername,`serial`,lastnumber,isfex,isactive,doctype_id) VALUES ('07','B001-NOTA DE CREDITO/BOLETA','B001','0','Y','Y',4);
+
 	SET FOREIGN_KEY_CHECKS = 1;
 END */$$
 DELIMITER ;

@@ -1,15 +1,22 @@
 @extends('layouts.app')
+
+@section('header')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
+
 @section('container')
     <div class="content-header" style="padding: 5px .5rem;">
         <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Emitir Comprobante Electronico</h1>
+            <h1 class="m-0 text-dark">Emitir Comprobante</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard v1</li>
+                <li><a class="btn btn-primary"> Crear </a></li>
             </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -66,9 +73,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id=""><i class="fas fa-user-circle"></i>&nbsp;&nbsp;CLIENTE</span>
                     </div>
-                   
+                    <select name="bpartner_id" id="bpartner_id" class="form-control select2-bpartner" placeholder="Ingrese el RUC/DNI/Razon Social">
 
-                    <input type="text" class="form-control" style="text-transform: uppercase;" placeholder="Ingrese el RUC/DNI/Razon Social">
+                    </select>
+
                     <div class="input-group-append">
                         <a href="#" class="btn btn-default" data-toggle="modal" data-target="#modal-bpartner-create"><i class="far fa-file"></i></a>
                     </div>
@@ -80,11 +88,11 @@
     <div class="card-body p-0">
         <div class="row">
             <!-- Cantidad -->
-            <div class="col-4" style="padding-right: 0px;">
+            <div class="col-3" style="padding-right: 0px;">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id=""><i class="fas fa-cubes"></i> Cantidad</span>
-                        <a href="#" class="btn btn-default"><i class="fas fa-plus"></i></a>
+                        <span class="input-group-text" id=""><i class="fas fa-plus"></i> Cantidad</span>
+                        <a href="#" class="btn btn-default"><i class="fas fa-cubes"></i></a>
                     </div>
                     <input type="text" class="form-control text-right" value="1" placeholder="Cantidad">
                     <div class="input-group-append">
@@ -340,4 +348,38 @@
 <!-- /.modal -->
 
 
+@endsection
+
+@section('script')
+<script>
+    $(function(){
+   
+        $.ajaxSetup({
+            dataType: 'json',
+            delay: 150,
+            cache: true,
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        
+        $('.select2-bpartner').select2({
+            ajax: {
+                type: 'post',
+                url: '{{ route('ajax.search.bpartner') }}',
+                data: function (params) {
+                    return {
+                        q: params.term, 
+                        page: params.page
+                    };
+                },
+            },
+            minimumInputLength: 0
+        });
+ 
+ 
+    });
+</script>
+    
 @endsection
