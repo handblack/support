@@ -24,6 +24,7 @@ use App\Http\Controllers\System\CurrencyController;
 use App\Http\Controllers\System\BankController;
 
 use App\Http\Controllers\System\AjaxController;
+use App\Http\Controllers\Pos\AjaxPosController;
 
 use App\Http\Controllers\Move\InputController;
 use App\Http\Controllers\Move\InputLineController;
@@ -140,6 +141,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/ajax/search/reason/production',[AjaxController::class,'search_reason'])->name('ajax.search.reason.production');
     Route::post('/ajax/search/reason/decrease',[AjaxController::class,'search_reason'])->name('ajax.search.reason.decrease');
     Route::post('/ajax/search/sequencer',[AjaxController::class,'search_sequencer'])->name('ajax.search.sequencer');
+    
+    //POS - Servicio de AJAX
+    Route::post('/ajax/pos/product_add',[AjaxPosController::class,'product_add'])->name('ajax.pos.product.add');
+    Route::post('/ajax/pos/product_remove',[AjaxPosController::class,'product_remove'])->name('ajax.pos.product.remove');
 
     // Consulta de STOCK
     Route::get('/query/stock',[QueryController::class,'query_stock_live'])->name('query.stock');

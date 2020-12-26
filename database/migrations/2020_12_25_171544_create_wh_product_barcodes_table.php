@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class WhUm extends Migration
+class CreateWhProductBarcodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class WhUm extends Migration
      */
     public function up()
     {
-        Schema::create('wh_ums', function (Blueprint $table) {
+        Schema::create('wh_product_barcodes', function (Blueprint $table) {
             $table->id();
-            $table->string('umname',30);
-            $table->string('shortname',10);
-            $table->string('isoname',10)->nullable();
+            $table->foreignId('product_id')->references('id')->on('wh_products');
+            $table->string('barcode',50)->nullable();
             $table->enum('isactive',['Y','N'])->default('Y');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -33,7 +32,7 @@ class WhUm extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('wh_ums');
+        Schema::dropIfExists('wh_product_barcodes');
         Schema::enableForeignKeyConstraints();
     }
 }
