@@ -38,7 +38,11 @@
   @yield('style')
   @yield('header')
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition 
+{{ (env('SIDEBAR_MINI') ? 'sidebar-mini' :'' ) }} 
+{{ (env('SIDEBAR_COLLAPSE') ? 'sidebar-collapse' :'' ) }} 
+{{ (env('LAYOUT_NAVBAR_FIXED') ? 'layout-navbar-fixed' :'' ) }} 
+">
 <div class="wrapper">
   <!-- Navbar -->
   @include('layouts.navbar')

@@ -9,14 +9,12 @@
     <div class="content-header" style="padding: 5px .5rem;">
         <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Emitir Comprobante</h1>
+            <div class="col-sm-8">
+            <h1 class="m-0 text-dark">Emitir Comprobante {{ session('pos_token') }}</h1>
             </div><!-- /.col -->
-            <div class="col-sm-6">
+            <div class="col-sm-4">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
-                <li><a class="btn btn-primary"> Crear </a></li>
+                <li><a class="btn btn-primary" data-toggle="modal" data-target="#modal-payment"> PAGAR </a></li>
             </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -148,18 +146,7 @@
                             <a href="#"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1125</td>
-                        <td>JERSEY 90 ALGODON 30/1 - ROJO </td>
-                        <td>KG</td>
-                        <td class="text-right">120.32</td>
-                        <td class="text-right">1.00</td>
-                        <td class="text-right">120.32</td>
-                        <td>
-                            <a href="#"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                  
+                   
                     
                 </tbody>
             </table>
@@ -167,8 +154,8 @@
         <!-- Totales -->
         <div class="row">
 
-            <div class="col-md-5 offset-md-7">
-                <table class="table  table-sm text-nowrap  table-borderless" style="border:1px solid #dcdcdc;">
+            <div class="col-md-5 offset-md-7 ">
+                <table class="table  table-sm text-nowrap  table-borderless grilla-total" style="border:1px solid #dcdcdc;">
                     <tr>
                         <td>SUBTOTAL</td>
                         <td class="text-right">0.00</td>
@@ -216,6 +203,9 @@
 {{-- Modal - Nuevo Cliente --}}
 @include('pos.modal_bpartner');
 
+{{-- Modal - Cobrar --}}
+@include('pos.modal_payment');
+
 
 
 
@@ -262,9 +252,12 @@
                     success: function(response){
                         switch(response.status){
                             case 1:
+                                    // Actualizamos el detalle
                                     $(".grilla-detalle > tbody").prepend(response.line);
                                     $('#productcode').val('');
-                                    toastr.success(response.message);        
+                                    toastr.success(response.message);       
+                                    // Actualizamos el total
+                                    $(".grilla-total").html(response.total);
                                     break;
                             case 2:
                                     toastr.error(response.message);
