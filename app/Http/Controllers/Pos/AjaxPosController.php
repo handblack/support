@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\WhProduct;
 use App\Models\WhProductBarcode;
 use App\Models\WhTemp;
+use App\Models\WhTempPayment;
 
 class AjaxPosController extends Controller{
     private $round_qty;
@@ -100,4 +101,9 @@ class AjaxPosController extends Controller{
     public function product_remove(Request $request){
          
     }
+    public function payment_add(Request $request){
+        $row = new WhTempPayment();
+        
+    }
+    public function payment_delete(Request $request){}
 }

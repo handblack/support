@@ -144,7 +144,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     
     //POS - Servicio de AJAX
     Route::post('/ajax/pos/product_add',[AjaxPosController::class,'product_add'])->name('ajax.pos.product.add');
-    Route::post('/ajax/pos/product_remove',[AjaxPosController::class,'product_remove'])->name('ajax.pos.product.remove');
+    Route::post('/ajax/pos/product_remove',[AjaxPosController::class,'product_remove'])->name('ajax.pos.product.delete');
+    Route::post('/ajax/pos/payment/add',[AjaxPosController::class,'product_remove'])->name('ajax.pos.payment.add');
+    Route::post('/ajax/pos/payment/delete',[AjaxPosController::class,'product_remove'])->name('ajax.pos.payment.delete');
+
 
     // Consulta de STOCK
     Route::get('/query/stock',[QueryController::class,'query_stock_live'])->name('query.stock');

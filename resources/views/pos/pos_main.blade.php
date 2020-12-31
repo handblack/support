@@ -204,7 +204,9 @@
 @include('pos.modal_bpartner');
 
 {{-- Modal - Cobrar --}}
-@include('pos.modal_payment');
+@include('pos.modal_payment',[
+    'medio_pago' => $medio_pago
+]);
 
 
 
@@ -274,7 +276,27 @@
                 //alert('*'+code.trim()+'*');
             }
         });
- 
+        // Enviando los Payment
+        $(".payment-btn").click(function(){
+            $.ajax({
+                method:'POST',
+                url:'{{ route('ajax.pos.payment.add') }}',
+                data: $(this).serialize() ,
+            });
+            alert($(this).serialize());
+        });
+
+        $('#payment_method_id').click(function(){
+
+        });
+        $("#payment_method_id").change(function(){
+            $('.payment_class').hide();
+            var MethodID = $(this).children("option:selected").val();
+            $('.payment_group_' + MethodID).show();
+             
+        });
+
+        $('.payment_class').hide();
  
     });
 </script>
