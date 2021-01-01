@@ -11,9 +11,9 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-5">
-                        <form>
+                        <form id="form-payment">
                             <div class="card">
-                                <div class="card-header">Medio de PAGO</div>
+                                <div class="card-header" style="background-color:rgba(0,0,0,.03);">Medio de PAGO</div>
                                 <div class="card-body">
 
                                     <div class="form-group row">
@@ -30,7 +30,7 @@
                                     <div class="form-group row payment_class payment_group_2">
                                         <label for="staticEmail" class="col-sm-4 col-form-label">Tarjeta Credito</label>
                                         <div class="col-sm-8">
-                                            <select class="form-control">
+                                            <select class="form-control" name="card_id">
                                                 @foreach ($medio_pago as $item)
                                                     <option value="{{ $item->id }}">{{ $item->pmname }}</option>
                                                 @endforeach                   
@@ -41,7 +41,7 @@
                                     <div class="form-group row payment_class payment_group_2">
                                         <label for="staticEmail" class="col-sm-4 col-form-label">Numero Tarjeta</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="card_number">
                                             <small id="emailHelp" class="form-text text-muted">Ingresa los 4 ultimos digitos.</small>
                                         </div>
                                     </div>
@@ -49,9 +49,7 @@
                                     <div class="form-group row payment_class payment_group_3">
                                         <label for="staticEmail" class="col-sm-4 col-form-label">Cuenta Bancaria</label>
                                         <div class="col-sm-8">
-                                            <select class="form-control">
-                                                <option>BCP 192-1234567-0-00</option>
-                                                <option>BBVA 0011-000-12345678-0-00</option>                 
+                                            <select class="form-control" name="bankacccount_id">
                                             </select>
                                         </div>
                                     </div>
@@ -59,7 +57,7 @@
                                     <div class="form-group row payment_class  payment_group_3">
                                         <label for="staticEmail" class="col-sm-4 col-form-label">Nro Operacion</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="documentope">
                                         </div>
                                     </div>
                                     
@@ -68,7 +66,7 @@
                                     <div class="form-group row payment_class payment_group_4">
                                         <label for="staticEmail" class="col-sm-4 col-form-label">Nota de Credito</label>
                                         <div class="col-sm-8">
-                                            <select name="" id="" class="form-control">
+                                            <select name="return_id" id="" class="form-control">
 
                                             </select>
                                         </div>
@@ -85,9 +83,7 @@
                                     <div class="form-group row payment_class payment_group_5">
                                         <label for="staticEmail" class="col-sm-4 col-form-label">Codigo CUPON</label>
                                         <div class="col-sm-8">
-                                            <select name="" id="" class="form-control">
-
-                                            </select>
+                                            <input type="text" name="cuponno">
                                         </div>
                                     </div>
 
@@ -100,28 +96,33 @@
 
                                     <div class="form-group row">
                                         <label for="staticEmail" class="col-sm-4 col-form-label">Importe a Cobrar</label>
-                                        <div class="col-sm-8">
-                                            <input type="numeric" class="form-control text-right">
+                                        
+                                        <div class="input-group mb-3 col-sm-8">
+                                            <input type="text" class="form-control text-right" name="amount" id="amount" placeholder="Importe" aria-label="Importe" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary payment-btn-add" type="button">Agregar</button>
+                                            </div>
                                         </div>
                                     </div>
 
+                                    
+                                      
+
 
                                 </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-primary">Agregar Pago</button>
-                                </div>
+                            
                             </div>
                         </form>
 
                              
                     </div>
-                    <div class="col-7">
+                    <div class="col-7 " >
                         <div class="card">
-                            <div class="card-header card-primary">
+                            <div class="card-header" style="background-color:rgba(0,0,0,.03);">
                                 Detalle de MEDIOS DE PAGOS
                             </div>
-                            <div class="card-body table-responsive p-0">
-                                <table class="table table-striped table-valign-middle table-sm">
+                            <div class="card-body table-responsive p-0 voucher" style="font-size:13px;">
+                                <table class="table  table-valign-middle table-sm payment-grilla-line" id="payment-grilla-line">
                                     <thead>
                                         <tr>
                                             <th>CONCEPTOS</th>
@@ -151,7 +152,7 @@
                             </div>
                         </div>
 
-                        <table class="table table-valign-middle table-sm table-bordered">
+                        <table class="table table-valign-middle table-sm table-bordered .payment-grilla-total" id="payment-grilla-total">
                             <tbody>
                                 <tr>
                                     <td class="text-right">Total Doc</td>
@@ -169,7 +170,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer justify-content-between">
+            <div class="modal-footer ">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary">Crear Comprobante</button>
             </div>

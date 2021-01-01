@@ -103,7 +103,48 @@ class AjaxPosController extends Controller{
     }
     public function payment_add(Request $request){
         $row = new WhTempPayment();
-        
+        $row->fill($request->all());
+        $row->token =  session('pos_token');
+        $row->save();
+        // Detalle de PAGO
+        $result = $this->payment_table();
+        $result['status'] = 1;
+        $result['message'] = 'add';
+        return response()->json($result);      
+        //return 'respuesta';
     }
-    public function payment_delete(Request $request){}
+
+    public function payment_remove(Request $request){
+        $row = WhTempPayment::find($request->id);
+        $row->delete();
+        
+        $result = $this->payment_table();
+        $result['status'] = 1;
+        $result['message'] = 'del';
+        return response()->json($this->payment_table($result,null));      
+    }
+
+    private function payment_table(){
+        $html = '<thead>';
+        $html .= '<tr>';
+        $html .= '<th>CONCEPTO</th>';
+        $html .= '<th class="text-right">IMPORTE</th>';
+        $html .= '<th width="10"></th>';
+        $html .= '</tr>';
+        $html .= '</thead>';
+        $pagos = WhTempPayment::where('token',session('pos_token'))->get(); 
+        foreach($pagos as $item){
+            $html .= '<tr>';
+            $html .= '<td class="ml-3">X</td>';
+            $importe = number_format($item->amount,env('ROUND_DECIMAL_AMOUNT'));
+            $html .= "<td class='text-right'>{$importe}</td>";
+            $html .= "<td><a href='#' onclick=\"payment_delete({$item->id});\"><i class=\"far fa-trash-alt\"></i></td>";
+            $html .= '</tr>';
+        }
+        $response['detalle'] = $html;
+
+        // Detalle de TOTALES
+        $response['total'] = 'resumen-total';
+        return $response;
+    }
 }

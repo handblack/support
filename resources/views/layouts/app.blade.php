@@ -24,9 +24,16 @@
 
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('/adminlte')}}/css/adminlte.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap" rel="stylesheet">   
+
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style>
+  .voucher {
+          font-family: 'Oxygen Mono', monospace;
+          font-size:11px;
+  }
   .table thead{
     background-color: rgba(0,0,0,.03);
     border-bottom: 2px solid #dee2e6;

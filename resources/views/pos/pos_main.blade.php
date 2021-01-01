@@ -277,15 +277,34 @@
             }
         });
         // Enviando los Payment
-        $(".payment-btn").click(function(){
+        $(".payment-btn-add").click(function(){
             $.ajax({
                 method:'POST',
                 url:'{{ route('ajax.pos.payment.add') }}',
-                data: $(this).serialize() ,
+                data: $('#form-payment').serialize(),
+                success: function(response){
+                    $('#payment-grilla-line').html(response.detalle);
+                    $('#payment-grilla-total').html(response.total);
+                }
             });
-            alert($(this).serialize());
+        });
+        // Eliminando los Payment
+        $(".payment-btn-remove").click(function(){
+            alert('a');
+        });
+        $(".payment-btn-remove2").click(function(){
+            $.ajax({
+                method:'POST',
+                url:'{{ route('ajax.pos.payment.delete') }}',
+                data: {id: $('.payment-btn-remove').data('id') },
+                success: function(response){
+                    $('#payment-grilla-line').html(response.detalle);
+                    $('#payment-grilla-total').html(response.total);
+                }
+            });
         });
 
+        // Manipulando en payment y sus opciones
         $('#payment_method_id').click(function(){
 
         });
@@ -293,12 +312,27 @@
             $('.payment_class').hide();
             var MethodID = $(this).children("option:selected").val();
             $('.payment_group_' + MethodID).show();
-             
+
         });
 
         $('.payment_class').hide();
  
     });
+function payment_delete(ii){
+    $.ajax({
+        method:'POST',
+        url:'{{ route('ajax.pos.payment.delete') }}',
+        data: {id: ii },
+        success: function(response){
+            if(response.status = 1 ){
+                $('#payment-grilla-line').html(response.detalle);
+                $('#payment-grilla-total').html(response.total);
+            }else{
+                toastr.error(response.message);
+            }
+        }
+    });
+}
 </script>
     
 @endsection
