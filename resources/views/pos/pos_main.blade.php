@@ -6,23 +6,40 @@
 
 
 @section('container')
-    <div class="content-header" style="padding: 5px .5rem;">
+    <div class="content-header" style="padding: 2px .2rem;">
         <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-8">
-            <h1 class="m-0 text-dark">Emitir Comprobante {{ session('pos_token') }}</h1>
+                <h1 class="m-0 text-dark">Emitir Comprobante {{ session('pos_token') }}</h1>
             </div><!-- /.col -->
             <div class="col-sm-4">
-            <ol class="breadcrumb float-sm-right">
-                <li><a class="btn btn-primary" data-toggle="modal" data-target="#modal-payment"> PAGAR </a></li>
-            </ol>
+                <ol class="breadcrumb float-sm-right">
+                    <li>
+                        <a class="btn btn-primary btn-app" data-toggle="modal" data-target="#modal-bpartner-create"> 
+                            <i class="far fa-user"></i>
+                            Nuevo Cliente 
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-primary btn-app" data-toggle="modal" data-target="#modal-payment"> 
+                            <i class="far fa-file"></i>
+                            Nuevo CP 
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-app" data-toggle="modal" data-target="#modal-payment"> 
+                            <i class="fas fa-money-check"></i>
+                            Cobrar 
+                        </a>
+                    </li>
+                </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
 
-
 <div class="card">
+
     <div class="card-header">
         <div class="row">
             <div class="col-2">
@@ -74,10 +91,7 @@
                     <select name="bpartner_id" id="bpartner_id" class="form-control select2-bpartner" placeholder="Ingrese el RUC/DNI/Razon Social">
 
                     </select>
-
-                    <div class="input-group-append">
-                        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#modal-bpartner-create"><i class="far fa-file"></i></a>
-                    </div>
+ 
                 </div>
             </div>
         </div>
@@ -198,15 +212,15 @@
 
 
 {{-- Modal - Product-Search --}}
-@include('pos.modal_productsearch');
+@include('pos.modal_productsearch')
 
 {{-- Modal - Nuevo Cliente --}}
-@include('pos.modal_bpartner');
+@include('pos.modal_bpartner')
 
 {{-- Modal - Cobrar --}}
 @include('pos.modal_payment',[
     'medio_pago' => $medio_pago
-]);
+])
 
 
 
@@ -332,6 +346,32 @@ function payment_delete(ii){
             }
         }
     });
+}
+
+function create_invoice(){
+    /* Validamos si el formulario esta completo  */
+    //var bp = $('#bpartner_id').val();
+    var flag = true
+    var bp = $(".select2-bpartner").val();
+    if(bp === null){
+        toastr.error('Debes seleccionar el CLIENTE');
+        flag = false;
+    }
+
+    if(flag){
+        $.ajax({
+            method:'POST',
+            url:'{{ route('ajax.pos.invoice.create') }}',
+            data:{
+                se:'{{ session('pos_token') }}',
+                bp:bp,
+                sq:1
+            },
+            success: function(response){
+                toastr.info(response.status + response.message)
+            }
+        });
+    }
 }
 </script>
     

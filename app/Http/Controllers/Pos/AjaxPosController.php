@@ -8,6 +8,7 @@ use App\Models\WhProduct;
 use App\Models\WhProductBarcode;
 use App\Models\WhTemp;
 use App\Models\WhTempPayment;
+use Illuminate\Support\Facades\DB;
 
 class AjaxPosController extends Controller{
     private $round_qty;
@@ -146,5 +147,15 @@ class AjaxPosController extends Controller{
         // Detalle de TOTALES
         $response['total'] = 'resumen-total';
         return $response;
+    }
+    public function invoice_create(Request $request){
+        DB::select("call sp_invoice_create_from_pos(:session,:bpartner,:sequencer)",[
+            ':session' => $request->se,
+            ':bpartner' => $request->bp,
+            ':sequencer' => $request->sq,
+        ]);
+        $response['status'] = '1';
+        $response['message'] = 'creado';
+        return response()->json($response);
     }
 }

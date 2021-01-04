@@ -62,18 +62,12 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     
-
-    <section class="content">
-      <br>
-    </section>
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 mt-2">
             @yield('container')
 
-
-           
             <!-- /.invoice -->
           </div><!-- /.col -->
         </div><!-- /.row -->

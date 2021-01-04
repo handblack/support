@@ -89,7 +89,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
 
     Route::resource('/master/product',ProductController::class);
-    Route::resource('/master/product/barcode',BarCodeController::class);
+    Route::resource('/master/producto/barcode',BarCodeController::class);
     Route::resource('/master/line',LineController::class);
     Route::resource('/master/subline',SubLineController::class);
     Route::resource('/master/family',FamilyController::class);
@@ -147,6 +147,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/ajax/pos/product_remove',[AjaxPosController::class,'product_remove'])->name('ajax.pos.product.delete');
     Route::post('/ajax/pos/payment/add',[AjaxPosController::class,'payment_add'])->name('ajax.pos.payment.add');
     Route::post('/ajax/pos/payment/delete',[AjaxPosController::class,'payment_remove'])->name('ajax.pos.payment.delete');
+    Route::post('/ajax/pos/invoice_create',[AjaxPosController::class,'invoice_create'])->name('ajax.pos.invoice.create');
 
 
     // Consulta de STOCK

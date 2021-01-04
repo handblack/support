@@ -137,7 +137,7 @@
                 <a href="{{ route('product.index') }}" class="btn btn-default"> <i class="fas fa-times"></i> Cancelar</a>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
             </div>
-            <button type="reset" class="btn btn-default"><i class="fas fa-qrcode"></i> Codigo de Barra</button>
+            <a href="{{ route('barcode.index') }}" class="btn btn-default"><i class="fas fa-qrcode"></i> Codigo de Barra</a>
         </div>
         <!-- /.card-footer -->
 </div>

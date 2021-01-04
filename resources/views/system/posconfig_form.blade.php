@@ -27,7 +27,7 @@
             
                 <div class="row">
                     <!-- Columa UNO -->
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
 
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-4 col-form-label">Identificador</label>
@@ -37,6 +37,17 @@
                         </div>        
                     
                         <div class="form-group row">
+                            <label for="inputName" class="col-sm-4 col-form-label">Divisa</label>
+                            <div class="col-sm-8">
+                                <select class="form-control select2-currency" name="currency_id" id="currency_id" required>
+                                    @if($row->currency)
+                                        <option value="{{ $row->currency->id }}">{{ $row->currency->currencyname }}</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="inputName" class="col-sm-4 col-form-label">Almacen</label>
                             <div class="col-sm-8">
                                 <select class="form-control select2-warehouse" name="warehouse_id" id="warehouse_id" required>
@@ -45,19 +56,7 @@
                                     @endif
                                 </select>
                             </div>
-                        </div>        
-                    
-                        <div class="form-group row">
-                            <label for="inputName" class="col-sm-4 col-form-label">Secuenciador</label>
-                            <div class="col-sm-8">
-                                <select class="form-control select2-sequencer" name="sequencer_id" id="sequencer_id">
-                                    @if($row->sequencer)
-                                        <option value="{{ $row->sequencer->id }}">{{ $row->sequencer->sequencername }}</option>
-                                    @endif
-                                </select>
-                            </div>
                         </div> 
-
                         <div class="form-group row">
                             <label for="inputName" class="col-sm-4 col-form-label">Movimiento Almacen</label>
                             <div class="col-sm-8">
@@ -100,15 +99,69 @@
                                 </div>
                             </div>
                         </div> 
-                    
-                             
-                     
-                    </div>
-                    <!-- /.Columa DOS -->
-                </div>
-            
-            
-        </div>
+
+                    </div> 
+                    <!-- Columna DOS -->
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="inputName" class="col-sm-4 col-form-label">Secuenciador Factura</label>
+                            <div class="col-sm-6">
+                                <select class="form-control select2-sequencer" name="sequencer_fac_id" id="sequencer_fac_id">
+                                    @if($row->fac)
+                                        <option value="{{ $row->fac->id }}">{{ $row->fac->sequencername }}</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div> 
+                        
+                        <div class="form-group row">
+                            <label for="inputName" class="col-sm-4 col-form-label">Secuenciador Boleta</label>
+                            <div class="col-sm-6">
+                                <select class="form-control select2-sequencer" name="sequencer_bve_id" id="sequencer_bve_id">
+                                    @if($row->bve)
+                                        <option value="{{ $row->bve->id }}">{{ $row->bve->sequencername }}</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div> 
+                        
+                        <div class="form-group row">
+                            <label for="inputName" class="col-sm-4 col-form-label">Secuenciador Debito</label>
+                            <div class="col-sm-6">
+                                <select class="form-control select2-sequencer" name="sequencer_ndb_id" id="sequencer_ndb_id">
+                                    @if($row->ndb)
+                                        <option value="{{ $row->ndb->id }}">{{ $row->ndb->sequencername }}</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div> 
+                        
+                        <div class="form-group row">
+                            <label for="inputName" class="col-sm-4 col-form-label">Secuenciador Credito</label>
+                            <div class="col-sm-6">
+                                <select class="form-control select2-sequencer" name="sequencer_ncr_id" id="sequencer_ncr_id">
+                                    @if($row->ncr)
+                                        <option value="{{ $row->ncr->id }}">{{ $row->ncr->sequencername }}</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div> 
+                        
+                        <div class="form-group row">
+                            <label for="inputName" class="col-sm-4 col-form-label">Secuenciador Almacen</label>
+                            <div class="col-sm-6">
+                                <select class="form-control select2-sequencer" name="sequencer_who_id" id="sequencer_who_id">
+                                    @if($row->who)
+                                        <option value="{{ $row->who->id }}">{{ $row->who->sequencername }}</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div> 
+                    </div>       
+                </div>        
+            </div>        
+          
+     
         <!-- /.card-body -->
         <div class="card-footer">
             <div class="float-right">
@@ -135,6 +188,20 @@
         });
     
       
+        $('.select2-currency').select2({
+            ajax: {
+                type: 'post',
+                url: '{{ route('ajax.search.currency') }}',
+                data: function (params) {
+                    return {
+                        q: params.term, 
+                        page: params.page
+                    };
+                },
+            },
+            minimumInputLength: 0
+        });
+
         $('.select2-warehouse').select2({
             ajax: {
                 type: 'post',

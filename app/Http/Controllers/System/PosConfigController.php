@@ -44,7 +44,6 @@ class PosConfigController extends Controller{
         $request->validate([
             'posname' => 'required',
             'warehouse_id' => 'required',
-            'sequencer_id' => 'required',
         ]);
         // -------------------------------------------
         $grant = Auth::user()->grant($this->module);
@@ -82,8 +81,6 @@ class PosConfigController extends Controller{
         $request->validate([
             'posname' => 'required',
             'warehouse_id' => 'required',
-            'sequencer_id' => 'required',
-            
         ]);
         //dd($request);
         // -------------------------------------------

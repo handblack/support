@@ -84,6 +84,7 @@ class ProductController extends Controller{
         $sublines = WhSubLine::all();
         $families = WhFamily::all();
         $ums = WhUm::all();
+        session(['select_product_id',$id]);
         return view('master.product_form',[
             'mode' => 'edit',
             'row' => $row,
