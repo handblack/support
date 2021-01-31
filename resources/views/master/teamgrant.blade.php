@@ -40,33 +40,34 @@
                                 <tr>
                                     <td width="150" style="border-right:1px solid #dcdcdc;">{{ $item->module }}</td>
                                     <td width="80" class="text-center">
-                                        <div class="custom-control custom-switch" style="padding-top:3px">
-                                            <input type="checkbox" class="custom-control-input" name="isgrant" id="grant-{{ $item->id }}" {{ ($item->isgrant=='Y')? 'checked' : '' }}>
+
+                                        <div class="custom-control custom-switch {{ ($item->isgrant == 'D')? '' : 'custom-switch-off-danger custom-switch-on-success' }}" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="isgrant" id="grant-{{ $item->id }}" {{ ($item->isgrant=='Y')? 'checked' : '' }} {{ ($item->isgrant == 'D') ? 'disabled' : '' }}>
                                             <label class="custom-control-label" for="grant-{{ $item->id }}"></label>
                                         </div>
                                     </td>
                                     <td width="80" class="text-center">
-                                        <div class="custom-control custom-switch" style="padding-top:3px">
-                                            <input type="checkbox" class="custom-control-input" name="iscreate" id="create-{{ $item->id }}" {{ ($item->iscreate=='Y')? 'checked' : '' }}>
+                                        <div class="custom-control custom-switch {{ ($item->iscreate == 'D')? '' : 'custom-switch-off-danger custom-switch-on-success' }}" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="iscreate" id="create-{{ $item->id }}" {{ ($item->iscreate=='Y')? 'checked' : '' }} {{ ($item->iscreate == 'D') ? 'disabled' : '' }}>
                                             <label class="custom-control-label" for="create-{{ $item->id }}"></label>
                                         </div>
                                     </td>
                                     <td width="80" class="text-center">
-                                        <div class="custom-control custom-switch" style="padding-top:3px">
-                                            <input type="checkbox" class="custom-control-input" name="isread" id="read-{{ $item->id }}" {{ ($item->isread=='Y')? 'checked' : '' }}>
+                                        <div class="custom-control custom-switch {{ ($item->isread == 'D')? '' : 'custom-switch-off-danger custom-switch-on-success' }}" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="isread" id="read-{{ $item->id }}" {{ ($item->isread=='Y')? 'checked' : '' }} {{ ($item->isread == 'D') ? 'disabled' : '' }}>
                                             <label class="custom-control-label" for="read-{{ $item->id }}"></label>
                                         </div>
                                     </td>
                                     <td width="80" class="text-center">
-                                        <div class="custom-control custom-switch" style="padding-top:3px">
-                                            <input type="checkbox" class="custom-control-input" name="isupdate" id="update-{{ $item->id }}" {{ ($item->isupdate=='Y')? 'checked' : '' }}>
+                                        <div class="custom-control custom-switch {{ ($item->isupdate == 'D')? '' : 'custom-switch-off-danger custom-switch-on-success' }}" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="isupdate" id="update-{{ $item->id }}" {{ ($item->isupdate=='Y')? 'checked' : '' }} {{ ($item->isupdate == 'D') ? 'disabled' : '' }}>
                                             <label class="custom-control-label" for="update-{{ $item->id }}"></label>
                                         </div>
                                     </td>
                                     <td width="80" class="text-center">
-                                        <div class="custom-control custom-switch" style="padding-top:3px">
-                                            <input type="checkbox" class="custom-control-input" name="isdelete" id="delete-{{ $item->id }}" {{ ($item->isdelete=='Y')? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="delete-{{ $item->id }}"></label>
+                                        <div class="custom-control custom-switch {{ ($item->isdelete == 'D')? '' : 'custom-switch-off-danger custom-switch-on-success' }}" style="padding-top:3px">
+                                            <input type="checkbox" class="custom-control-input" name="isdelete" id="delete-{{ $item->id }}" {{ ($item->isdelete == 'Y')? 'checked' : '' }} {{ ($item->isdelete == 'D') ? 'disabled' : '' }}>
+                                            <label class="custom-control-label disabled" for="delete-{{ $item->id }}"></label>
                                         </div>
                                     </td>                                     
                                     <td width="80">

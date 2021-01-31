@@ -31,10 +31,13 @@
  
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
-         
+            <a href="{{ route('login') }}" class="nav-link"><i class="fas fa-file-alt"></i> Facturacion Electronica</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a href="{{ route('login') }}" class="nav-link"><i class="fas fa-user-circle"></i> Clientes</a>
+        </li>
+        <li class="nav-item dropdown">
             <a href="{{ route('login') }}" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
-       
-        
         </li>
       
     </ul>

@@ -44,17 +44,15 @@ class TeamGrantController extends Controller{
 
     public function update(Request $request, $id){
         $grant = WhTeamGrant::find($id);
-        if($request->has('isgrant')){$grant->isgrant = ($request->isgrant=='on' ? 'Y':'N');}
-        if($request->has('iscreate')){$grant->iscreate = ($request->iscreate=='on' ? 'Y':'N');}
-        if($request->has('isread')){$grant->isread = ($request->isread=='on' ? 'Y':'N');}
-        if($request->has('isupdate')){$grant->isupdate = ($request->isupdate=='on' ? 'Y':'N');}
-        if($request->has('isdelete')){$grant->isdelete = ($request->isdelete=='on' ? 'Y':'N');}
-        //$grant->fill($request->all());
+        if(!($grant->isgrant == 'D')){$grant->isgrant = ($request->has('isgrant')) ? 'Y' : 'N';}
+        if(!($grant->iscreate == 'D')){$grant->iscreate = ($request->has('iscreate')) ? 'Y' : 'N';}
+        if(!($grant->isread == 'D')){$grant->isread = ($request->has('isread')) ? 'Y' : 'N';}
+        if(!($grant->isupdate == 'D')){$grant->isupdate = ($request->has('isupdate')) ? 'Y' : 'N';}
+        if(!($grant->isdelete == 'D')){$grant->isdelete = ($request->has('isdelete')) ? 'Y' : 'N';}
         $grant->save();
-        //return back()->with('message','Actualizado ' . $grant->module);
-        return response()->json(['message'=>"Se actualizo <strong>{$grant->module}</strong>"]);
-        //return response()->json($grant);
+        return response()->json(['message'=>"Se actualizo <strong>{$grant->module}</strong> R={$request->isgrant} V={$grant->isgrant}"]);
     }
+    
     private function refreshgrant(){
         $grants = WhTeamGrant::where('team_id','=',1)->get();
         $row = new WhTeamGrant;

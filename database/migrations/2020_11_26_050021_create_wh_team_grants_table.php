@@ -14,11 +14,11 @@ class CreateWhTeamGrantsTable extends Migration{
             $table->string('module',100);
             $table->string('url',200)->nullable();
             $table->foreignId('team_id');
-            $table->enum('isgrant',['Y','N'])->default('N');
-            $table->enum('iscreate',['Y','N'])->default('N');
-            $table->enum('isread',['Y','N'])->default('N');
-            $table->enum('isupdate',['Y','N'])->default('N');
-            $table->enum('isdelete',['Y','N'])->default('N');
+            $table->enum('isgrant',['Y','N','D'])->default('N');
+            $table->enum('iscreate',['Y','N','D'])->default('N');
+            $table->enum('isread',['Y','N','D'])->default('N');
+            $table->enum('isupdate',['Y','N','D'])->default('N');
+            $table->enum('isdelete',['Y','N','D'])->default('N');
             $table->enum('isactive',['Y','N'])->default('N');
             $table->timestamps();
         }); 

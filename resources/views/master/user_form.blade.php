@@ -90,5 +90,9 @@
     });
     @endforeach
 @endif
+
+@if(session()->has('error'))
+    Toastr.error('{{ session()->get('error') }}')
+@endif
 </script>
 @endsection
