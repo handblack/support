@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\System\UserController;
 use App\Http\Controllers\System\TeamController;
 use App\Http\Controllers\System\TeamGrantController;
+use App\Http\Controllers\System\RoleController;
 use App\Http\Controllers\System\ProfileController;
 use App\Http\Controllers\System\SequencerController;
 use App\Http\Controllers\System\PosConfigController;
@@ -67,6 +68,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 */
+
+
+Route::middleware(['auth','role:cliente'])->group(function(){
+    //Portal solo para CLIENTES
+});
+
+Route::middleware(['auth','role:proveedor'])->group(function(){
+    //Portal solo para PROVEEDOR
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     /*
     Route::get('/dashboard',function (){
@@ -81,6 +92,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/system/users',UserController::class);
     Route::resource('/system/teams',TeamController::class);
     Route::resource('/system/teamgrant',TeamGrantController::class);
+    Route::resource('/system/role',RoleController::class);
     Route::resource('/system/sequencer',SequencerController::class);
     Route::resource('/system/currency',CurrencyController::class);
     Route::resource('/system/posconfig',PosConfigController::class);

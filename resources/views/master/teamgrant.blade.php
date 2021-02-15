@@ -70,7 +70,7 @@
                                             <label class="custom-control-label disabled" for="delete-{{ $item->id }}"></label>
                                         </div>
                                     </td>                                     
-                                    <td width="80">
+                                    <td width="80" class="text-right">
                                     
                            
                                         <button type="submit" class="btn btn-default btn-sm"><i class="fas fa-save"></i> Guardar</button>

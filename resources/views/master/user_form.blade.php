@@ -13,7 +13,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="card card-primary card-outline">
         <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-id-card"></i> Usuario <strong>[@if($mode=='new') NUEVO @else MODIFICAR @endif]</strong></h3>
+            <div class="card-title"><i class="fas fa-user-shield"></i> Usuario <strong>[@if($mode=='new') NUEVO @else MODIFICAR @endif]</strong></div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">

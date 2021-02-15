@@ -45,6 +45,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('role.index') }}" class="nav-link {{ request()->is('system/role*') ? 'active' : '' }}">
+                                <i class="fas fa-user-shield nav-icon"></i><p>Roles</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('sequencer.index') }}" class="nav-link {{ request()->is('system/sequencer*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i><p>Series SUNAT</p>
                             </a>

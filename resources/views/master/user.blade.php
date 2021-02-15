@@ -6,83 +6,69 @@
 <div class="row">
     <div class="col-12">
     -->        
-        <div class="card">
-            <div class="card-header border-0">
-                <div class="row">
-
-                    <div class="col-md-6">
-                        
-                        <h3 class="card-title"><i class="fas fa-list"></i> Usuarios</h3>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-tools">
-                            <form action="{{ route('users.index') }}" method="GET" style="margin:0px;padding:0px;">
-                                @csrf
-                                <div class="input-group input-group-sm" >
-                                    <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                        <a href="{{ route('users.index') }}" class="btn btn-default"><i class="fas fa-sync"></i></a>
-                                        <a href="{{ route('users.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo</a>
-                                    </div>
-                                </div>
-                            </form>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title"><i class="fas fa-user-shield"></i> Usuarios</div>
+            <div class="card-tools  float-right">
+                <form action="{{ route('users.index') }}" method="GET">
+                    @csrf
+                    <div class="input-group" >
+                        <input type="text" name="q" class="form-control float-right" id="q" placeholder="Buscar..." value="{{ $q }}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                            <a href="{{ route('users.index') }}" class="btn btn-default">&nbsp;<i class="fas fa-sync"></i>&nbsp;</a>
+                            <a href="{{ route('users.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo</a>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap table-sm table-borderless" data-toggle="dataTable" data-form="deleteForm">
-                    
-                    <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Email</th>
-                        <th>Team</th>
-                        <th>Estado</th>
-                        <th>Accion</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($result as $item)
-                            <form action="{{ route('users.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
-                                <tr>
-                                    <td>{{ $item->name }}
-                                        @if($item->isadmin=='Y')
-                                            <small class="badge badge-success"><i class="fas fa-crown"></i> admin</small>
-                                        @endif
-                                    </td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->teamname }}</td>
-                                    <td>{{ $item->isactive }}</td>
-                                    <td width="80">
-                                    
-                                        @method('delete')
-                                        @csrf
-                                        <a href="{{ route('users.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
-                                        <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
-                                    </td>
-                                </tr>
-                            </form>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>  
-                                <div class="card-title">
-                                
-                                </div>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                {{ $result->links('layouts.paginate') }}
-            </div>
+
         </div>
+         
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap table-borderless" data-toggle="dataTable" data-form="deleteForm">
+                
+                <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Team</th>
+                    <th>Estado</th>
+                    <th>Accion</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach($result as $item)
+                        <form action="{{ route('users.destroy',$item->id) }}" method="POST" class="forn-inline form-delete">
+                            <tr>
+                                <td>{{ $item->name }}
+                                    @if($item->isadmin=='Y')
+                                        <small class="badge badge-success"><i class="fas fa-crown"></i> admin</small>
+                                    @endif
+                                </td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->teamname }}</td>
+                                <td>{{ $item->isactive }}</td>
+                                <td width="80">
+                                
+                                    @method('delete')
+                                    @csrf
+                                    <a href="{{ route('users.edit',$item->id) }}"><i class="fas fa-edit"></i> Modificar </a> | 
+                                    <a href="#" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i> Eliminar</a>
+                                </td>
+                            </tr>
+                        </form>
+                    @endforeach
+                </tbody>
+                 
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            {{ $result->links('layouts.paginate') }}
+        </div>
+    </div>
       <!-- /.card -->
 <!--      
     </div>

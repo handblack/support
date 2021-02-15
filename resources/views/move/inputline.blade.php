@@ -189,8 +189,14 @@
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
                 <div class="card-footer">
-                    <a href="{{ route('input.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
-                    <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save"></i> Crear Documento</button>
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-copy"></i> Copiar de</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Orden de Compra</a>
+                            </div>
+                    <div class="float-right">
+                        <a href="{{ route('input.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Crear Documento</button>
+                    </div>
                 </div>
             </form>
         </div>
