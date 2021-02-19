@@ -1,4 +1,5 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4 ">
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ url('dashboard') }}" class="brand-link">
         <img src="{{ asset('images/package.png') }}" alt="WareHouse" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -6,8 +7,8 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition"><div class="os-resize-observer-host observed"><div class="os-resize-observer" style="left: 0px; right: auto;"></div></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px -8px; width: 249px; height: 879px;"></div><div class="os-padding"><div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;"><div class="os-content" style="padding: 0px 8px; height: 100%; width: 100%;">
-        <!-- Sidebar user panel (optional) -->
+    <div class="sidebar">
+        <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <img src="{{ asset('images/user_red.png') }}" class="img-circle elevation-2" alt="User Image">
@@ -17,9 +18,11 @@
             </div>
         </div>
 
+        
+
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-legacy nav-compact nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-compact nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview {{ request()->is('dashboard*') ? 'menu-open' : '' }}">
@@ -28,6 +31,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+
                 <li class="nav-item has-treeview {{ request()->is('system*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('system*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tv"></i>
@@ -69,7 +73,6 @@
                     </ul>
                 </li>
                 
-
                 <li class="nav-item has-treeview {{ request()->is('master*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('master*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-toolbox"></i>
@@ -111,7 +114,7 @@
                                 <i class="far fa-circle nav-icon"></i><p>Almacenes</p>
                             </a>
                         </li> 
-                       
+                    
                         <li class="nav-item">
                             <a href="{{ route('bank.index') }}" class="nav-link {{ request()->is('master/bank*') ? 'active' : '' }}">
                                 <i class="fas fa-coins nav-icon"></i><p>Cuenta Bancos</p>
@@ -136,7 +139,7 @@
                                 <i class="far fa-file-alt nav-icon"></i> <p>Estado de Cuenta</p>
                             </a>
                         </li>
-                     </ul>
+                    </ul>
                 </li>
 
                 <li class="nav-item has-treeview {{ request()->is('move*') ? 'menu-open' : '' }}">
@@ -221,133 +224,30 @@
                         </li>
                     </ul>
                 </li>
-            
+                <li class="nav-header"></li>
 
-
-            <li class="nav-header">CONSULTAS RAPIDAS</li>
-            <li class="nav-item">
-                <a href="#" class="nav-link query-product" data-toggle="modal" data-target="#ajax-query-product-by-code">
-                    <i class="nav-icon far fa-list-alt"></i>
-                    <p>Producto</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link query-product" data-toggle="modal" data-target="#ajax-query-bpartnercode">
-                    <i class="nav-icon far fa-list-alt"></i>
-                    <p>Socio de Negocio</p>
-                </a>
-            </li>
-
-            <li class="nav-header">ANALISIS</li>
-            <li class="nav-item">
-                <a href="{{ route('query.stock') }}" class="nav-link {{ request()->is('query/stock*') ? 'active' : '' }}">
-                    <i class="nav-icon far fa-list-alt"></i>
-                    <p>Stock Live</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('query.kardex') }}" class="nav-link {{ request()->is('query/kardex*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-chart-line"></i>
-                    <p>Kardex</p>
-                </a>
-            </li>
-
-            <li class="nav-header"></li>
-
-            <li class="nav-item">
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
-                    <i class="nav-icon far fa-circle text-danger"></i>
-                    <p>Salir</p>
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-            </li>
-            
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div></div></div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="width: 100%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hidden"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="height: 94.522%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div></div>
+                <li class="nav-item">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                        <i class="fas fa-sign-out-alt text-danger nav-icon"></i>
+                        <p>Salir</p>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+                <li class="nav-header"></li>
+             
+               
+             
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
     <!-- /.sidebar -->
-  </aside>
-  
-  
-<!-- Modal -->
-<div class="modal fade" id="ajax-query-product-by-code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: rgba(0,0,0,.03);">
-                <!-- form id="form-query-product" -->
-                    <div class="form-group row" style="margin-bottom: 0px;">
-                        <label for="inputPassword" class="col-sm-4 col-form-label">Consultar STOCK</label>
-                        <div class="col-sm-7">
-                            <div class="input-group">
-                                <input type="text" id="query-product-code" name="query_product_code" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary query-product-engine-bnt" type="button"><i class="fab fa-searchengin"></i> Consultar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <!-- /form -->
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12 query-result-product-engine">
-                        <h3 class="text-center"><img class="" width="100" alt="User Avatar" src='data:image/svg+xml;utf8,
-                            <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><title/>
-                                <path d="M15,38v2H9a3,3,0,0,1-3-3V31H8v6a1,1,0,0,0,1,1Z"/><path d="M40,31v6a3,3,0,0,1-3,3H31V38h6a1,1,0,0,0,1-1V31Z"/>
-                                <path d="M40,9v6H38V9a1,1,0,0,0-1-1H31V6h6A3,3,0,0,1,40,9Z"/><path d="M15,6V8H9A1,1,0,0,0,8,9v6H6V9A3,3,0,0,1,9,6Z"/>
-                                <rect height="19" width="3" x="10" y="11"/><rect height="3" width="3" x="10" y="32"/><rect height="24" width="1" x="14" y="11"/>
-                                <rect height="24" width="3" x="16" y="11"/><rect height="24" width="1" x="20" y="11"/><rect height="24" width="3" x="22" y="11"/>
-                                <rect height="24" width="1" x="26" y="11"/><rect height="24" width="3" x="28" y="11"/><rect height="24" width="1" x="32" y="11"/>
-                                <rect height="24" width="2" x="34" y="11"/></svg>
-                                '></h3>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
-<!-- /.Modal -->
-<!-- Modal -->
-<div class="modal fade" id="ajax-query-bpartnercode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: rgba(0,0,0,.03);">
-                <!-- form id="form-query-product" -->
-                    <div class="form-group row" style="margin-bottom: 0px;">
-                        <label for="inputPassword" class="col-sm-4 col-form-label">Informacion de Socio de Negocio</label>
-                        <div class="col-sm-7">
-                            <div class="input-group">
-                                <input type="text" id="query-product-code" name="query_product_code" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary query-product-engine-bnt" type="button"><i class="fab fa-searchengin"></i> Consultar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <!-- /form -->
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12 query-result-product-engine">
-                        <h3 class="text-center"><img class="" width="100" alt="User Avatar" src='data:image/svg+xml;utf8,
-                            <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><title/>
-                                <path d="M15,38v2H9a3,3,0,0,1-3-3V31H8v6a1,1,0,0,0,1,1Z"/><path d="M40,31v6a3,3,0,0,1-3,3H31V38h6a1,1,0,0,0,1-1V31Z"/>
-                                <path d="M40,9v6H38V9a1,1,0,0,0-1-1H31V6h6A3,3,0,0,1,40,9Z"/><path d="M15,6V8H9A1,1,0,0,0,8,9v6H6V9A3,3,0,0,1,9,6Z"/>
-                                <rect height="19" width="3" x="10" y="11"/><rect height="3" width="3" x="10" y="32"/><rect height="24" width="1" x="14" y="11"/>
-                                <rect height="24" width="3" x="16" y="11"/><rect height="24" width="1" x="20" y="11"/><rect height="24" width="3" x="22" y="11"/>
-                                <rect height="24" width="1" x="26" y="11"/><rect height="24" width="3" x="28" y="11"/><rect height="24" width="1" x="32" y="11"/>
-                                <rect height="24" width="2" x="34" y="11"/></svg>
-                                '></h3>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
-<!-- /.Modal -->
 
+    <div class="sidebar-custom">
+      <a href="#" class="btn btn-link"><i class="fas fa-cogs"></i></a>
+      <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Help</a>
+    </div>
+    <!-- /.sidebar-custom -->
+</aside>

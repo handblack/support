@@ -46,9 +46,10 @@
   @yield('header')
 </head>
 <body class="hold-transition 
+control-sidebar-slide-open
 {{ (env('SIDEBAR_MINI') ? 'sidebar-mini' :'' ) }} 
 {{ (env('SIDEBAR_COLLAPSE') ? 'sidebar-collapse' :'' ) }} 
-{{ (env('LAYOUT_NAVBAR_FIXED') ? 'layout-navbar-fixed' :'' ) }} 
+{{ (env('LAYOUT_NAVBAR_FIXED') ? 'layout-fixed' :'' ) }} 
 ">
 <div class="wrapper">
   <!-- Navbar -->
@@ -84,9 +85,7 @@
   </footer>
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
+  
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
