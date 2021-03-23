@@ -35,11 +35,6 @@ class WhParam extends Migration
         #DB::unprepared("CALL install_cobranzas();");
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::disableForeignKeyConstraints();
